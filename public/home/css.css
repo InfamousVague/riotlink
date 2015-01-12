@@ -28,8 +28,7 @@ body,html{
 }
 #options{
     position:absolute;
-    bottom:1em;
-    left:1em;
+    bottom:-1.5em;
     color:#fff;
     font-weight:bolder;
     font-family: 'Poiret One', cursive;
@@ -41,7 +40,7 @@ body,html{
 
 .regular-radio {
     position:relative;
-    top:1em;
+    top:.6em;
     border-radius:4px;
 }
 
@@ -54,8 +53,8 @@ body,html{
     appearance: none;
     display: inline-block;
     position: relative;
-    height: 30px;
-    width: 100px;
+    height: 20px;
+    width: 50px;
     background-color: #e56c69;
     transition: all 0.3s ease;
     -webkit-transition: all 0.3s ease;
@@ -65,8 +64,8 @@ body,html{
 
 .regular-radio:checked:after {
     content: '';
-    width: 45px;
-    height: 24px;
+    width: 25px;
+    height: 14px;
     top: 3px;
     left: 3px;
     border-radius:4px;
@@ -80,11 +79,11 @@ body,html{
 
 .regular-radio:after {
     content: ' ';
-    width: 45px;
-    height: 24px;
+    width: 25px;
+    height: 14px;
     top: 3px;
     border-radius:4px;
-    left: 52px;
+    left: 22px;
     position: absolute;
     background: #fff;
     transition: all 0.3s ease;

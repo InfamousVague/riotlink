@@ -11,4 +11,12 @@
             $('.trackingMode').html('advanced tracking off');
         }
     });
+
+    $('#track').click(function(){
+        var tt          = ($('#trackingCheckbox').is(":checked")) ? "a" : "b",
+            link        = $('#link').val(),
+            builtURL    = window.location.origin + "?tt=" + tt + "&link=" + link;
+
+        alert(builtURL);
+    });
 })();
