@@ -61,7 +61,7 @@ module.exports = function(grunt){
         react:{
             convert: {
                 files: {
-                    'public/app/dist/js/app.built.js' : 'public/app/js/app.built.js'
+                    'public/app/dist/js/viewer.built.js' : 'public/app/js/viewer.built.js'
                 }
             }
         },
@@ -71,7 +71,7 @@ module.exports = function(grunt){
             },
             client: {
                 src: ['public/app/js/**/*.jsx'],
-                dest: 'public/app/js/app.built.js'
+                dest: 'public/app/js/viewer.built.js'
             }
         }
     });

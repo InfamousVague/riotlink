@@ -26,7 +26,72 @@ body,html{
     right:0;
     width:10em;
 }
+#options{
+    position:absolute;
+    bottom:1em;
+    left:1em;
+    color:#fff;
+    font-weight:bolder;
+    font-family: 'Poiret One', cursive;
+    text-shadow:1px 1px 5px #000;
+    font-size:18pt;
+}
 
+/* Checkbox */
+
+.regular-radio {
+    position:relative;
+    top:1em;
+    border-radius:4px;
+}
+
+.regular-radio:focus { outline: none; }
+
+.regular-radio {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -o-appearance: none;
+    appearance: none;
+    display: inline-block;
+    position: relative;
+    height: 30px;
+    width: 100px;
+    background-color: #e56c69;
+    transition: all 0.3s ease;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+}
+
+.regular-radio:checked:after {
+    content: '';
+    width: 45px;
+    height: 24px;
+    top: 3px;
+    left: 3px;
+    border-radius:4px;
+    position: absolute;
+    background: #fff;
+}
+
+.regular-radio:checked {
+    background-color: #6ADD75;
+}
+
+.regular-radio:after {
+    content: ' ';
+    width: 45px;
+    height: 24px;
+    top: 3px;
+    border-radius:4px;
+    left: 52px;
+    position: absolute;
+    background: #fff;
+    transition: all 0.3s ease;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+}
 @-webkit-keyframes droplet {
     from {
         width:0;
@@ -127,7 +192,7 @@ body,html{
 textarea, input { outline: none; }
 ::-webkit-input-placeholder {
     font-family: 'Poiret One', cursive;
-    color:#999;
+    color:#ccc;
 }
 input{
     font-family: 'Poiret One', cursive;
@@ -135,17 +200,17 @@ input{
 }
 :-ms-input-placeholder {
     font-family: 'Poiret One', cursive;
-    color:#999;
+    color:#ccc;
 }
 
 :-moz-placeholder {
     font-family: 'Poiret One', cursive;
-    color:#999;
+    color:#ccc;
 }
 
 ::-moz-placeholder {
     font-family: 'Poiret One', cursive;
-    color:#999;
+    color:#ccc;
 }
 
 #link{
