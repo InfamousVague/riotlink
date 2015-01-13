@@ -26,12 +26,7 @@ var ShortLink = mongoose.model('ShortLink');
 app.use(express.static(__dirname + '/public'));
 
 app.get('/', function(req, res){
-    var ua = req.header('user-agent');
-    if(/mobile/i.test(ua)) {
-        res.redirect('home/m');
-    } else {
-        res.redirect('home');
-    }
+    res.redirect('h');
 });
 
 app.get('/r', function(req,res){
