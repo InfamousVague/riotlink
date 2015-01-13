@@ -11,13 +11,12 @@ var ViewToolbar = React.createClass({
                 <div className="inputWrapper">
                     <label>Short Link: </label>
                     <input id="shortLink"></input>
-                    <a href="#" target="_blank" id="shortLinkLink"><button>Open</button></a>
-
-                    <label>Tracking Link: </label>
+                    <a href="#" target="_blank" id="shortLinkLink">Open</a>
+                    <label style={{'padding-left':'4em'}}>Tracking Link: </label>
                     <input id="trackingLink"></input>
-                    <a href="#" target="_blank" id="trackingLinkLink"><button>Open</button></a>
+                    <a href="#" target="_blank" id="trackingLinkLink">Open</a>
 
-                    <label id="trackingType">trackingType</label>
+                    <label id="trackingType" style={{'padding-left':'4em'}}>trackingType</label>
                 </div>
             </div>
         );

@@ -18691,13 +18691,12 @@ var ViewToolbar = React.createClass({displayName: 'ViewToolbar',
                 React.DOM.div({className: "inputWrapper"}, 
                     React.DOM.label(null, "Short Link: "), 
                     React.DOM.input({id: "shortLink"}), 
-                    React.DOM.a({href: "#", target: "_blank", id: "shortLinkLink"}, React.DOM.button(null, "Open")), 
-
-                    React.DOM.label(null, "Tracking Link: "), 
+                    React.DOM.a({href: "#", target: "_blank", id: "shortLinkLink"}, "Open"), 
+                    React.DOM.label({style: {'padding-left':'4em'}}, "Tracking Link: "), 
                     React.DOM.input({id: "trackingLink"}), 
-                    React.DOM.a({href: "#", target: "_blank", id: "trackingLinkLink"}, React.DOM.button(null, "Open")), 
+                    React.DOM.a({href: "#", target: "_blank", id: "trackingLinkLink"}, "Open"), 
 
-                    React.DOM.label({id: "trackingType"}, "trackingType")
+                    React.DOM.label({id: "trackingType", style: {'padding-left':'4em'}}, "trackingType")
                 )
             )
         );

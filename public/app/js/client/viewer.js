@@ -26,7 +26,7 @@ if (getUrlVars()['tt'] === "a"){
 
 $('#site').attr('src', getUrlVars()['link']);
 
-window.history.replaceState('Object', 'Title', 'r?r=' + getUrlVars()['rid']);
+//window.history.replaceState('Object', 'Title', 'r?r=' + getUrlVars()['rid']);
 
 // Analytics time
 socket.emit('trackVisit', {
