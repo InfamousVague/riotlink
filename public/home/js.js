@@ -19,4 +19,10 @@
 
         window.location = builtURL;
     });
+    // adding enter key functionality
+    $('#link').keypress(function(e){
+        if(e.which == 13){
+            $('#track').click();
+        }
+    });
 })();
