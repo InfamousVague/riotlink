@@ -18695,7 +18695,9 @@ var ViewToolbar = React.createClass({displayName: 'ViewToolbar',
 
                     React.DOM.label(null, "Tracking Link: "), 
                     React.DOM.input({id: "trackingLink"}), 
-                    React.DOM.a({href: "#", target: "_blank", id: "trackingLinkLink"}, React.DOM.button(null, "Open"))
+                    React.DOM.a({href: "#", target: "_blank", id: "trackingLinkLink"}, React.DOM.button(null, "Open")), 
+
+                    React.DOM.label({id: "trackingType"}, "trackingType")
                 )
             )
         );

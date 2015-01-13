@@ -43,7 +43,7 @@ app.get('/r', function(req,res){
 
 app.get('/view', function(req, res){
     // check the db for if this link is advanced or not
-    res.redirect('./viewer.html?rid=' + req.query.rid + '&tid=' + req.query.tid + '&link=' + req.query.link);
+    res.redirect('./viewer.html?rid=' + req.query.rid + '&tid=' + req.query.tid + '&link=' + req.query.link + '&tt=' + req.query.tt);
 
 });
 
@@ -61,12 +61,12 @@ app.get('/minify', function(req, res){
     });
 
     Link.save(function (err) {
-        res.redirect('./view?rid=' + rid + '&tid=' + tid + '&link=' + link);
+        res.redirect('./view?rid=' + rid + '&tid=' + tid + '&link=' + link + '&tt=' + tt);
     });
 });
 
 io.on('connection', function(socket){
-
+    console.log('connection made');
 });
 
 http.listen(5560, function(){

@@ -16,6 +16,8 @@ var ViewToolbar = React.createClass({
                     <label>Tracking Link: </label>
                     <input id="trackingLink"></input>
                     <a href="#" target="_blank" id="trackingLinkLink"><button>Open</button></a>
+
+                    <label id="trackingType">trackingType</label>
                 </div>
             </div>
         );
