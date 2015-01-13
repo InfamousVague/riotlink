@@ -5,4 +5,4 @@ function getUrlVars() {
     });
     return vars;
 }
-window.history.replaceState('Object', 'Title', 'v/' + getUrlVars()['rid']);
+window.history.replaceState('Object', 'Title', 'r?r=' + getUrlVars()['rid']);
