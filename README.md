@@ -25,7 +25,7 @@ Riotlink will start on localhost:5560
 
 
 ---
-### RIOTLINK
+### Copyright RIOTLINK
 --- 
 [2014] - [2015] RIOTLINK
 All Rights Reserved.
