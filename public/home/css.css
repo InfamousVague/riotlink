@@ -225,3 +225,26 @@ input{
     border:1px solid #ccc;
 
 }
+
+@media screen and (max-width: 400px) {
+    #options{
+        position:absolute;
+        bottom:-1.5em;
+        color:#fff;
+        font-weight:bolder;
+        font-family: 'Poiret One', cursive;
+        text-shadow:1px 1px 5px #000;
+        font-size:14pt;
+    }
+    #riot{
+        position:absolute;
+        top:calc(50% - 40px);
+        left:2%;
+        right:2%;
+        bottom:calc(50% - 40px);
+        border-radius:5px;
+    }
+    .droplet{
+        border-radius:0 4px 4px 0;
+    }
+}
