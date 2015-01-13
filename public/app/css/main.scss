@@ -1,6 +1,16 @@
-
-body {
+body,html {
+    height:100%;
     padding: 0;
     margin: 0;
-    background:red;
 }
+.reactBody, #render{
+    height:100%;
+    width:100%;
+    overflow:hidden;
+}
+#site{
+    width:100%;
+    height:calc(100% - 50px);
+    border:0;
+}
+@import 'viewToolbar';

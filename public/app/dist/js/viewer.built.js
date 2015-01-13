@@ -18680,14 +18680,44 @@ module.exports = require('./lib/React');
 },{"./lib/React":28}],146:[function(require,module,exports){
 /** @jsx React.DOM */
 
-var React   = require('react');
+var React = require('react');
+
+/*jshint ignore:start*/
+var ViewToolbar = React.createClass({displayName: 'ViewToolbar',
+    render: function(){
+        return(
+            React.DOM.div({id: "viewToolbar"}, 
+                React.DOM.img({src: "app/img/logo.png", className: "logo"}), 
+                React.DOM.div({className: "inputWrapper"}, 
+                    React.DOM.label(null, "Short Link: "), 
+                    React.DOM.input({id: "shortLink"}), 
+                    React.DOM.a({href: "#", target: "_blank", id: "shortLinkLink"}, React.DOM.button(null, "Open")), 
+
+                    React.DOM.label(null, "Tracking Link: "), 
+                    React.DOM.input({id: "trackingLink"}), 
+                    React.DOM.a({href: "#", target: "_blank", id: "trackingLinkLink"}, React.DOM.button(null, "Open"))
+                )
+            )
+        );
+    }
+});
+/*jshint ignore:end*/
+
+module.exports = ViewToolbar;
+
+},{"react":145}],147:[function(require,module,exports){
+/** @jsx React.DOM */
+
+var React       = require('react');
+var ViewToolbar = require('./global/viewToolbar.jsx');
 
 /*jshint ignore:start*/
 var Page = React.createClass({displayName: 'Page',
     render: function(){
         return(
             React.DOM.div({className: "reactBody"}, 
-                React.DOM.span({className: "blue"}, "Everything works if this is blue.")
+                ViewToolbar(null), 
+                React.DOM.iframe({border: "0", height: "100%", width: "100%", src: "null", id: "site"})
             )
         );
     }
@@ -18699,4 +18729,4 @@ React.renderComponent(
 );
 /*jshint ignore:end*/
 
-},{"react":145}]},{},[146]);
+},{"./global/viewToolbar.jsx":146,"react":145}]},{},[146,147]);

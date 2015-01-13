@@ -1,13 +1,15 @@
 /** @jsx React.DOM */
 
-var React   = require('react');
+var React       = require('react');
+var ViewToolbar = require('./global/viewToolbar.jsx');
 
 /*jshint ignore:start*/
 var Page = React.createClass({
     render: function(){
         return(
             <div className="reactBody">
-                <span className="blue">Everything works if this is blue.</span>
+                <ViewToolbar />
+                <iframe border="0" height="100%" width="100%" src="null" id="site"></iframe>
             </div>
         );
     }
