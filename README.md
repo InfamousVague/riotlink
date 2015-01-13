@@ -22,3 +22,23 @@ After grunt starts waiting exit and run
 > forever start riotlink.js
 
 Riotlink will start on localhost:5560
+
+
+---
+/*************************************************************************
+ * 
+ * RIOTLINK
+ * __________________
+ * 
+ *  [2014] - [2015] RIOTLINK
+ *  All Rights Reserved.
+ * 
+ * NOTICE:  All information contained herein is, and remains
+ * the property of Matthew Wisniewski and Riotlink,
+ * The intellectual and technical concepts contained
+ * herein are proprietary to  Matthew Wisniewski
+ * patents in process, and are protected by trade secret or copyright law.
+ * Dissemination of this information or reproduction of this material
+ * is strictly forbidden unless prior written permission is obtained
+ * from Matthew Wisniewski.
+ */
