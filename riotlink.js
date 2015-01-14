@@ -41,26 +41,16 @@ app.get('/r', function(req,res){
         if (err) return handleError(err);
         if (link) {
             // doc may be null if no document matched
-            if(link.tt === 'b'){
-                link.totalViews++;
-                link.save(function(){
-                    res.redirect(link.link);
-                });
-            }else{
-                link.totalViews++;
-                link.save(function(){
-                    res.redirect('./viewer.html?rid=' + link.rid + '&link=' + link.link);
-                });
-            }
+            link.totalViews++;
+            var goto = (link.tt === 'b') ? link.link : './viewer.html?rid=' + link.rid + '&link=' + link.link;
+            link.save(function(){
+                res.redirect(goto);
+            });
         }
     });
 
 });
 
-app.get('/view', function(req, res){
-    // check the db for if this link is advanced or not
-    res.redirect('./viewer.html?rid=' + req.query.rid + '&tid=' + req.query.tid + '&link=' + req.query.link + '&tt=' + req.query.tt);
-});
 
 app.get('/minify', function(req, res){
     var rid     = shortId.generate(),
@@ -78,7 +68,7 @@ app.get('/minify', function(req, res){
     });
 
     Link.save(function (err) {
-        res.redirect('./view?rid=' + rid + '&tid=' + tid + '&link=' + link + '&tt=' + tt);
+        res.redirect('./viewer.html?rid=' + rid + '&tid=' + tid + '&link=' + link + '&tt=' + tt);
     });
 });
 
