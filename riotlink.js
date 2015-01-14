@@ -31,6 +31,10 @@ app.get('/', function(req, res){
     res.redirect('h');
 });
 
+app.get('/t', function(req, res){
+    res.send('Tracking coming soon!');
+});
+
 app.get('/r', function(req,res){
     var query  = RiotLink.where({ rid: req.query.r });
     query.findOne(function (err, link) {
@@ -45,7 +49,7 @@ app.get('/r', function(req,res){
             }else{
                 link.totalViews++;
                 link.save(function(){
-                    res.redirect('./viewer.html?rid=' + req.query.r + '&link=' + req.query.link);                    
+                    res.redirect('./viewer.html?rid=' + link.rid + '&link=' + link.link);
                 });
             }
         }

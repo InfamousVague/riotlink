@@ -11,8 +11,8 @@ var rid     = getUrlVars()['rid'],
     link    = getUrlVars()['link'],
     tt      = getUrlVars()['tt'];
 
-$('#shortLink').val('http://riotlink.net/r?r=' + rid + '&link=' + link);
-$('#shortLinkLink').attr('href', 'http://riotlink.net/r?r=' + rid + '&link=' + link);
+$('#shortLink').val('http://riotlink.net/r?r=' + rid);
+$('#shortLinkLink').attr('href', 'http://riotlink.net/r?r=' + rid);
 $('#trackingLink').val('http://riotlink.net/t?t=' + getUrlVars()['tid']);
 $('#trackingLinkLink').attr('href', 'http://riotlink.net/t?t=' + getUrlVars()['tid']);
 
