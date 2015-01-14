@@ -18694,12 +18694,10 @@ var ViewToolbar = React.createClass({displayName: 'ViewToolbar',
                         )
                     ), 
                     React.DOM.div({className: "col-xs-12 col-sm-5"}, 
-                        React.DOM.label(null, "Short Link: "), 
                         React.DOM.input({id: "shortLink"}), 
                         React.DOM.a({className: "button", href: "#", target: "_blank", id: "shortLinkLink"}, "Share")
                     ), 
                     React.DOM.div({className: "col-xs-12 col-sm-5"}, 
-                        React.DOM.label(null, "Tracking Link: "), 
                         React.DOM.input({id: "trackingLink"}), 
                         React.DOM.a({className: "button", href: "#", target: "_blank", id: "trackingLinkLink"}, "Track")
                     )

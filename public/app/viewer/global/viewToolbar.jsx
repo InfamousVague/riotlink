@@ -14,12 +14,10 @@ var ViewToolbar = React.createClass({
                         </a>
                     </div>
                     <div className="col-xs-12 col-sm-5">
-                        <label>Short Link: </label>
                         <input id="shortLink"></input>
                         <a className="button" href="#" target="_blank" id="shortLinkLink">Share</a>
                     </div>
                     <div className="col-xs-12 col-sm-5">
-                        <label>Tracking Link: </label>
                         <input id="trackingLink"></input>
                         <a className="button" href="#" target="_blank" id="trackingLinkLink">Track</a>
                     </div>

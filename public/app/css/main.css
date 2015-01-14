@@ -105,7 +105,7 @@ body, html {
   border: none;
   height: 100%;
   font-size: 18pt;
-  width: 170px;
+  width: calc(100% - 80px);
   background: #444;
   color: #eee;
   padding-left: .5em;
