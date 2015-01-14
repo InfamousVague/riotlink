@@ -73,6 +73,6 @@ io.on('connection', function(socket){
     console.log('connection made');
 });
 
-http.listen(5560, function(){
-    console.log('listening on *:5560');
+http.listen(process.argv[2], function(){
+    console.log('listening on *:' + process.argv[2]);
 });
