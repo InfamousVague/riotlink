@@ -32,7 +32,30 @@ app.get('/', function(req, res){
 });
 
 app.get('/t', function(req, res){
-    res.send('Tracking coming soon!');
+    res.redirect('./tracker.html?rid=' + req.query.t);
+    io.on('connection', function(socket){
+        var rid = 'not_sure';
+        socket.on('setVals', function(options){
+            rid = options.rid;
+        });
+
+        var pollData = setTimeout(function(){
+            var query  = RiotLink.where({ rid: rid });
+            query.findOne(function (err, link) {
+                if (err) return handleError(err);
+                if (link) {
+                    socket.emit('newData', {
+                        totalViews  : link.totalViews,
+                        liveViews   : link.liveViews
+                    });
+                }
+            });
+        }, 1000);
+
+        socket.on('disconnect', function(){
+            clearTimeout(pollData);
+        });
+    });
 });
 
 app.get('/r', function(req,res){

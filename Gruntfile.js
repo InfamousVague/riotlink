@@ -54,14 +54,19 @@ module.exports = function(grunt){
                 },
             },
             react: {
-                files: 'public/app/js/**/*.jsx',
+                files: 'public/app/viewer/**/*.jsx',
+                tasks: ['browserify', 'react']
+            },
+            tracker: {
+                files: 'public/app/tracker/**/*.jsx',
                 tasks: ['browserify', 'react']
             }
         },
         react:{
             convert: {
                 files: {
-                    'public/app/dist/js/viewer.built.js' : 'public/app/js/viewer.built.js'
+                    'public/app/dist/js/viewer.built.js' : 'public/app/viewer/viewer.built.js',
+                    'public/app/dist/js/tracker.built.js' : 'public/app/tracker/tracker.built.js'
                 }
             }
         },
@@ -70,8 +75,12 @@ module.exports = function(grunt){
                 transform: [ require('grunt-react').browserify ]
             },
             client: {
-                src: ['public/app/js/**/*.jsx'],
-                dest: 'public/app/js/viewer.built.js'
+                src: ['public/app/viewer/**/*.jsx'],
+                dest: 'public/app/viewer/viewer.built.js'
+            },
+            tracker: {
+                src: ['public/app/tracker/**/*.jsx'],
+                dest: 'public/app/tracker/tracker.built.js'
             }
         }
     });
