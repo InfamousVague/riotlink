@@ -13,10 +13,10 @@ body,html{
 }
 #riot{
     position:absolute;
-    top:calc(50% - 40px);
+    top:calc(50% - 120px);
     left:12.5%;
     right:12.5%;
-    bottom:calc(50% - 40px);
+    bottom:calc(50% + 40px);
     border-radius:5px;
 }
 #track{
@@ -238,10 +238,10 @@ input{
     }
     #riot{
         position:absolute;
-        top:calc(50% - 40px);
+        top:calc(50% - 120px);
         left:2%;
         right:2%;
-        bottom:calc(50% - 40px);
+        bottom:calc(50% + 40px);
         border-radius:5px;
     }
     .droplet{
