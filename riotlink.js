@@ -37,7 +37,17 @@ app.get('/r', function(req,res){
         if (err) return handleError(err);
         if (link) {
             // doc may be null if no document matched
-            res.redirect(link.link);
+            if(link.tt === 'b'){
+                link.totalViews++;
+                link.save(function(){
+                    res.redirect(link.link);
+                });
+            }else{
+                link.totalViews++;
+                link.save(function(){
+                    res.redirect('./viewer.html?rid=' + req.query.r + '&link=' + req.query.link);                    
+                });
+            }
         }
     });
 
@@ -46,7 +56,6 @@ app.get('/r', function(req,res){
 app.get('/view', function(req, res){
     // check the db for if this link is advanced or not
     res.redirect('./viewer.html?rid=' + req.query.rid + '&tid=' + req.query.tid + '&link=' + req.query.link + '&tt=' + req.query.tt);
-
 });
 
 app.get('/minify', function(req, res){
@@ -70,7 +79,30 @@ app.get('/minify', function(req, res){
 });
 
 io.on('connection', function(socket){
-    console.log('connection made');
+    var rid = "unknown";
+    // on connection add a view and a live view
+    socket.on('connected', function(options){
+        rid = options.rid;
+        var query  = RiotLink.where({ rid: rid });
+        query.findOne(function (err, link) {
+            if (err) return handleError(err);
+            if (link) {
+                link.currentViews++;
+                link.save();
+            }
+        });
+    });
+    // on disconnect remove the live view
+    socket.on('disconnect', function(){
+        var query  = RiotLink.where({ rid: rid });
+        query.findOne(function (err, link) {
+            if (err) return handleError(err);
+            if (link) {
+                link.currentViews--;
+                link.save();
+            }
+        });
+    });
 });
 
 http.listen(process.argv[2], function(){
