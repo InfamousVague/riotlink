@@ -7,18 +7,22 @@ var ViewToolbar = React.createClass({
     render: function(){
         return(
             <div id="viewToolbar">
-                <a href="/">
-                    <img src="app/img/logo.png" className="logo" />
-                </a>
-                <div className="inputWrapper">
-                    <label>Short Link: </label>
-                    <input id="shortLink"></input>
-                    <a className="button" href="#" target="_blank" id="shortLinkLink">Open</a>
-                    <label style={{'padding-left':'4em'}}>Tracking Link: </label>
-                    <input id="trackingLink"></input>
-                    <a className="button" href="#" target="_blank" id="trackingLinkLink">Open</a>
-
-                    <label id="trackingType" style={{'padding-left':'4em'}}>trackingType</label>
+                <div className="row">
+                    <div className="col-xs-12 col-sm-2">
+                        <a href="/">
+                            <img src="app/img/logo.png" className="logo" />
+                        </a>
+                    </div>
+                    <div className="col-xs-12 col-sm-5">
+                        <label>Short Link: </label>
+                        <input id="shortLink"></input>
+                        <a className="button" href="#" target="_blank" id="shortLinkLink">Share</a>
+                    </div>
+                    <div className="col-xs-12 col-sm-5">
+                        <label>Tracking Link: </label>
+                        <input id="trackingLink"></input>
+                        <a className="button" href="#" target="_blank" id="trackingLinkLink">Track</a>
+                    </div>
                 </div>
             </div>
         );
