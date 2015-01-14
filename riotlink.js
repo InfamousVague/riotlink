@@ -14,14 +14,16 @@ mongoose.connect('mongodb://localhost/riotlink');
 var Schema      = mongoose.Schema,
     ObjectId    = Schema.ObjectId;
 
-var ShortLink = new Schema({
-    rid     : String,
-    tid     : String,
-    link    : String,
-    tt      : String
+var RiotLink = new Schema({
+    rid             : String,
+    tid             : String,
+    link            : String,
+    tt              : String,
+    totalViews      : integer,
+    currentViews    : integer
 });
-mongoose.model('ShortLink', ShortLink);
-var ShortLink = mongoose.model('ShortLink');
+mongoose.model('RiotLink', RiotLink);
+var RiotLink = mongoose.model('RiotLink');
 
 app.use(express.static(__dirname + '/public'));
 
@@ -30,7 +32,7 @@ app.get('/', function(req, res){
 });
 
 app.get('/r', function(req,res){
-    var query  = ShortLink.where({ rid: req.query.r });
+    var query  = RiotLink.where({ rid: req.query.r });
     query.findOne(function (err, link) {
         if (err) return handleError(err);
         if (link) {
@@ -53,11 +55,13 @@ app.get('/minify', function(req, res){
         link    = req.query.link,
         tt      = req.query.tt;
 
-    var Link = new ShortLink({
-        rid     : rid,
-        tid     : tid,
-        link    : link,
-        tt      : tt
+    var Link = new RiotLink({
+        rid             : rid,
+        tid             : tid,
+        link            : link,
+        tt              : tt,
+        totalViews      : 0,
+        currentViews    : 0
     });
 
     Link.save(function (err) {
