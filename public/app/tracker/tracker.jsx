@@ -1,13 +1,29 @@
 /** @jsx React.DOM */
 
-var React       = require('react');
+var React           = require('react'),
+    CurrentViews    = require('./global/currentViews.jsx'),
+    AllViews        = require('./global/allViews.jsx');
+
 
 /*jshint ignore:start*/
 var Page = React.createClass({
     render: function(){
         return(
             <div className="reactBody">
-                <p>Tracker</p>
+                <div className="container">
+                    <div className="row">
+                        <div class="col-md-3">
+                            <AllViews />
+                            <CurrentViews />
+                        </div>
+                        <div class="col-md-3">
+
+                        </div>
+                        <div class="col-md-6">
+
+                        </div>
+                    </div>
+                </div>
             </div>
         );
     }

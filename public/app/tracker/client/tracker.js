@@ -23,5 +23,6 @@ var pollData = setInterval(function(){
 
 
 socket.on('newData', function(data){
-    console.log(data);
+    $('#currentViewHolder').html(data.currentViews);
+    $('#totalViewsHolder').html(data.totalViews);
 });

@@ -1,0 +1,71 @@
+#tracker{
+    background:url('../../img/background.jpg');
+    background-size:cover;
+    font-family: 'Poiret One', cursive;
+    margin:0;
+    padding:3em 4em;
+}
+#currentViews{
+    border-radius:4px;
+    background:#fff;
+    width:15em;
+    height:20em;
+    position:relative;
+
+    .bubbleNumber{
+        width:10em;
+        height:10em;
+        border-radius:100%;
+        background:#1dafcf;
+        color:#fff;
+        position:absolute;
+        top:calc(50% - 3.5em);
+        left:calc(50% - 5em);
+        text-align:center;
+        padding-top:calc(50% - 53pt);
+    }
+    #currentViewHolder{
+        font-size:35pt;
+    }
+    .titleBar{
+        background:#333;
+        color:#fff;
+
+        border-radius:4px 4px 0 0;
+
+        h3{
+            font-size:18pt;
+            text-align:center;
+            padding:.5em 0;
+            font-family: 'Poiret One', cursive;
+        }
+
+    }
+}
+#allViews{
+    border-radius:4px;
+    background:#fff;
+    width:15em;
+    height:9em;
+    position:relative;
+    text-align:center;
+
+    #totalViewsHolder{
+        font-size:30pt;
+        padding:.2em;
+    }
+    .titleBar{
+        background:#333;
+        color:#fff;
+
+        border-radius:4px 4px 0 0;
+
+        h3{
+            font-size:18pt;
+            text-align:center;
+            padding:.5em 0;
+            font-family: 'Poiret One', cursive;
+        }
+
+    }
+}

@@ -18680,14 +18680,76 @@ module.exports = require('./lib/React');
 },{"./lib/React":28}],146:[function(require,module,exports){
 /** @jsx React.DOM */
 
-var React       = require('react');
+var React = require('react');
+
+/*jshint ignore:start*/
+var AllViews = React.createClass({displayName: 'AllViews',
+    render: function(){
+        return(
+            React.DOM.div({id: "allViews"}, 
+                React.DOM.div({className: "titleBar"}, 
+                    React.DOM.h3(null, "Total Views")
+                ), 
+                React.DOM.span({id: "totalViewsHolder"}, "0")
+            )
+        );
+    }
+});
+/*jshint ignore:end*/
+
+module.exports = AllViews;
+
+},{"react":145}],147:[function(require,module,exports){
+/** @jsx React.DOM */
+
+var React = require('react');
+
+/*jshint ignore:start*/
+var CurrentViews = React.createClass({displayName: 'CurrentViews',
+    render: function(){
+        return(
+            React.DOM.div({id: "currentViews"}, 
+                React.DOM.div({className: "titleBar"}, 
+                    React.DOM.h3(null, "Live Viewers")
+                ), 
+                React.DOM.div({className: "bubbleNumber"}, 
+                    React.DOM.span({id: "currentViewHolder"}, "0")
+                )
+            )
+        );
+    }
+});
+/*jshint ignore:end*/
+
+module.exports = CurrentViews;
+
+},{"react":145}],148:[function(require,module,exports){
+/** @jsx React.DOM */
+
+var React           = require('react'),
+    CurrentViews    = require('./global/currentViews.jsx'),
+    AllViews        = require('./global/allViews.jsx');
+
 
 /*jshint ignore:start*/
 var Page = React.createClass({displayName: 'Page',
     render: function(){
         return(
             React.DOM.div({className: "reactBody"}, 
-                React.DOM.p(null, "Tracker")
+                React.DOM.div({className: "container"}, 
+                    React.DOM.div({className: "row"}, 
+                        React.DOM.div({class: "col-md-3"}, 
+                            AllViews(null), 
+                            CurrentViews(null)
+                        ), 
+                        React.DOM.div({class: "col-md-3"}
+
+                        ), 
+                        React.DOM.div({class: "col-md-6"}
+
+                        )
+                    )
+                )
             )
         );
     }
@@ -18699,4 +18761,4 @@ React.renderComponent(
 );
 /*jshint ignore:end*/
 
-},{"react":145}]},{},[146]);
+},{"./global/allViews.jsx":146,"./global/currentViews.jsx":147,"react":145}]},{},[146,147,148]);
