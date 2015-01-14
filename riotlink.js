@@ -32,30 +32,7 @@ app.get('/', function(req, res){
 });
 
 app.get('/t', function(req, res){
-    res.redirect('./tracker.html?rid=' + req.query.t);
-    io.on('connection', function(socket){
-        var rid = 'not_sure';
-        socket.on('setVals', function(options){
-            rid = options.rid;
-        });
-
-        var pollData = setTimeout(function(){
-            var query  = RiotLink.where({ rid: rid });
-            query.findOne(function (err, link) {
-                if (err) return handleError(err);
-                if (link) {
-                    socket.emit('newData', {
-                        totalViews  : link.totalViews,
-                        liveViews   : link.liveViews
-                    });
-                }
-            });
-        }, 1000);
-
-        socket.on('disconnect', function(){
-            clearTimeout(pollData);
-        });
-    });
+    res.redirect('./tracker.html?tid=' + req.query.t);
 });
 
 app.get('/r', function(req,res){
@@ -119,6 +96,22 @@ io.on('connection', function(socket){
             }
         });
     });
+
+
+    socket.on('requestData', function(tid){
+        var query  = RiotLink.where({ tid: tid });
+        query.findOne(function (err, link) {
+            if (err) return handleError(err);
+            if (link) {
+                socket.emit('newData', {
+                    totalViews  : link.totalViews,
+                    currentViews   : link.currentViews
+                });
+            }
+        });
+    });
+
+
     // on disconnect remove the live view
     socket.on('disconnect', function(){
         var query  = RiotLink.where({ rid: rid });

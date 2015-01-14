@@ -6,7 +6,7 @@ function getUrlVars() {
     return vars;
 }
 
-var rid = getUrlVars()['rid'];
+var tid = getUrlVars()['tid'];
 
 /*==================
 =     SocketIO     =
@@ -14,9 +14,14 @@ var rid = getUrlVars()['rid'];
 
 var socket = io();
 socket.emit('setVals', {
-    rid : rid
+    tid : tid
 });
 
-socket.on('newData', function(data){
+var pollData = setInterval(function(){
+    socket.emit('requestData', tid);
+}, 1000);
 
+
+socket.on('newData', function(data){
+    console.log(data);
 });
