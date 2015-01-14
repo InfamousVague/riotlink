@@ -19,8 +19,8 @@ var RiotLink = new Schema({
     tid             : String,
     link            : String,
     tt              : String,
-    totalViews      : integer,
-    currentViews    : integer
+    totalViews      : Number,
+    currentViews    : Number
 });
 mongoose.model('RiotLink', RiotLink);
 var RiotLink = mongoose.model('RiotLink');
