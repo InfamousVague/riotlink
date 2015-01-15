@@ -40,7 +40,25 @@ socket.on('newData', function(data){
     console.log(data);
     data.views.map(function(view){
         if(typeof(view.geo) != "null"){
-            L.mapbox.marker(view.geo.ll).addTo(map);
+            L.mapbox.featureLayer({
+                // this feature is in the GeoJSON format: see geojson.org
+                // for the full specification
+                type: 'Feature',
+                geometry: {
+                    type: 'Point',
+                    // coordinates here are in longitude, latitude order because
+                    // x, y is the standard for GeoJSON and many formats
+                    coordinates: view.geo.ll
+                },
+                properties: {
+                    title: 'View',
+                    description: '',
+                    // one can customize markers by adding simplestyle properties
+                    // https://www.mapbox.com/guides/an-open-platform/#simplestyle
+                    'marker-size': 'medium',
+                    'marker-color': '#1abc9c'
+                }
+            }).addTo(map);
         }
         if(view.referer_c === "Twitter") twitterViews++;
         if(view.referer_c === "Facebook") facebookViews++;
