@@ -13,6 +13,8 @@
 #map{
     height:20em;
     width:100%;
+    margin:0;
+    padding:0;
 }
 body,html{
     margin:0;
@@ -38,7 +40,9 @@ body,html{
     }
     #currentViewHolder{
         position:absolute;
-        left:calc(50% - 13.5pt);
+        left:0;
+        right:0;
+        text-align:center;
         top:calc(50% - 25pt);
         font-size:35pt;
 
