@@ -37,8 +37,9 @@ socket.on('newData', function(data){
     $('#currentViewHolder').html(data.currentViews);
     $('#totalViewsHolder').html(data.totalViews);
     var twitterViews = 0;
+    console.log(data);
     data.views.map(function(view){
-        if(typeof(view.geo.ll) != "undefined"){
+        if(typeof(view.geo.ll) != "null"){
             L.marker(view.geo.ll).addTo(map);
         }
         if(view.referer_c === "Twitter") twitterViews++;
