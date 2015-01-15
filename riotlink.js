@@ -32,8 +32,8 @@ app.get('/', function(req, res){
     res.redirect('h');
 });
 
-app.get('/t', function(req, res){
-    res.redirect('./tracker.html?tid=' + req.query.t);
+app.get('/t/:t', function(req, res){
+    res.redirect('/tracker.html?tid=' + req.params.t);
 });
 
 app.get('/r/:r', function(req,res){
