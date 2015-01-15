@@ -28,15 +28,20 @@ L.tileLayer('http://{s}.tiles.mapbox.com/v3/examples.map-i87786ca/{z}/{x}/{y}.pn
     maxZoom: 18
 }).addTo(map);
 
+var markerGroup = L.layerGroup();
 socket.on('newData', function(data){
     $('#currentViewHolder').html(data.currentViews);
     $('#totalViewsHolder').html(data.totalViews);
     var twitterViews = 0;
+    markerGroup.clearLayers();
     data.views.map(function(view){
-        if(typeof(view.geo) != 'null') L.marker(view.geo.ll).addTo(map);
+
+        if(typeof(view.geo) != 'null') L.marker(view.geo.ll).addTo(markerGroup);
         if(view.referer_c === "Twitter") twitterViews++;
         if(view.referer_c === "Facebook") facebookViews++;
         if(view.referer_c === "Google") googlePlusViews++;
     });
+    markerGroup.addTo(map);
+
     $('#twitterViews').html(twitterViews);
 });
