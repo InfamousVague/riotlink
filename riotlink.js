@@ -20,6 +20,7 @@ var RiotLink = new Schema({
     link            : String,
     tt              : String,
     totalViews      : Number,
+    currentViews    : Number,
     views           : Array
 });
 mongoose.model('RiotLink', RiotLink);
@@ -39,15 +40,17 @@ app.get('/r', function(req,res){
     var query  = RiotLink.where({ rid: req.query.r });
 
     // Get the domain to determine social site
-    var referer_clean;
-    switch(req.headers.referer.split('/')[2]){
-        case 't.co':
-            referer_clean = "Twitter";
-            break;
+    var referer_clean = 'unknown';
+    if(typeof(req.headers.referer) != 'undefined'){
+        switch(req.headers.referer.split('/')[2]){
+            case 't.co':
+                referer_clean = "Twitter";
+                break;
 
-        default:
-            referer_clean = "Unknown";
-            break;
+            default:
+                referer_clean = "Unknown";
+                break;
+        }
     }
 
     // Find the link matching rid provided

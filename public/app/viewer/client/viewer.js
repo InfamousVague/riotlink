@@ -43,3 +43,4 @@ var socket = io();
 socket.emit('connected', {
     rid : rid
 });
+console.log(rid);
