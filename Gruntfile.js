@@ -15,22 +15,22 @@ module.exports = function(grunt){
                 'public/app/components/bootstrap/dist/css/bootstrap.min.css',
                 'public/app/css/main.css'
                 ],
-                dest: 'public/app/dist/css/build.css'
+                dest: 'public/app/compiled/css/build.css'
             }
         },
         uglify: {
             build: {
-                src: 'public/app/dist/js/build.js',
-                dest: 'public/app/dist/js/build.min.js'
+                src: 'public/app/compiled/js/build.js',
+                dest: 'public/app/compiled/js/build.min.js'
             }
         },
         cssmin: {
             target: {
                 files: [{
                     expand: true,
-                    cwd: 'public/app/dist/css/',
+                    cwd: 'public/app/compiled/css/',
                     src: ['*.css', '!*.min.css'],
-                    dest: 'public/app/dist/css/',
+                    dest: 'public/app/compiled/css/',
                     ext: '.min.css'
                 }]
             }
@@ -65,8 +65,8 @@ module.exports = function(grunt){
         react:{
             convert: {
                 files: {
-                    'public/app/dist/js/viewer.built.js' : 'public/app/viewer/viewer.built.js',
-                    'public/app/dist/js/tracker.built.js' : 'public/app/tracker/tracker.built.js'
+                    'public/app/compiled/js/viewer.built.js' : 'public/app/viewer/viewer.built.js',
+                    'public/app/compiled/js/tracker.built.js' : 'public/app/tracker/tracker.built.js'
                 }
             }
         },
