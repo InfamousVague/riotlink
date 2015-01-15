@@ -39,8 +39,8 @@ socket.on('newData', function(data){
     var twitterViews = 0;
     console.log(data);
     data.views.map(function(view){
-        if(typeof(view.geo.ll) != "null"){
-            L.marker(view.geo.ll).addTo(map);
+        if(typeof(view.geo) != "null"){
+            L.mapbox.marker(view.geo.ll).addTo(map);
         }
         if(view.referer_c === "Twitter") twitterViews++;
         if(view.referer_c === "Facebook") facebookViews++;
