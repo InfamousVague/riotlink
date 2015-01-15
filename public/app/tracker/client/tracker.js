@@ -23,11 +23,15 @@ var pollData = setInterval(function(){
 
 window.history.replaceState('Object', 'Title', 't/' + tid);
 $(document).ready(function(){
-    var map = L.map('map').setView([51.505, -0.09], 13);
-    L.tileLayer('http://{s}.tiles.mapbox.com/v3/mdwisniewski.kp2f221o/{z}/{x}/{y}.png', {
-        attribution: 'Riotlink Viewers',
-        maxZoom: 18
-    }).addTo(map);
+    L.mapbox.accessToken = 'pk.eyJ1IjoibWR3aXNuaWV3c2tpIiwiYSI6IlV4ZUFPY0UifQ.tQYEPlkZHAEeaESGBl5Ahw';
+    // Replace 'examples.map-i87786ca' with your map id.
+    var mapboxTiles = L.tileLayer('https://{s}.tiles.mapbox.com/v3/examples.map-i87786ca/{z}/{x}/{y}.png', {
+        attribution: '<a href="http://www.mapbox.com/about/maps/" target="_blank">Terms &amp; Feedback</a>'
+    });
+
+    var map = L.map('map')
+    .addLayer(mapboxTiles)
+    .setView([35.3610, -92.0587], 3);
 });
 socket.on('newData', function(data){
     $('#currentViewHolder').html(data.currentViews);
