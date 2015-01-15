@@ -51,10 +51,18 @@ app.get('/r/:r', function(req,res){
                 referer_clean = "Twitter";
                 break;
 
-            case 'facebook.com':
+            case 'twitter.com':
+                referer_clean = "Twitter";
+                break;
+
+            case 'lm.facebook.com':
                 referer_clean = "Facebook";
                 break;
 
+            case 'www.facebook.com':
+                referer_clean = "Facebook";
+                break;
+                
             case 'google.com':
                 referer_clean = "Google";
                 break;
