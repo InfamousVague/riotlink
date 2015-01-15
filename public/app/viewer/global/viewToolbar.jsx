@@ -15,7 +15,7 @@ var ViewToolbar = React.createClass({
                     </div>
                     <div className="col-xs-12 col-sm-5">
                         <input id="shortLink"></input>
-                        <a className="button" href="#" target="_blank" id="shortLinkLink">Share</a>
+                        <a className="button" data-clipboard-text="Copy Me!" href="#" id="shortLinkLink">Copy</a>
                     </div>
                     <div className="col-xs-12 col-sm-5">
                         <input id="trackingLink"></input>

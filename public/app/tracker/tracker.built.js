@@ -18766,9 +18766,15 @@ var Page = React.createClass({displayName: 'Page',
     render: function(){
         return(
             React.DOM.div({className: "reactBody"}, 
-                CurrentViews(null), 
-                AllViews(null), 
-                SocialFollowing(null)
+                React.DOM.div({className: "row"}, 
+                    React.DOM.div({className: "col-xs-12 col-sm-6"}, 
+                        CurrentViews(null)
+                    ), 
+                    React.DOM.div({className: "col-xs-12 col-sm-6"}, 
+                        AllViews(null), 
+                        SocialFollowing(null)
+                    )
+                )
             )
         );
     }

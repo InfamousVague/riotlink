@@ -5,15 +5,15 @@ module.exports = function(grunt){
         concat: {
             js:{
                 src: [
-                'public/app/components/jquery/dist/jquery.min.js',
-                'public/app/components/bootstrap/dist/js/bootstrap.min.js'
+                    'public/app/components/jquery/dist/jquery.min.js',
+                    'public/app/components/bootstrap/dist/js/bootstrap.min.js'
                 ],
                 dest: 'public/app/dist/js/build.js'
             },
                 css:{
                 src: [
-                'public/app/components/bootstrap/dist/css/bootstrap.min.css',
-                'public/app/css/main.css'
+                    'public/app/components/bootstrap/dist/css/bootstrap.min.css',
+                    'public/app/css/main.css'
                 ],
                 dest: 'public/app/compiled/css/build.css'
             }

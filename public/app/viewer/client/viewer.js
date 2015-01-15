@@ -12,7 +12,7 @@ var rid     = getUrlVars()['rid'],
     tt      = getUrlVars()['tt'];
 
 $('#shortLink').val('http://rls.li/r/' + rid);
-$('#shortLinkLink').attr('href', 'http://rls.li/r/' + rid);
+$('#shortLinkLink').attr('data-clipboard-text', 'http://rls.li/r/' + rid);
 $('#trackingLink').val('http://rls.li/t/' + getUrlVars()['tid']);
 $('#trackingLinkLink').attr('href', 'http://rls.li/t/' + getUrlVars()['tid']);
 
@@ -33,7 +33,17 @@ if (getUrlVars()['tt'] === "a"){
 
 $('#site').attr('src', getUrlVars()['link']);
 
-//window.history.replaceState('Object', 'Title', 'r?r=' + getUrlVars()['rid']);
+//window.history.replaceState('Object', 'Title', 'r/' + getUrlVars()['rid']);
+
+
+var client = new ZeroClipboard( document.getElementById("shortLinkLink") );
+client.on( "ready", function( readyEvent ) {
+    client.on( "aftercopy", function( event ) {
+        // `this` === `client`
+        // `event.target` === the element that was clicked
+        $('#shortLinkLink').html('Copied!');
+    } );
+} );
 
 /*==================
 =     SocketIO     =

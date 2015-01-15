@@ -11,9 +11,15 @@ var Page = React.createClass({
     render: function(){
         return(
             <div className="reactBody">
-                <CurrentViews />
-                <AllViews />
-                <SocialFollowing />
+                <div className="row">
+                    <div className="col-xs-12 col-sm-6">
+                        <CurrentViews />
+                    </div>
+                    <div className="col-xs-12 col-sm-6">
+                        <AllViews />
+                        <SocialFollowing />
+                    </div>
+                </div>
             </div>
         );
     }
