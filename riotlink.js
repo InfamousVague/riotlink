@@ -37,13 +37,27 @@ app.get('/t', function(req, res){
 
 app.get('/r', function(req,res){
     var query  = RiotLink.where({ rid: req.query.r });
-    console.log(req.headers.referer);
+
+    // Get the domain to determine social site
+    var referer_clean;
+    switch(req.headers.referer.split('/')[2]){
+        case 't.co':
+            referer_clean = "Twitter";
+            break;
+
+        default:
+            referer_clean = "Unknown";
+            break;
+    }
+
+    // Find the link matching rid provided
     query.findOne(function (err, link) {
         if (err) return handleError(err);
         if (link) {
             link.totalViews++;
             link.views.push({
                 referer     : req.headers.referer,
+                referer_c   : referer_clean,
                 timestamp   : new Date().getTime()
             });
             var goto = (link.tt === 'b') ? link.link : './viewer.html?rid=' + link.rid + '&link=' + link.link;
@@ -99,8 +113,9 @@ io.on('connection', function(socket){
             if (err) return handleError(err);
             if (link) {
                 socket.emit('newData', {
-                    totalViews  : link.totalViews,
-                    currentViews   : link.currentViews
+                    totalViews      : link.totalViews,
+                    currentViews    : link.currentViews,
+                    views           : link.views
                 });
             }
         });

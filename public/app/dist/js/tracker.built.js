@@ -18687,10 +18687,10 @@ var AllViews = React.createClass({displayName: 'AllViews',
     render: function(){
         return(
             React.DOM.div({id: "allViews"}, 
-                React.DOM.div({className: "titleBar"}, 
-                    React.DOM.h3(null, "Total Views")
-                ), 
-                React.DOM.span({id: "totalViewsHolder"}, "0")
+                React.DOM.div({className: "row_container"}, 
+                    React.DOM.label({className: "left"}, "Total Views:"), 
+                    React.DOM.p({className: "rightView"}, React.DOM.span({className: "view", id: "totalViewsHolder"}, "0"))
+                )
             )
         );
     }
@@ -18711,7 +18711,9 @@ var CurrentViews = React.createClass({displayName: 'CurrentViews',
             React.DOM.div({id: "currentViews"}, 
                 React.DOM.div({className: "bubbleNumber"}, 
                     React.DOM.span({id: "currentViewHolder"}, "0")
-                )
+                ), 
+                React.DOM.br(null), 
+                React.DOM.h4(null, "Live Viewers")
             )
         );
     }
@@ -18723,9 +18725,40 @@ module.exports = CurrentViews;
 },{"react":145}],148:[function(require,module,exports){
 /** @jsx React.DOM */
 
+var React = require('react');
+
+/*jshint ignore:start*/
+var SocialFollowing = React.createClass({displayName: 'SocialFollowing',
+    render: function(){
+        return(
+            React.DOM.div({id: "allViews"}, 
+                React.DOM.div({className: "row_container social"}, 
+                    React.DOM.p({className: "leftView"}, React.DOM.span({id: "twitterViews"}, "0")), 
+                    React.DOM.label({className: "right"}, React.DOM.i({className: "fa fa-twitter"}), " Views")
+                ), 
+                React.DOM.div({className: "row_container social"}, 
+                    React.DOM.p({className: "leftView"}, React.DOM.span({id: "facebookViews"}, "0")), 
+                    React.DOM.label({className: "right"}, React.DOM.i({className: "fa fa-facebook"}), " Views")
+                ), 
+                React.DOM.div({className: "row_container social"}, 
+                    React.DOM.p({className: "leftView"}, React.DOM.span({id: "googlePlusViews"}, "0")), 
+                    React.DOM.label({className: "right"}, React.DOM.i({className: "fa fa-google-plus"}), " Views")
+                )
+            )
+        );
+    }
+});
+/*jshint ignore:end*/
+
+module.exports = SocialFollowing;
+
+},{"react":145}],149:[function(require,module,exports){
+/** @jsx React.DOM */
+
 var React           = require('react'),
     CurrentViews    = require('./global/currentViews.jsx'),
-    AllViews        = require('./global/allViews.jsx');
+    AllViews        = require('./global/allViews.jsx'),
+    SocialFollowing = require('./global/socialFollowing.jsx');
 
 
 /*jshint ignore:start*/
@@ -18733,7 +18766,9 @@ var Page = React.createClass({displayName: 'Page',
     render: function(){
         return(
             React.DOM.div({className: "reactBody"}, 
-                CurrentViews(null)
+                CurrentViews(null), 
+                AllViews(null), 
+                SocialFollowing(null)
             )
         );
     }
@@ -18745,4 +18780,4 @@ React.renderComponent(
 );
 /*jshint ignore:end*/
 
-},{"./global/allViews.jsx":146,"./global/currentViews.jsx":147,"react":145}]},{},[146,147,148]);
+},{"./global/allViews.jsx":146,"./global/currentViews.jsx":147,"./global/socialFollowing.jsx":148,"react":145}]},{},[146,147,148,149]);

@@ -7,10 +7,10 @@ var AllViews = React.createClass({
     render: function(){
         return(
             <div id="allViews">
-                <div className="titleBar">
-                    <h3>Total Views</h3>
+                <div className="row_container">
+                    <label className="left">Total&nbsp;Views:</label>
+                    <p className="rightView"><span className="view" id="totalViewsHolder">0</span></p>
                 </div>
-                <span id="totalViewsHolder">0</span>
             </div>
         );
     }

@@ -2,7 +2,8 @@
 
 var React           = require('react'),
     CurrentViews    = require('./global/currentViews.jsx'),
-    AllViews        = require('./global/allViews.jsx');
+    AllViews        = require('./global/allViews.jsx'),
+    SocialFollowing = require('./global/socialFollowing.jsx');
 
 
 /*jshint ignore:start*/
@@ -11,6 +12,8 @@ var Page = React.createClass({
         return(
             <div className="reactBody">
                 <CurrentViews />
+                <AllViews />
+                <SocialFollowing />
             </div>
         );
     }

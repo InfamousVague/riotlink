@@ -25,4 +25,9 @@ var pollData = setInterval(function(){
 socket.on('newData', function(data){
     $('#currentViewHolder').html(data.currentViews);
     $('#totalViewsHolder').html(data.totalViews);
+    var twitterViews = 0;
+    data.views.map(function(view){
+        if(view.referer_c === "Twitter") twitterViews++;
+    });
+    $('#twitterViews').html(twitterViews);
 });

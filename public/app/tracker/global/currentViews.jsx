@@ -10,6 +10,8 @@ var CurrentViews = React.createClass({
                 <div className="bubbleNumber">
                     <span id="currentViewHolder">0</span>
                 </div>
+                <br />
+                <h4>Live Viewers</h4>
             </div>
         );
     }

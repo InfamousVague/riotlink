@@ -9,52 +9,85 @@ body,html{
     padding:0;
 }
 #currentViews{
-    background:#1abc9c;
+    background:#333;
     width:100%;
-    height:20em;
+    height:18em;
     position:relative;
 
     .bubbleNumber{
         width:10em;
         height:10em;
         border-radius:100%;
-        background:#333;
+        background:#1abc9c;
         color:#fff;
         position:absolute;
-        top:calc(50% - 5em);
+        top:calc(50% - 7em);
         left:calc(50% - 5em);
         text-align:center;
+        position:relative;
     }
     #currentViewHolder{
-        margin-top:17.5em;
+        position:absolute;
+        left:calc(50% - 13.5pt);
+        top:calc(50% - 25pt);
         font-size:35pt;
 
+    }
+    h4{
+        text-align:center;
+        margin-top:1em;
+        font-size:26pt;
+        color:#1abc9c;
     }
 }
 #allViews{
     border-radius:4px;
-    background:#fff;
-    width:15em;
-    height:9em;
+    background:#eee;
+    width:100%;
+    height:auto;
     position:relative;
-    text-align:center;
+    font-size:18pt;
+    font-family: 'Poiret One', cursive;
+    overflow:auto;
+    border-radius:none;
 
-    #totalViewsHolder{
-        font-size:30pt;
-        padding:.2em;
+    .row_container{
+        width:100%;
+        clear:both;
+        overflow:auto;
+        text-align:center;
+        position:relative;
     }
-    .titleBar{
-        background:#333;
+    .social{
+        background:#f5f5f5;
+    }
+    .leftView{
+        margin-right:150px;
+    }
+    .rightView{
+        margin-left:150px;
+    }
+    p{
+        margin-top:.5em;
+    }
+    #totalViewsHolder{
+        margin-left:1em;
+    }
+    label{
+        background:#1abc9c;
+        position:absolute;
+        top:0;
         color:#fff;
-
-        border-radius:4px 4px 0 0;
-
-        h3{
-            font-size:18pt;
-            text-align:center;
-            padding:.5em 0;
-            font-family: 'Poiret One', cursive;
-        }
-
+        padding:.5em;
+        margin:0;
+        width:150px;
+        border-radius:none;
+    }
+    .left{
+        left:0;
+    }
+    .right{
+        float:right;
+        right:0;
     }
 }
