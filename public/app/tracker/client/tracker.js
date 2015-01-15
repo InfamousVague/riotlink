@@ -32,7 +32,10 @@ var markerGroup = L.layerGroup();
 socket.on('newData', function(data){
     $('#currentViewHolder').html(data.currentViews);
     $('#totalViewsHolder').html(data.totalViews);
-    var twitterViews = 0;
+    var twitterViews = 0,
+        facebookViews = 0,
+        googlePlusViews = 0;
+        
     markerGroup.clearLayers();
     data.views.map(function(view){
 
@@ -44,4 +47,6 @@ socket.on('newData', function(data){
     markerGroup.addTo(map);
 
     $('#twitterViews').html(twitterViews);
+    $('#facebookViews').html(facebookViews);
+    $('#googlePlusViews').html(googlePlusViews);
 });
