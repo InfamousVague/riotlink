@@ -18728,6 +18728,25 @@ module.exports = CurrentViews;
 var React = require('react');
 
 /*jshint ignore:start*/
+var mapView = React.createClass({displayName: 'mapView',
+    render: function(){
+        return(
+            React.DOM.div({id: "mapView"}, 
+                React.DOM.div({id: "map"})
+            )
+        );
+    }
+});
+/*jshint ignore:end*/
+
+module.exports = mapView;
+
+},{"react":145}],149:[function(require,module,exports){
+/** @jsx React.DOM */
+
+var React = require('react');
+
+/*jshint ignore:start*/
 var SocialFollowing = React.createClass({displayName: 'SocialFollowing',
     render: function(){
         return(
@@ -18752,20 +18771,21 @@ var SocialFollowing = React.createClass({displayName: 'SocialFollowing',
 
 module.exports = SocialFollowing;
 
-},{"react":145}],149:[function(require,module,exports){
+},{"react":145}],150:[function(require,module,exports){
 /** @jsx React.DOM */
 
 var React           = require('react'),
     CurrentViews    = require('./global/currentViews.jsx'),
     AllViews        = require('./global/allViews.jsx'),
-    SocialFollowing = require('./global/socialFollowing.jsx');
+    SocialFollowing = require('./global/socialFollowing.jsx'),
+    Map             = require('./global/map.jsx');
 
 
 /*jshint ignore:start*/
 var Page = React.createClass({displayName: 'Page',
     render: function(){
         return(
-            React.DOM.div({className: "reactBody"}, 
+            React.DOM.div({className: "reactBody tracker"}, 
                 React.DOM.div({className: "row"}, 
                     React.DOM.div({className: "col-xs-12 col-sm-6"}, 
                         CurrentViews(null)
@@ -18773,6 +18793,9 @@ var Page = React.createClass({displayName: 'Page',
                     React.DOM.div({className: "col-xs-12 col-sm-6"}, 
                         AllViews(null), 
                         SocialFollowing(null)
+                    ), 
+                    React.DOM.div({className: "col-xs-12"}, 
+                        Map(null)
                     )
                 )
             )
@@ -18786,4 +18809,4 @@ React.renderComponent(
 );
 /*jshint ignore:end*/
 
-},{"./global/allViews.jsx":146,"./global/currentViews.jsx":147,"./global/socialFollowing.jsx":148,"react":145}]},{},[146,147,148,149]);
+},{"./global/allViews.jsx":146,"./global/currentViews.jsx":147,"./global/map.jsx":148,"./global/socialFollowing.jsx":149,"react":145}]},{},[146,147,148,149,150]);

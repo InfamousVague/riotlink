@@ -132,7 +132,8 @@ io.on('connection', function(socket){
                     totalViews      : link.totalViews,
                     currentViews    : link.currentViews,
                     views           : link.views,
-                    rid             : link.rid
+                    rid             : link.rid,
+                    geo             : link.geo
                 });
             }
         });
