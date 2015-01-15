@@ -13,8 +13,8 @@ var rid     = getUrlVars()['rid'],
 
 $('#shortLink').val('http://rls.li/r/' + rid);
 $('#shortLinkLink').attr('href', 'http://rls.li/r/' + rid);
-$('#trackingLink').val('http://rls.li/t?t=' + getUrlVars()['tid']);
-$('#trackingLinkLink').attr('href', 'http://rls.li/t?t=' + getUrlVars()['tid']);
+$('#trackingLink').val('http://rls.li/t/' + getUrlVars()['tid']);
+$('#trackingLinkLink').attr('href', 'http://rls.li/t/' + getUrlVars()['tid']);
 
 if(typeof tt != 'undefined'){
 
