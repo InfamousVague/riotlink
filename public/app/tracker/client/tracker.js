@@ -18,13 +18,13 @@ socket.emit('setVals', {
 
 var pollData = setInterval(function(){
     socket.emit('requestData', tid);
-}, 2000);
+}, 1000);
 
 
 window.history.replaceState('Object', 'Title', 't/' + tid);
 $(document).ready(function(){
     var map = L.map('map').setView([51.505, -0.09], 13);
-    L.tileLayer('http://{s}.tiles.mapbox.com/v3/MapID/{z}/{x}/{y}.png', {
+    L.tileLayer('http://{s}.tiles.mapbox.com/v3/mdwisniewski.kp2f221o/{z}/{x}/{y}.png', {
         attribution: 'Riotlink Viewers',
         maxZoom: 18
     }).addTo(map);

@@ -27,6 +27,7 @@ body, html {
 
 .tracker {
   overflow-y: auto;
+  overflow-x: hidden;
 }
 
 #map {
