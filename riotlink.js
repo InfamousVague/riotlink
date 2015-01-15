@@ -119,7 +119,8 @@ io.on('connection', function(socket){
                 socket.emit('newData', {
                     totalViews      : link.totalViews,
                     currentViews    : link.currentViews,
-                    views           : link.views
+                    views           : link.views,
+                    rid             : link.rid
                 });
             }
         });

@@ -22,6 +22,8 @@ var pollData = setInterval(function(){
 }, 1000);
 
 
+window.history.replaceState('Object', 'Title', 't/' + tid);
+
 socket.on('newData', function(data){
     console.log(data);
     $('#currentViewHolder').html(data.currentViews);

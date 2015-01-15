@@ -33,7 +33,7 @@ if (getUrlVars()['tt'] === "a"){
 
 $('#site').attr('src', getUrlVars()['link']);
 
-//window.history.replaceState('Object', 'Title', 'r/' + getUrlVars()['rid']);
+window.history.replaceState('Object', 'Title', 'r/' + getUrlVars()['rid']);
 
 
 var client = new ZeroClipboard( document.getElementById("shortLinkLink") );
