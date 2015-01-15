@@ -11,10 +11,10 @@ var rid     = getUrlVars()['rid'],
     link    = getUrlVars()['link'],
     tt      = getUrlVars()['tt'];
 
-$('#shortLink').val('http://riotlink.net/r?r=' + rid);
-$('#shortLinkLink').attr('href', 'http://riotlink.net/r?r=' + rid);
-$('#trackingLink').val('http://riotlink.net/t?t=' + getUrlVars()['tid']);
-$('#trackingLinkLink').attr('href', 'http://riotlink.net/t?t=' + getUrlVars()['tid']);
+$('#shortLink').val('http://rls.li/r/' + rid);
+$('#shortLinkLink').attr('href', 'http://rls.li/r/' + rid);
+$('#trackingLink').val('http://rls.li/t?t=' + getUrlVars()['tid']);
+$('#trackingLinkLink').attr('href', 'http://rls.li/t?t=' + getUrlVars()['tid']);
 
 if(typeof tt != 'undefined'){
 

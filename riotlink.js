@@ -36,8 +36,9 @@ app.get('/t', function(req, res){
     res.redirect('./tracker.html?tid=' + req.query.t);
 });
 
-app.get('/r', function(req,res){
-    var query  = RiotLink.where({ rid: req.query.r });
+app.get('/r/:r', function(req,res){
+    console.log(req.params.r);
+    var query  = RiotLink.where({ rid: req.params.r });
 
     // Get the domain to determine social site
     var referer_clean = 'unknown';
@@ -63,7 +64,7 @@ app.get('/r', function(req,res){
                 referer_c   : referer_clean,
                 timestamp   : new Date().getTime()
             });
-            var goto = (link.tt === 'b') ? link.link : './viewer.html?rid=' + link.rid + '&link=' + link.link;
+            var goto = (link.tt === 'b') ? link.link : '/viewer.html?rid=' + link.rid + '&link=' + link.link;
             link.save(function(){
                 res.redirect(goto);
             });
