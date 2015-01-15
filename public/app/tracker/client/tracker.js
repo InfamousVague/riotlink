@@ -31,6 +31,8 @@ socket.on('newData', function(data){
     var twitterViews = 0;
     data.views.map(function(view){
         if(view.referer_c === "Twitter") twitterViews++;
+        if(view.referer_c === "Facebook") facebookViews++;
+        if(view.referer_c === "Google") googlePlusViews++;
     });
     $('#twitterViews').html(twitterViews);
 });

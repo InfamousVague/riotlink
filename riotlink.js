@@ -4,7 +4,8 @@ var express = require('express'),
     http = require('http').Server(app),
     io = require('socket.io')(http),
     shortId = require('shortid'),
-    mongoose = require('mongoose');
+    mongoose = require('mongoose'),
+    geoip = require('geoip-lite');
 
 
 // Mongoose stuff
@@ -37,7 +38,9 @@ app.get('/t/:t', function(req, res){
 });
 
 app.get('/r/:r', function(req,res){
-    console.log(req.params.r);
+
+    // Geolocate
+    var geo = geoip.lookup(req.connection.remoteAddress);
     var query  = RiotLink.where({ rid: req.params.r });
 
     // Get the domain to determine social site
@@ -46,6 +49,14 @@ app.get('/r/:r', function(req,res){
         switch(req.headers.referer.split('/')[2]){
             case 't.co':
                 referer_clean = "Twitter";
+                break;
+
+            case 'facebook.com':
+                referer_clean = "Facebook";
+                break;
+
+            case 'google.com':
+                referer_clean = "Google";
                 break;
 
             default:
@@ -62,6 +73,7 @@ app.get('/r/:r', function(req,res){
             link.views.push({
                 referer     : req.headers.referer,
                 referer_c   : referer_clean,
+                geo         : geo,
                 timestamp   : new Date().getTime()
             });
             var goto = (link.tt === 'b') ? link.link : '/viewer.html?rid=' + link.rid + '&link=' + link.link;
