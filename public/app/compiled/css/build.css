@@ -35,10 +35,12 @@ body, html {
 .tracker {
   overflow-y: auto;
   overflow-x: hidden;
+  background: #eee;
 }
 
 #map {
-  height: 20em;
+  height: 100%;
+  min-height: 40em;
   width: 100%;
   margin: 0;
   padding: 0;
@@ -134,6 +136,11 @@ body, html {
   right: 0;
 }
 
+@media screen and (max-width: 400px) {
+  #map {
+    min-height: 20em;
+  }
+}
 #viewToolbar {
   width: 100%;
   height: auto;

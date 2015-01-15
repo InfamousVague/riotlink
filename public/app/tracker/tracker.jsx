@@ -13,10 +13,10 @@ var Page = React.createClass({
         return(
             <div className="reactBody tracker">
                 <div className="row">
-                    <div className="col-xs-12 col-sm-6">
+                    <div className="col-xs-12 col-sm-6" style={{'padding-right':'0'}}>
                         <CurrentViews />
                     </div>
-                    <div className="col-xs-12 col-sm-6">
+                    <div className="col-xs-12 col-sm-6" style={{'padding-left':'0'}}>
                         <AllViews />
                         <SocialFollowing />
                     </div>

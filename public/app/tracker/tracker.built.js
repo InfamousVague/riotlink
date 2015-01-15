@@ -18787,10 +18787,10 @@ var Page = React.createClass({displayName: 'Page',
         return(
             React.DOM.div({className: "reactBody tracker"}, 
                 React.DOM.div({className: "row"}, 
-                    React.DOM.div({className: "col-xs-12 col-sm-6"}, 
+                    React.DOM.div({className: "col-xs-12 col-sm-6", style: {'padding-right':'0'}}, 
                         CurrentViews(null)
                     ), 
-                    React.DOM.div({className: "col-xs-12 col-sm-6"}, 
+                    React.DOM.div({className: "col-xs-12 col-sm-6", style: {'padding-left':'0'}}, 
                         AllViews(null), 
                         SocialFollowing(null)
                     ), 
