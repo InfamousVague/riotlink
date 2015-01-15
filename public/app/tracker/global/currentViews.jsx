@@ -7,9 +7,6 @@ var CurrentViews = React.createClass({
     render: function(){
         return(
             <div id="currentViews">
-                <div className="titleBar">
-                    <h3>Live Viewers</h3>
-                </div>
                 <div className="bubbleNumber">
                     <span id="currentViewHolder">0</span>
                 </div>

@@ -20,7 +20,7 @@ var RiotLink = new Schema({
     link            : String,
     tt              : String,
     totalViews      : Number,
-    currentViews    : Number
+    views           : Array
 });
 mongoose.model('RiotLink', RiotLink);
 var RiotLink = mongoose.model('RiotLink');
@@ -37,11 +37,15 @@ app.get('/t', function(req, res){
 
 app.get('/r', function(req,res){
     var query  = RiotLink.where({ rid: req.query.r });
+    console.log(req.headers.referer);
     query.findOne(function (err, link) {
         if (err) return handleError(err);
         if (link) {
-            // doc may be null if no document matched
             link.totalViews++;
+            link.views.push({
+                referer     : req.headers.referer,
+                timestamp   : new Date().getTime()
+            });
             var goto = (link.tt === 'b') ? link.link : './viewer.html?rid=' + link.rid + '&link=' + link.link;
             link.save(function(){
                 res.redirect(goto);
@@ -64,7 +68,8 @@ app.get('/minify', function(req, res){
         link            : link,
         tt              : tt,
         totalViews      : 0,
-        currentViews    : 0
+        currentViews    : 0,
+        views           : []
     });
 
     Link.save(function (err) {

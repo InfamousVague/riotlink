@@ -10,20 +10,7 @@ var Page = React.createClass({
     render: function(){
         return(
             <div className="reactBody">
-                <div className="container">
-                    <div className="row">
-                        <div class="col-md-3">
-                            <AllViews />
-                            <CurrentViews />
-                        </div>
-                        <div class="col-md-3">
-
-                        </div>
-                        <div class="col-md-6">
-
-                        </div>
-                    </div>
-                </div>
+                <CurrentViews />
             </div>
         );
     }

@@ -18709,9 +18709,6 @@ var CurrentViews = React.createClass({displayName: 'CurrentViews',
     render: function(){
         return(
             React.DOM.div({id: "currentViews"}, 
-                React.DOM.div({className: "titleBar"}, 
-                    React.DOM.h3(null, "Live Viewers")
-                ), 
                 React.DOM.div({className: "bubbleNumber"}, 
                     React.DOM.span({id: "currentViewHolder"}, "0")
                 )
@@ -18736,20 +18733,7 @@ var Page = React.createClass({displayName: 'Page',
     render: function(){
         return(
             React.DOM.div({className: "reactBody"}, 
-                React.DOM.div({className: "container"}, 
-                    React.DOM.div({className: "row"}, 
-                        React.DOM.div({class: "col-md-3"}, 
-                            AllViews(null), 
-                            CurrentViews(null)
-                        ), 
-                        React.DOM.div({class: "col-md-3"}
-
-                        ), 
-                        React.DOM.div({class: "col-md-6"}
-
-                        )
-                    )
-                )
+                CurrentViews(null)
             )
         );
     }
