@@ -27,7 +27,7 @@ window.history.replaceState('Object', 'Title', 't/' + tid);
 /*==================
 =     Map          =
 ==================*/
-var map = L.map('map').setView([35.505, -70.09], 3);
+var map = L.map('map').setView([38, -103], 4);
 L.tileLayer('http://{s}.tiles.mapbox.com/v3/examples.map-i87786ca/{z}/{x}/{y}.png', {
     attribution: 'Riotlink Views',
     maxZoom: 18
@@ -39,8 +39,6 @@ L.tileLayer('http://{s}.tiles.mapbox.com/v3/examples.map-i87786ca/{z}/{x}/{y}.pn
 ==================*/
 var markerGroup = L.layerGroup();
 socket.on('newData', function(data){
-    $('#currentViewHolder').html(data.currentViews);
-    $('#totalViewsHolder').html(data.totalViews);
     var twitterViews = 0,
         facebookViews = 0,
         googlePlusViews = 0;
@@ -54,6 +52,8 @@ socket.on('newData', function(data){
     });
     markerGroup.addTo(map);
 
+    $('#currentViewHolder').html(data.currentViews);
+    $('#totalViewsHolder').html(data.totalViews);
     $('#twitterViews').html(twitterViews);
     $('#facebookViews').html(facebookViews);
     $('#googlePlusViews').html(googlePlusViews);
