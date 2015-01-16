@@ -18689,7 +18689,7 @@ var AllViews = React.createClass({displayName: 'AllViews',
             React.DOM.div({id: "allViews"}, 
                 React.DOM.div({className: "row_container"}, 
                     React.DOM.label({className: "left"}, "Total Views:"), 
-                    React.DOM.p({className: "rightView"}, React.DOM.span({className: "view", id: "totalViewsHolder"}, "0"))
+                    React.DOM.p({className: "rightView"}, React.DOM.span({className: "view", id: "totalViewsHolder"}, this.props.totalViews))
                 )
             )
         );
@@ -18710,7 +18710,7 @@ var CurrentViews = React.createClass({displayName: 'CurrentViews',
         return(
             React.DOM.div({id: "currentViews"}, 
                 React.DOM.div({className: "bubbleNumber"}, 
-                    React.DOM.span({id: "currentViewHolder"}, "0")
+                    React.DOM.span({id: "currentViewHolder"}, this.props.currentViews)
                 ), 
                 React.DOM.br(null), 
                 React.DOM.h4(null, "Live Viewers")
@@ -18752,15 +18752,15 @@ var SocialFollowing = React.createClass({displayName: 'SocialFollowing',
         return(
             React.DOM.div({id: "allViews"}, 
                 React.DOM.div({className: "row_container social"}, 
-                    React.DOM.p({className: "leftView"}, React.DOM.span({id: "twitterViews"}, "0")), 
+                    React.DOM.p({className: "leftView"}, React.DOM.span({id: "twitterViews"}, this.props.socialViews.twitter)), 
                     React.DOM.label({className: "right"}, React.DOM.i({className: "fa fa-twitter"}), " Views")
                 ), 
                 React.DOM.div({className: "row_container social"}, 
-                    React.DOM.p({className: "leftView"}, React.DOM.span({id: "facebookViews"}, "0")), 
+                    React.DOM.p({className: "leftView"}, React.DOM.span({id: "facebookViews"}, this.props.socialViews.facebook)), 
                     React.DOM.label({className: "right"}, React.DOM.i({className: "fa fa-facebook"}), " Views")
                 ), 
                 React.DOM.div({className: "row_container social"}, 
-                    React.DOM.p({className: "leftView"}, React.DOM.span({id: "googlePlusViews"}, "0")), 
+                    React.DOM.p({className: "leftView"}, React.DOM.span({id: "googlePlusViews"}, this.props.socialViews.google)), 
                     React.DOM.label({className: "right"}, React.DOM.i({className: "fa fa-google-plus"}), " Views")
                 )
             )
@@ -18810,7 +18810,19 @@ var tid = getUrlVars()['tid'];
 
 /*jshint ignore:start*/
 var Page = React.createClass({displayName: 'Page',
+    getInitialState: function(){
+        return{
+            currentViews : 0,
+            totalViews   : 0,
+            socialViews  : {
+                twitterViews    : 0,
+                facebookViews   : 0,
+                googlePlusViews : 0
+            }
+        };
+    },
     componentDidMount: function(){
+        var that = this;
         /*==================
         =     SocketIO     =
         ==================*/
@@ -18841,8 +18853,8 @@ var Page = React.createClass({displayName: 'Page',
         var markerGroup = L.layerGroup();
         socket.on('newData', function(data){
             var twitterViews = 0,
-            facebookViews = 0,
-            googlePlusViews = 0;
+                facebookViews = 0,
+                googlePlusViews = 0;
 
             markerGroup.clearLayers();
             data.views.map(function(view){
@@ -18853,11 +18865,15 @@ var Page = React.createClass({displayName: 'Page',
             });
             markerGroup.addTo(map);
 
-            $('#currentViewHolder').html(data.currentViews);
-            $('#totalViewsHolder').html(data.totalViews);
-            $('#twitterViews').html(twitterViews);
-            $('#facebookViews').html(facebookViews);
-            $('#googlePlusViews').html(googlePlusViews);
+            that.setState({
+                currentViews    : data.currentViews,
+                totalViews      : data.totalViews,
+                socialViews     : {
+                    twitter     : twitterViews,
+                    facebook    : facebookViews,
+                    google      : googlePlusViews
+                }
+            });
         });
     },
     render: function(){
@@ -18865,11 +18881,11 @@ var Page = React.createClass({displayName: 'Page',
             React.DOM.div({className: "reactBody tracker"}, 
                 React.DOM.div({className: "row"}, 
                     React.DOM.div({className: "col-xs-12 col-sm-6", style: {'padding-right':'0'}}, 
-                        CurrentViews(null)
+                        CurrentViews({currentViews: this.state.currentViews})
                     ), 
                     React.DOM.div({className: "col-xs-12 col-sm-6", style: {'padding-left':'0'}}, 
-                        AllViews(null), 
-                        SocialFollowing(null)
+                        AllViews({totalViews: this.state.totalViews}), 
+                        SocialFollowing({socialViews: this.state.socialViews})
                     ), 
                     React.DOM.div({className: "col-xs-12"}, 
                         Map(null)

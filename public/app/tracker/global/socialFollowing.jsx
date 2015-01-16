@@ -8,15 +8,15 @@ var SocialFollowing = React.createClass({
         return(
             <div id="allViews">
                 <div className="row_container social">
-                    <p className="leftView"><span id="twitterViews">0</span></p>
+                    <p className="leftView"><span id="twitterViews">{this.props.socialViews.twitter}</span></p>
                     <label className="right"><i className="fa fa-twitter"></i> Views</label>
                 </div>
                 <div className="row_container social">
-                    <p className="leftView"><span id="facebookViews">0</span></p>
+                    <p className="leftView"><span id="facebookViews">{this.props.socialViews.facebook}</span></p>
                     <label className="right"><i className="fa fa-facebook"></i> Views</label>
                 </div>
                 <div className="row_container social">
-                    <p className="leftView"><span id="googlePlusViews">0</span></p>
+                    <p className="leftView"><span id="googlePlusViews">{this.props.socialViews.google}</span></p>
                     <label className="right"><i className="fa fa-google-plus"></i> Views</label>
                 </div>
             </div>

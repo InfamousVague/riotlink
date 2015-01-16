@@ -9,7 +9,7 @@ var AllViews = React.createClass({
             <div id="allViews">
                 <div className="row_container">
                     <label className="left">Total&nbsp;Views:</label>
-                    <p className="rightView"><span className="view" id="totalViewsHolder">0</span></p>
+                    <p className="rightView"><span className="view" id="totalViewsHolder">{this.props.totalViews}</span></p>
                 </div>
             </div>
         );

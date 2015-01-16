@@ -19,7 +19,19 @@ var tid = getUrlVars()['tid'];
 
 /*jshint ignore:start*/
 var Page = React.createClass({
+    getInitialState: function(){
+        return{
+            currentViews : 0,
+            totalViews   : 0,
+            socialViews  : {
+                twitterViews    : 0,
+                facebookViews   : 0,
+                googlePlusViews : 0
+            }
+        };
+    },
     componentDidMount: function(){
+        var that = this;
         /*==================
         =     SocketIO     =
         ==================*/
@@ -50,8 +62,8 @@ var Page = React.createClass({
         var markerGroup = L.layerGroup();
         socket.on('newData', function(data){
             var twitterViews = 0,
-            facebookViews = 0,
-            googlePlusViews = 0;
+                facebookViews = 0,
+                googlePlusViews = 0;
 
             markerGroup.clearLayers();
             data.views.map(function(view){
@@ -62,11 +74,15 @@ var Page = React.createClass({
             });
             markerGroup.addTo(map);
 
-            $('#currentViewHolder').html(data.currentViews);
-            $('#totalViewsHolder').html(data.totalViews);
-            $('#twitterViews').html(twitterViews);
-            $('#facebookViews').html(facebookViews);
-            $('#googlePlusViews').html(googlePlusViews);
+            that.setState({
+                currentViews    : data.currentViews,
+                totalViews      : data.totalViews,
+                socialViews     : {
+                    twitter     : twitterViews,
+                    facebook    : facebookViews,
+                    google      : googlePlusViews
+                }
+            });
         });
     },
     render: function(){
@@ -74,11 +90,11 @@ var Page = React.createClass({
             <div className="reactBody tracker">
                 <div className="row">
                     <div className="col-xs-12 col-sm-6" style={{'padding-right':'0'}}>
-                        <CurrentViews />
+                        <CurrentViews currentViews={this.state.currentViews}/>
                     </div>
                     <div className="col-xs-12 col-sm-6" style={{'padding-left':'0'}}>
-                        <AllViews />
-                        <SocialFollowing />
+                        <AllViews totalViews={this.state.totalViews}/>
+                        <SocialFollowing socialViews={this.state.socialViews}/>
                     </div>
                     <div className="col-xs-12">
                         <Map />

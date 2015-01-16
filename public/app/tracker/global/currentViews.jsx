@@ -8,7 +8,7 @@ var CurrentViews = React.createClass({
         return(
             <div id="currentViews">
                 <div className="bubbleNumber">
-                    <span id="currentViewHolder">0</span>
+                    <span id="currentViewHolder">{this.props.currentViews}</span>
                 </div>
                 <br />
                 <h4>Live Viewers</h4>
