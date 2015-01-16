@@ -21,13 +21,22 @@ var pollData = setInterval(function(){
 }, 1000);
 
 
+
 window.history.replaceState('Object', 'Title', 't/' + tid);
+
+/*==================
+=     Map          =
+==================*/
 var map = L.map('map').setView([35.505, -70.09], 3);
 L.tileLayer('http://{s}.tiles.mapbox.com/v3/examples.map-i87786ca/{z}/{x}/{y}.png', {
     attribution: 'Riotlink Views',
     maxZoom: 18
 }).addTo(map);
 
+
+/*==================
+=    Views/Map     =
+==================*/
 var markerGroup = L.layerGroup();
 socket.on('newData', function(data){
     $('#currentViewHolder').html(data.currentViews);

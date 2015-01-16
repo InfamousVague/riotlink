@@ -18774,6 +18774,23 @@ module.exports = SocialFollowing;
 },{"react":145}],150:[function(require,module,exports){
 /** @jsx React.DOM */
 
+var React = require('react');
+
+/*jshint ignore:start*/
+var ViewsChart = React.createClass({displayName: 'ViewsChart',
+    render: function(){
+        return(
+            React.DOM.canvas({id: "viewsChart", width: "500", height: "500"})
+        );
+    }
+});
+/*jshint ignore:end*/
+
+module.exports = ViewsChart;
+
+},{"react":145}],151:[function(require,module,exports){
+/** @jsx React.DOM */
+
 var React           = require('react'),
     CurrentViews    = require('./global/currentViews.jsx'),
     AllViews        = require('./global/allViews.jsx'),
@@ -18809,4 +18826,4 @@ React.renderComponent(
 );
 /*jshint ignore:end*/
 
-},{"./global/allViews.jsx":146,"./global/currentViews.jsx":147,"./global/map.jsx":148,"./global/socialFollowing.jsx":149,"react":145}]},{},[146,147,148,149,150]);
+},{"./global/allViews.jsx":146,"./global/currentViews.jsx":147,"./global/map.jsx":148,"./global/socialFollowing.jsx":149,"react":145}]},{},[146,147,148,149,150,151]);

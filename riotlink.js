@@ -63,7 +63,7 @@ app.get('/r/:r', function(req,res){
                 referer_clean = "Facebook";
                 break;
 
-            case 'google.com':
+            case 'www.google.com':
                 referer_clean = "Google";
                 break;
 
