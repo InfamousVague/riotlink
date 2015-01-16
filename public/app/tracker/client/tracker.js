@@ -35,10 +35,9 @@ socket.on('newData', function(data){
     var twitterViews = 0,
         facebookViews = 0,
         googlePlusViews = 0;
-        
+
     markerGroup.clearLayers();
     data.views.map(function(view){
-
         if(typeof(view.geo) != 'null') L.marker(view.geo.ll).addTo(markerGroup);
         if(view.referer_c === "Twitter") twitterViews++;
         if(view.referer_c === "Facebook") facebookViews++;

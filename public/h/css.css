@@ -154,7 +154,7 @@ body,html{
 
 }
 .droplet:active:after{
-    background:#1abc9c;
+    background:#3498db;
 }
 
 .droplet:after{
@@ -164,7 +164,7 @@ body,html{
     right:0;
     bottom:0;
     left:0;
-    background:#1abc9c;
+    background:#3498db;
     z-index:-2;
 
 
@@ -172,7 +172,7 @@ body,html{
 .droplet:before{
     content:' ';
     position:absolute;
-    background:#16a085;
+    background:#2980b9;
     z-index:-1;
     width:0;
     height:0;
