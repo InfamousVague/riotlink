@@ -18694,12 +18694,12 @@ var ViewToolbar = React.createClass({displayName: 'ViewToolbar',
                         )
                     ), 
                     React.DOM.div({className: "col-xs-12 col-sm-5"}, 
-                        React.DOM.input({id: "shortLink"}), 
-                        React.DOM.a({className: "button", 'data-clipboard-text': "Copy Me!", href: "#", id: "shortLinkLink"}, "Copy")
+                        React.DOM.input({id: "shortLink", value: 'http://rls.il/r/' + this.props.rid}), 
+                        React.DOM.a({className: "button", 'data-clipboard-text': 'http://rls.il/r/' + this.props.rid, href: "#", id: "shortLinkLink"}, "Copy")
                     ), 
                     React.DOM.div({className: "col-xs-12 col-sm-5"}, 
-                        React.DOM.input({id: "trackingLink"}), 
-                        React.DOM.a({className: "button", href: "#", target: "_blank", id: "trackingLinkLink"}, "Track")
+                        React.DOM.input({id: "trackingLink", value: 'http://rls.il/t/' + this.props.tid}), 
+                        React.DOM.a({className: "button", href: 'http://rls.il/t/' + this.props.tid, target: "_blank", id: "trackingLinkLink"}, "Track")
                     )
                 )
             )
@@ -18714,14 +18714,67 @@ module.exports = ViewToolbar;
 /** @jsx React.DOM */
 
 var React       = require('react');
-var ViewToolbar = require('./global/viewToolbar.jsx');
+var ViewToolbar = require('./global/viewToolbar.jsx'),
+    socket      = io();
 
+function getUrlVars() {
+    var vars = {};
+    var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+        vars[key] = value;
+    });
+    return vars;
+}
+
+var rid     = getUrlVars()['rid'],
+    tid     = getUrlVars()['tid'],
+    link    = getUrlVars()['link'],
+    tt      = getUrlVars()['tt'];
+
+socket.emit('connected', {
+    rid : rid
+});
 /*jshint ignore:start*/
 var Page = React.createClass({displayName: 'Page',
+    getInitialState: function(){
+        return{
+            rid: rid,
+            tid: tid
+        };
+    },
+    componentDidMount: function(){
+        if(typeof tt != 'undefined'){
+
+        }else{
+            $('#viewToolbar').hide();
+            $('#site').css({
+                'height':'100%'
+            });
+        }
+
+        if (getUrlVars()['tt'] === "a"){
+            $('#trackingType').html("Advanced Tracking");
+        }else{
+            $('#trackingType').html("Basic Tracking");
+        }
+
+        $('#site').attr('src', getUrlVars()['link']);
+
+        window.history.replaceState('Object', 'Title', 'r/' + getUrlVars()['rid']);
+
+
+        var client = new ZeroClipboard( document.getElementById("shortLinkLink") );
+        client.on( "ready", function( readyEvent ) {
+            client.on( "aftercopy", function( event ) {
+                // `this` === `client`
+                // `event.target` === the element that was clicked
+                $('#shortLinkLink').html('Copied!');
+            } );
+        } );
+    },
     render: function(){
         return(
             React.DOM.div({className: "reactBody"}, 
-                ViewToolbar(null), 
+                ViewToolbar({rid: this.state.rid, tid: this.state.tid}), 
                 React.DOM.iframe({border: "0", height: "100%", width: "100%", src: "null", id: "site"})
             )
         );
