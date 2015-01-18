@@ -22,7 +22,7 @@ var Page = React.createClass({
     getInitialState: function(){
         return{
             currentViews : 0,
-            totalViews   : 1,
+            totalViews   : 0,
             socialViews  : {
                 twitterViews    : 0,
                 facebookViews   : 0,

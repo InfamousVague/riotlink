@@ -79,6 +79,7 @@ app.get('/r/:r', function(req,res){
         if (link) {
             link.totalViews++;
             link.views.push({
+                sessionID   : shortId.generate(),
                 referer     : req.headers.referer,
                 referer_c   : referer_clean,
                 geo         : geo,
@@ -117,6 +118,7 @@ app.get('/minify', function(req, res){
 
 io.on('connection', function(socket){
     var rid = "unknown";
+
     // on connection add a view and a live view
     socket.on('connected', function(options){
         rid = options.rid;

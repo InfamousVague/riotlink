@@ -18733,6 +18733,7 @@ var rid     = getUrlVars()['rid'],
 socket.emit('connected', {
     rid : rid
 });
+
 /*jshint ignore:start*/
 var Page = React.createClass({displayName: 'Page',
     getInitialState: function(){
