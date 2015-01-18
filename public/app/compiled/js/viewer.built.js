@@ -18742,6 +18742,10 @@ var Page = React.createClass({displayName: 'Page',
         };
     },
     componentDidMount: function(){
+        $('#debugMessage').hide();
+        setTimeout(function(){
+            $('#debugMessage').fadeIn();
+        }, 1000);
         if(typeof tt != 'undefined'){
 
         }else{
@@ -18751,11 +18755,6 @@ var Page = React.createClass({displayName: 'Page',
             });
         }
 
-        if (getUrlVars()['tt'] === "a"){
-            $('#trackingType').html("Advanced Tracking");
-        }else{
-            $('#trackingType').html("Basic Tracking");
-        }
 
         $('#site').attr('src', getUrlVars()['link']);
 
@@ -18770,12 +18769,19 @@ var Page = React.createClass({displayName: 'Page',
                 $('#shortLinkLink').html('Copied!');
             } );
         } );
+
     },
     render: function(){
         return(
             React.DOM.div({className: "reactBody"}, 
                 ViewToolbar({rid: this.state.rid, tid: this.state.tid}), 
-                React.DOM.iframe({border: "0", height: "100%", width: "100%", src: "null", id: "site"})
+                React.DOM.div({id: "debugMessage"}, 
+                    React.DOM.h4(null, "Blank Page?"), 
+                    React.DOM.p(null, "Your supplied link may not support advanced tracking, disable this by toggling off advanced tracking on our home page.", React.DOM.br(null), React.DOM.br(null), 
+                    React.DOM.img({src: "http://i.gyazo.com/e0a805d870e5fd4456676cfca37bf32e.png"}))
+                ), 
+                React.DOM.iframe({border: "0", height: "100%", width: "100%", src: "null", id: "site"}
+                )
             )
         );
     }

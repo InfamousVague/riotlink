@@ -29,6 +29,10 @@ var Page = React.createClass({
         };
     },
     componentDidMount: function(){
+        $('#debugMessage').hide();
+        setTimeout(function(){
+            $('#debugMessage').fadeIn();
+        }, 1000);
         if(typeof tt != 'undefined'){
 
         }else{
@@ -38,11 +42,6 @@ var Page = React.createClass({
             });
         }
 
-        if (getUrlVars()['tt'] === "a"){
-            $('#trackingType').html("Advanced Tracking");
-        }else{
-            $('#trackingType').html("Basic Tracking");
-        }
 
         $('#site').attr('src', getUrlVars()['link']);
 
@@ -57,12 +56,19 @@ var Page = React.createClass({
                 $('#shortLinkLink').html('Copied!');
             } );
         } );
+
     },
     render: function(){
         return(
             <div className="reactBody">
                 <ViewToolbar rid={this.state.rid} tid={this.state.tid}/>
-                <iframe border="0" height="100%" width="100%" src="null" id="site"></iframe>
+                <div id="debugMessage">
+                    <h4>Blank Page?</h4>
+                    <p>Your supplied link may not support advanced tracking, disable this by toggling off advanced tracking on our home page.<br /><br />
+                    <img src="http://i.gyazo.com/e0a805d870e5fd4456676cfca37bf32e.png"/></p>
+                </div>
+                <iframe border="0" height="100%" width="100%" src="null" id="site">
+                </iframe>
             </div>
         );
     }

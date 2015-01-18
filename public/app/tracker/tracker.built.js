@@ -18813,7 +18813,7 @@ var Page = React.createClass({displayName: 'Page',
     getInitialState: function(){
         return{
             currentViews : 0,
-            totalViews   : 0,
+            totalViews   : 1,
             socialViews  : {
                 twitterViews    : 0,
                 facebookViews   : 0,

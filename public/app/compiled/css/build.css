@@ -21,6 +21,15 @@ body, html {
   width: 100%;
   height: calc(100% - 36px);
   border: 0;
+  position: absolute;
+  top: 0;
+}
+
+#debugMessage {
+  width: 400px;
+  position: absolute;
+  top: calc(50% - 200px);
+  left: calc(50% - 200px);
 }
 
 #tracker {
@@ -56,6 +65,7 @@ body, html {
   width: 100%;
   height: 18em;
   position: relative;
+  overflow: hidden;
 }
 #currentViews .bubbleNumber {
   width: 10em;
@@ -125,7 +135,7 @@ body, html {
   color: #fff;
   padding: .5em;
   margin: 0;
-  width: 150px;
+  width: 160px;
   border-radius: none;
 }
 #allViews .left {
