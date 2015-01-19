@@ -21,6 +21,7 @@ socket.emit('connected', {
     rid : rid
 });
 
+
 /*jshint ignore:start*/
 var Page = React.createClass({
     getInitialState: function(){
@@ -30,6 +31,9 @@ var Page = React.createClass({
         };
     },
     componentDidMount: function(){
+        if(tt === 'b')
+            $('#viewToolbar').addClass('simpleTracking');
+
         $('#debugMessage').hide();
         setTimeout(function(){
             $('#debugMessage').fadeIn();

@@ -1,6 +1,17 @@
+.simpleTracking{
+    position:absolute;
+    top:0;
+    right:0;
+    bottom:0;
+    left:0;
+    padding:1em;
+    padding-top:calc(30% - 3em);
+}
+
 #viewToolbar{
     width:100%;
     height:auto;
+    z-index:1000;
     background:#333;
     position:absolute;
     bottom:0;
@@ -72,5 +83,8 @@
         .button{
             width:100%;
         }
+    }
+    .simpleTracking{
+        padding-top:calc(50% - 2em);
     }
 }
