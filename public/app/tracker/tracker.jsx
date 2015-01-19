@@ -5,6 +5,7 @@ var React           = require('react'),
     AllViews        = require('./global/allViews.jsx'),
     SocialFollowing = require('./global/socialFollowing.jsx'),
     Map             = require('./global/map.jsx'),
+    AdBlock         = require('./global/adblock.jsx'),
     socket          = io();
 
 
@@ -90,12 +91,15 @@ var Page = React.createClass({
             <div className="reactBody tracker">
                 <div className="container-fluid">
                     <div className="row">
-                        <div className="col-xs-12 col-sm-6" style={{'padding-right':'0'}}>
+                        <div className="col-xs-12 col-sm-4" style={{'padding-right':'0'}}>
                             <CurrentViews currentViews={this.state.currentViews}/>
                         </div>
-                        <div className="col-xs-12 col-sm-6" style={{'padding-left':'0'}}>
+                        <div className="col-xs-12 col-sm-5" style={{'padding-left':'0'}}>
                             <AllViews totalViews={this.state.totalViews}/>
                             <SocialFollowing socialViews={this.state.socialViews}/>
+                        </div>
+                        <div className="col-xs-12 col-sm-3">
+                            <AdBlock />
                         </div>
                         <div className="col-xs-12">
                             <Map />

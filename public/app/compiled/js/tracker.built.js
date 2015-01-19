@@ -18654,6 +18654,34 @@ module.exports = require('./lib/React');
 var React = require('react');
 
 /*jshint ignore:start*/
+var AdBlock = React.createClass({displayName: 'AdBlock',
+    componentDidMount: function(){
+        ( function() {
+            if (window.CHITIKA === undefined) { window.CHITIKA = { 'units' : [] }; };
+            var unit = {"calltype":"async[2]","publisher":"mdwisniewski","width":200,"height":240,"sid":"Chitika Default"};
+            var placement_id = window.CHITIKA.units.length;
+            window.CHITIKA.units.push(unit);
+            $('#AdBlock').html('<div id="chitikaAdBlock-' + placement_id + '"></div>');
+        }());
+    },
+    render: function(){
+        return(
+            React.DOM.div({id: "AdBlock"}, 
+                "Ad Goes Here"
+            )
+        );
+    }
+});
+/*jshint ignore:end*/
+
+module.exports = AdBlock;
+
+},{"react":145}],147:[function(require,module,exports){
+/** @jsx React.DOM */
+
+var React = require('react');
+
+/*jshint ignore:start*/
 var AllViews = React.createClass({displayName: 'AllViews',
     render: function(){
         return(
@@ -18670,7 +18698,7 @@ var AllViews = React.createClass({displayName: 'AllViews',
 
 module.exports = AllViews;
 
-},{"react":145}],147:[function(require,module,exports){
+},{"react":145}],148:[function(require,module,exports){
 /** @jsx React.DOM */
 
 var React = require('react');
@@ -18693,7 +18721,7 @@ var CurrentViews = React.createClass({displayName: 'CurrentViews',
 
 module.exports = CurrentViews;
 
-},{"react":145}],148:[function(require,module,exports){
+},{"react":145}],149:[function(require,module,exports){
 /** @jsx React.DOM */
 
 var React = require('react');
@@ -18712,7 +18740,7 @@ var mapView = React.createClass({displayName: 'mapView',
 
 module.exports = mapView;
 
-},{"react":145}],149:[function(require,module,exports){
+},{"react":145}],150:[function(require,module,exports){
 /** @jsx React.DOM */
 
 var React = require('react');
@@ -18742,7 +18770,7 @@ var SocialFollowing = React.createClass({displayName: 'SocialFollowing',
 
 module.exports = SocialFollowing;
 
-},{"react":145}],150:[function(require,module,exports){
+},{"react":145}],151:[function(require,module,exports){
 /** @jsx React.DOM */
 
 var React = require('react');
@@ -18759,7 +18787,7 @@ var ViewsChart = React.createClass({displayName: 'ViewsChart',
 
 module.exports = ViewsChart;
 
-},{"react":145}],151:[function(require,module,exports){
+},{"react":145}],152:[function(require,module,exports){
 /** @jsx React.DOM */
 
 var React           = require('react'),
@@ -18767,6 +18795,7 @@ var React           = require('react'),
     AllViews        = require('./global/allViews.jsx'),
     SocialFollowing = require('./global/socialFollowing.jsx'),
     Map             = require('./global/map.jsx'),
+    AdBlock         = require('./global/adblock.jsx'),
     socket          = io();
 
 
@@ -18852,12 +18881,15 @@ var Page = React.createClass({displayName: 'Page',
             React.DOM.div({className: "reactBody tracker"}, 
                 React.DOM.div({className: "container-fluid"}, 
                     React.DOM.div({className: "row"}, 
-                        React.DOM.div({className: "col-xs-12 col-sm-6", style: {'padding-right':'0'}}, 
+                        React.DOM.div({className: "col-xs-12 col-sm-4", style: {'padding-right':'0'}}, 
                             CurrentViews({currentViews: this.state.currentViews})
                         ), 
-                        React.DOM.div({className: "col-xs-12 col-sm-6", style: {'padding-left':'0'}}, 
+                        React.DOM.div({className: "col-xs-12 col-sm-5", style: {'padding-left':'0'}}, 
                             AllViews({totalViews: this.state.totalViews}), 
                             SocialFollowing({socialViews: this.state.socialViews})
+                        ), 
+                        React.DOM.div({className: "col-xs-12 col-sm-3"}, 
+                            AdBlock(null)
                         ), 
                         React.DOM.div({className: "col-xs-12"}, 
                             Map(null)
@@ -18875,4 +18907,4 @@ React.renderComponent(
 );
 /*jshint ignore:end*/
 
-},{"./global/allViews.jsx":146,"./global/currentViews.jsx":147,"./global/map.jsx":148,"./global/socialFollowing.jsx":149,"react":145}]},{},[146,147,148,149,150,151]);
+},{"./global/adblock.jsx":146,"./global/allViews.jsx":147,"./global/currentViews.jsx":148,"./global/map.jsx":149,"./global/socialFollowing.jsx":150,"react":145}]},{},[146,147,148,149,150,151,152]);

@@ -48,6 +48,10 @@ body, html {
   background: #eee;
 }
 
+#AdBlock {
+  margin-left: calc(50% - 100px);
+}
+
 #map {
   height: 100%;
   min-height: 40em;
