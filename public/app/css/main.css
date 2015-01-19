@@ -45,7 +45,7 @@ body, html {
 
 #AdBlock {
   margin-left: calc(50% - 150px);
-  padding-top: calc(35% - 75px);
+  padding-top: 3.5em;
 }
 
 #map {
@@ -95,12 +95,22 @@ body, html {
   color: #fff;
 }
 
+.socialViewsContainer {
+  height: 18em;
+  background: #444;
+}
+
+.adContainer {
+  height: 18em;
+  background: #c0392b;
+}
+
 #allViews {
   border-radius: 4px;
-  background: #eee;
+  background: #444;
   width: 100%;
-  height: auto;
   position: relative;
+  color: #fff;
   font-size: 18pt;
   font-family: 'Poiret One', cursive;
   overflow: auto;
@@ -153,6 +163,10 @@ body, html {
   }
 }
 @media screen and (max-width: 400px) {
+  .adContainer {
+    height: 13em;
+  }
+
   #AdBlock {
     padding-top: 1em;
     padding-bottom: 1em;

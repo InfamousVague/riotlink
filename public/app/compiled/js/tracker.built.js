@@ -18822,6 +18822,8 @@ var Page = React.createClass({displayName: 'Page',
         };
     },
     componentDidMount: function(){
+
+
         var that = this;
         /*==================
         =     SocketIO     =
@@ -18886,14 +18888,19 @@ var Page = React.createClass({displayName: 'Page',
                         React.DOM.div({className: "col-xs-12 col-sm-4", style: {'padding-right':'0'}}, 
                             CurrentViews({currentViews: this.state.currentViews})
                         ), 
-                        React.DOM.div({className: "col-xs-12 col-sm-5", style: {'padding-left':'0'}}, 
+                        React.DOM.div({className: "col-xs-12 col-sm-5 socialViewsContainer", style: {'padding-left':'0'}}, 
                             AllViews({totalViews: this.state.totalViews}), 
                             SocialFollowing({socialViews: this.state.socialViews})
                         ), 
-                        React.DOM.div({className: "col-xs-12 col-sm-3"}, 
+                        React.DOM.div({className: "col-xs-12 col-sm-3 adContainer"}, 
                             AdBlock(null)
+                        )
+                    ), 
+                    React.DOM.div({className: "row"}, 
+                        React.DOM.div({className: "col-xs-12 col-sm-5"}, 
+                            "Grpah data coming soon"
                         ), 
-                        React.DOM.div({className: "col-xs-12"}, 
+                        React.DOM.div({className: "col-xs-12 col-sm-7"}, 
                             Map(null)
                         )
                     )

@@ -32,6 +32,8 @@ var Page = React.createClass({
         };
     },
     componentDidMount: function(){
+
+
         var that = this;
         /*==================
         =     SocketIO     =
@@ -96,14 +98,19 @@ var Page = React.createClass({
                         <div className="col-xs-12 col-sm-4" style={{'padding-right':'0'}}>
                             <CurrentViews currentViews={this.state.currentViews}/>
                         </div>
-                        <div className="col-xs-12 col-sm-5" style={{'padding-left':'0'}}>
+                        <div className="col-xs-12 col-sm-5 socialViewsContainer" style={{'padding-left':'0'}}>
                             <AllViews totalViews={this.state.totalViews}/>
                             <SocialFollowing socialViews={this.state.socialViews}/>
                         </div>
-                        <div className="col-xs-12 col-sm-3">
+                        <div className="col-xs-12 col-sm-3 adContainer">
                             <AdBlock />
                         </div>
-                        <div className="col-xs-12">
+                    </div>
+                    <div className="row">
+                        <div className="col-xs-12 col-sm-5">
+                            Grpah data coming soon
+                        </div>
+                        <div className="col-xs-12 col-sm-7">
                             <Map />
                         </div>
                     </div>
