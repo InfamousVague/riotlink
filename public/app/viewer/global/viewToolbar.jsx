@@ -15,7 +15,7 @@ var ViewToolbar = React.createClass({
                     </div>
                     <div className="col-xs-12 col-sm-5">
                         <input id="shortLink" value={'http://rls.li/r/' + this.props.rid}></input>
-                        <a className="button" data-clipboard-text={'http://rls.li/r/' + this.props.rid} href="#" id="shortLinkLink">Copy</a>
+                        <a className="button" data-clipboard-text={'http://rls.li/r/' + this.props.rid} href="#" id="shortLinkLink">Share</a>
                     </div>
                     <div className="col-xs-12 col-sm-5">
                         <input id="trackingLink" value={'http://rls.li/t/' + this.props.tid}></input>

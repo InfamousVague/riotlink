@@ -219,6 +219,9 @@ body, html {
 }
 
 @media screen and (max-width: 400px) {
+  #viewToolbar {
+    padding: 0 1em;
+  }
   #viewToolbar .logo {
     margin-bottom: 1em;
   }

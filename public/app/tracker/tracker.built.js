@@ -18850,16 +18850,18 @@ var Page = React.createClass({displayName: 'Page',
     render: function(){
         return(
             React.DOM.div({className: "reactBody tracker"}, 
-                React.DOM.div({className: "row"}, 
-                    React.DOM.div({className: "col-xs-12 col-sm-6", style: {'padding-right':'0'}}, 
-                        CurrentViews({currentViews: this.state.currentViews})
-                    ), 
-                    React.DOM.div({className: "col-xs-12 col-sm-6", style: {'padding-left':'0'}}, 
-                        AllViews({totalViews: this.state.totalViews}), 
-                        SocialFollowing({socialViews: this.state.socialViews})
-                    ), 
-                    React.DOM.div({className: "col-xs-12"}, 
-                        Map(null)
+                React.DOM.div({className: "container-fluid"}, 
+                    React.DOM.div({className: "row"}, 
+                        React.DOM.div({className: "col-xs-12 col-sm-6", style: {'padding-right':'0'}}, 
+                            CurrentViews({currentViews: this.state.currentViews})
+                        ), 
+                        React.DOM.div({className: "col-xs-12 col-sm-6", style: {'padding-left':'0'}}, 
+                            AllViews({totalViews: this.state.totalViews}), 
+                            SocialFollowing({socialViews: this.state.socialViews})
+                        ), 
+                        React.DOM.div({className: "col-xs-12"}, 
+                            Map(null)
+                        )
                     )
                 )
             )

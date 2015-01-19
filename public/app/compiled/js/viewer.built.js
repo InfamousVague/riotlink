@@ -18666,7 +18666,7 @@ var ViewToolbar = React.createClass({displayName: 'ViewToolbar',
                     ), 
                     React.DOM.div({className: "col-xs-12 col-sm-5"}, 
                         React.DOM.input({id: "shortLink", value: 'http://rls.li/r/' + this.props.rid}), 
-                        React.DOM.a({className: "button", 'data-clipboard-text': 'http://rls.li/r/' + this.props.rid, href: "#", id: "shortLinkLink"}, "Copy")
+                        React.DOM.a({className: "button", 'data-clipboard-text': 'http://rls.li/r/' + this.props.rid, href: "#", id: "shortLinkLink"}, "Share")
                     ), 
                     React.DOM.div({className: "col-xs-12 col-sm-5"}, 
                         React.DOM.input({id: "trackingLink", value: 'http://rls.li/t/' + this.props.tid}), 

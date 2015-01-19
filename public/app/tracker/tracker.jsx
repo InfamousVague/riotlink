@@ -88,16 +88,18 @@ var Page = React.createClass({
     render: function(){
         return(
             <div className="reactBody tracker">
-                <div className="row">
-                    <div className="col-xs-12 col-sm-6" style={{'padding-right':'0'}}>
-                        <CurrentViews currentViews={this.state.currentViews}/>
-                    </div>
-                    <div className="col-xs-12 col-sm-6" style={{'padding-left':'0'}}>
-                        <AllViews totalViews={this.state.totalViews}/>
-                        <SocialFollowing socialViews={this.state.socialViews}/>
-                    </div>
-                    <div className="col-xs-12">
-                        <Map />
+                <div className="container-fluid">
+                    <div className="row">
+                        <div className="col-xs-12 col-sm-6" style={{'padding-right':'0'}}>
+                            <CurrentViews currentViews={this.state.currentViews}/>
+                        </div>
+                        <div className="col-xs-12 col-sm-6" style={{'padding-left':'0'}}>
+                            <AllViews totalViews={this.state.totalViews}/>
+                            <SocialFollowing socialViews={this.state.socialViews}/>
+                        </div>
+                        <div className="col-xs-12">
+                            <Map />
+                        </div>
                     </div>
                 </div>
             </div>
