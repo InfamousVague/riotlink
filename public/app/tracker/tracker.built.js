@@ -18855,17 +18855,17 @@ var Page = React.createClass({displayName: 'Page',
             var twitterViews = 0,
                 facebookViews = 0,
                 googlePlusViews = 0,
-                allViews = [];
+                viewsTimestamps = [];
+
             markerGroup.clearLayers();
             data.views.map(function(view){
-                allViews.push(view.timestamp);
-
+                viewsTimestamps.push(view.timestamp);
+                console.log(viewsTimestamps);
                 if(typeof(view.geo) != 'null') L.marker(view.geo.ll).addTo(markerGroup);
                 if(view.referer_c === "Twitter") twitterViews++;
                 if(view.referer_c === "Facebook") facebookViews++;
                 if(view.referer_c === "Google") googlePlusViews++;
             });
-            console.log(allViews);
             markerGroup.addTo(map);
 
             that.setState({
