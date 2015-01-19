@@ -146,6 +146,11 @@ body, html {
   right: 0;
 }
 
+@media screen and (min-width: 400px) {
+  .container-fluid {
+    padding: 0;
+  }
+}
 @media screen and (max-width: 400px) {
   #map {
     min-height: 20em;
