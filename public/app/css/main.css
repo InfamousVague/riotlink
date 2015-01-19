@@ -103,7 +103,7 @@ body, html {
 
 .adContainer {
   height: 18em;
-  background: #c0392b;
+  background: #B80B0B;
 }
 
 #allViews {
@@ -127,7 +127,7 @@ body, html {
 }
 #allViews .social {
   background: #555;
-  color: #000;
+  color: #fff;
 }
 #allViews .leftView {
   margin-right: 150px;
