@@ -18865,6 +18865,7 @@ var Page = React.createClass({displayName: 'Page',
                 if(view.referer_c === "Facebook") facebookViews++;
                 if(view.referer_c === "Google") googlePlusViews++;
             });
+            console.log(allViews);
             markerGroup.addTo(map);
 
             that.setState({
