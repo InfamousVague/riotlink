@@ -13,7 +13,8 @@
     background:#eee;
 }
 #AdBlock{
-    margin-left:calc(50% - 168px);
+    margin-left:calc(50% - 150px);
+    padding-top:calc(35% - 75px);
 }
 #map{
     height:100%;
@@ -121,6 +122,10 @@ body,html{
     }
 }
 @media screen and (max-width: 400px) {
+    #AdBlock{
+        padding-top:1em;
+        padding-bottom:1em;
+    }
     #map{
         min-height:20em;
     }
