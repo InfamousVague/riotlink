@@ -70,7 +70,6 @@ var Page = React.createClass({
             markerGroup.clearLayers();
             data.views.map(function(view){
                 viewsTimestamps.push(view.timestamp);
-                console.log(viewsTimestamps);
                 if(typeof(view.geo) != 'null') L.marker(view.geo.ll).addTo(markerGroup);
                 if(view.referer_c === "Twitter") twitterViews++;
                 if(view.referer_c === "Facebook") facebookViews++;
