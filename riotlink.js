@@ -30,7 +30,9 @@ var RiotLink = mongoose.model('RiotLink');
 app.use(express.static(__dirname + '/public'));
 
 app.get('/', function(req, res){
-    res.redirect('h');
+    RiotLink.count({}, function( err, count){
+        res.redirect('h?lt=' + count);
+    })
 });
 
 app.get('/t/:t', function(req, res){

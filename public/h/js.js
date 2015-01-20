@@ -1,4 +1,18 @@
+function getUrlVars() {
+    var vars = {};
+    var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+        vars[key] = value;
+    });
+    return vars;
+}
+var linkCount = getUrlVars()['lt'];
+$('.number').html(linkCount);
+window.history.replaceState('Object', 'Title', '/h/');
+if(typeof(linkCount) === 'undefined'){
+    window.location = '/';
+}
 (function(){
+
     $('#trackingCheckbox').click(function(){
         if($(this).is(":checked")){
             $('.trackingMode').html('advanced tracking on');
