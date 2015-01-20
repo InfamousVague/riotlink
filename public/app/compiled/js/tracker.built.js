@@ -18654,6 +18654,132 @@ module.exports = require('./lib/React');
 var React = require('react');
 
 /*jshint ignore:start*/
+var mapView = React.createClass({displayName: 'mapView',
+    render: function(){
+        return(
+            React.DOM.div({id: "mapView"}, 
+                React.DOM.div({id: "map"})
+            )
+        );
+    }
+});
+/*jshint ignore:end*/
+
+module.exports = mapView;
+
+},{"react":145}],147:[function(require,module,exports){
+/** @jsx React.DOM */
+
+var React = require('react');
+
+/*jshint ignore:start*/
+var Numbers = React.createClass({displayName: 'Numbers',
+    render: function(){
+        return(
+            React.DOM.div({id: "numbers"}, 
+                React.DOM.div({className: "row"}, 
+                    React.DOM.div({className: "col-xs-12 col-sm-3 viewModule"}, 
+                        React.DOM.div({className: "col-xs-7 totalViews"}, 
+                            React.DOM.h2({className: "number"}, this.props.totalViews), 
+                            React.DOM.p({className: "isa"}, "Total Views")
+                        ), 
+                        React.DOM.div({className: "col-xs-5 totalViews"}, 
+                            React.DOM.i({className: "fa fa-twitter"})
+                        )
+                    ), 
+                    React.DOM.div({className: "col-xs-12 col-sm-3 viewModule"}, 
+                        React.DOM.div({className: "col-xs-7 twitterViews"}, 
+                            React.DOM.h2({className: "number"}, this.props.socialViews.twitter), 
+                            React.DOM.p({className: "isa"}, "Twitter Views")
+                        ), 
+                        React.DOM.div({className: "col-xs-5 twitterViews"}, 
+                            React.DOM.i({className: "fa fa-twitter"})
+                        )
+                    ), 
+                    React.DOM.div({className: "col-xs-12 col-sm-3 viewModule"}, 
+                        React.DOM.div({className: "col-xs-7 facebookViews"}, 
+                            React.DOM.h2({className: "number"}, this.props.socialViews.facebook), 
+                            React.DOM.p({className: "isa"}, "Facebook Views")
+                        ), 
+                        React.DOM.div({className: "col-xs-5 facebookViews"}, 
+                            React.DOM.i({className: "fa fa-twitter"})
+                        )
+                    ), 
+                    React.DOM.div({className: "col-xs-12 col-sm-3 viewModule"}, 
+                        React.DOM.div({className: "col-xs-7 googleViews"}, 
+                            React.DOM.h2({className: "number"}, this.props.socialViews.google), 
+                            React.DOM.p({className: "isa"}, "Google Views")
+                        ), 
+                        React.DOM.div({className: "col-xs-5 googleViews"}, 
+                            React.DOM.i({className: "fa fa-twitter"})
+                        )
+                    )
+                )
+            )
+        );
+    }
+});
+/*jshint ignore:end*/
+
+module.exports = Numbers;
+
+},{"react":145}],148:[function(require,module,exports){
+/** @jsx React.DOM */
+
+var React = require('react');
+
+/*jshint ignore:start*/
+var Sidebar = React.createClass({displayName: 'Sidebar',
+    render: function(){
+        return(
+            React.DOM.div({id: "sidebar"}, 
+                React.DOM.img({id: "logo", src: "app/img/logo.png"}), 
+                React.DOM.ul(null, 
+                    React.DOM.li({className: "active", id: "statsButton"}, 
+                        React.DOM.div({className: "row"}, 
+                            React.DOM.div({className: "col-xs-3"}, 
+                            React.DOM.i({className: "fa fa-area-chart"})
+                            ), 
+                            React.DOM.div({className: "col-xs-9"}, 
+                                "Statistics"
+                            )
+                        )
+                    ), 
+                    React.DOM.li({id: "geoButton"}, 
+                        React.DOM.div({className: "row"}, 
+                            React.DOM.div({className: "col-xs-3"}, 
+                                React.DOM.i({className: "fa fa-map-marker"})
+                            ), 
+                            React.DOM.div({className: "col-xs-9"}, 
+                                "Geolocation"
+                            )
+                        )
+                    ), 
+                    React.DOM.li(null, 
+                        React.DOM.div({className: "row"}, 
+                            React.DOM.div({className: "col-xs-3"}, 
+                                React.DOM.i({className: "fa fa-cog"})
+                            ), 
+                            React.DOM.div({className: "col-xs-9"}, 
+                                "Settings"
+                            )
+                        )
+                    )
+                )
+            )
+        );
+    }
+});
+/*jshint ignore:end*/
+
+module.exports = Sidebar;
+
+},{"react":145}],149:[function(require,module,exports){
+/** @jsx React.DOM */
+
+var React = require('react');
+
+/*jshint ignore:start*/
 var AdBlock = React.createClass({displayName: 'AdBlock',
     componentDidMount: function(){
         ( function() {
@@ -18676,7 +18802,7 @@ var AdBlock = React.createClass({displayName: 'AdBlock',
 
 module.exports = AdBlock;
 
-},{"react":145}],147:[function(require,module,exports){
+},{"react":145}],150:[function(require,module,exports){
 /** @jsx React.DOM */
 
 var React = require('react');
@@ -18698,7 +18824,7 @@ var AllViews = React.createClass({displayName: 'AllViews',
 
 module.exports = AllViews;
 
-},{"react":145}],148:[function(require,module,exports){
+},{"react":145}],151:[function(require,module,exports){
 /** @jsx React.DOM */
 
 var React = require('react');
@@ -18721,26 +18847,9 @@ var CurrentViews = React.createClass({displayName: 'CurrentViews',
 
 module.exports = CurrentViews;
 
-},{"react":145}],149:[function(require,module,exports){
-/** @jsx React.DOM */
-
-var React = require('react');
-
-/*jshint ignore:start*/
-var mapView = React.createClass({displayName: 'mapView',
-    render: function(){
-        return(
-            React.DOM.div({id: "mapView"}, 
-                React.DOM.div({id: "map"})
-            )
-        );
-    }
-});
-/*jshint ignore:end*/
-
-module.exports = mapView;
-
-},{"react":145}],150:[function(require,module,exports){
+},{"react":145}],152:[function(require,module,exports){
+arguments[4][146][0].apply(exports,arguments)
+},{"dup":146,"react":145}],153:[function(require,module,exports){
 /** @jsx React.DOM */
 
 var React = require('react');
@@ -18770,7 +18879,7 @@ var SocialFollowing = React.createClass({displayName: 'SocialFollowing',
 
 module.exports = SocialFollowing;
 
-},{"react":145}],151:[function(require,module,exports){
+},{"react":145}],154:[function(require,module,exports){
 /** @jsx React.DOM */
 
 var React = require('react');
@@ -18787,15 +18896,13 @@ var ViewsChart = React.createClass({displayName: 'ViewsChart',
 
 module.exports = ViewsChart;
 
-},{"react":145}],152:[function(require,module,exports){
+},{"react":145}],155:[function(require,module,exports){
 /** @jsx React.DOM */
 
 var React           = require('react'),
-    CurrentViews    = require('./global/currentViews.jsx'),
-    AllViews        = require('./global/allViews.jsx'),
-    SocialFollowing = require('./global/socialFollowing.jsx'),
-    Map             = require('./global/map.jsx'),
-    AdBlock         = require('./global/adblock.jsx'),
+    Sidebar         = require('./components/sidebar.jsx'),
+    Numbers         = require('./components/numbers.jsx'),
+    Map             = require('./components/map.jsx'),
     socket          = io();
 
 
@@ -18822,7 +18929,20 @@ var Page = React.createClass({displayName: 'Page',
         };
     },
     componentDidMount: function(){
+        $('#mapHolder').hide();
+        $('#statsButton').click(function(){
+            $('#sidebar ul li').removeClass('active');
+            $(this).addClass('active');
+            $('#mapHolder').hide();
+            $('#stats').show();
+        });
+        $('#geoButton').click(function(){
+            $('#sidebar ul li').removeClass('active');
+            $(this).addClass('active');
+            $('#mapHolder').show();
+            $('#stats').hide();
 
+        });
 
         var that = this;
         /*==================
@@ -18883,26 +19003,17 @@ var Page = React.createClass({displayName: 'Page',
     render: function(){
         return(
             React.DOM.div({className: "reactBody tracker"}, 
-                React.DOM.div({className: "container-fluid"}, 
-                    React.DOM.div({className: "row"}, 
-                        React.DOM.div({className: "col-xs-12 col-sm-4", style: {'padding-right':'0'}}, 
-                            CurrentViews({currentViews: this.state.currentViews})
-                        ), 
-                        React.DOM.div({className: "col-xs-12 col-sm-5 socialViewsContainer", style: {'padding-left':'0'}}, 
-                            AllViews({totalViews: this.state.totalViews}), 
-                            SocialFollowing({socialViews: this.state.socialViews})
-                        ), 
-                        React.DOM.div({className: "col-xs-12 col-sm-3 adContainer"}, 
-                            AdBlock(null)
-                        )
+                React.DOM.div({className: "container-fluid fullHeight"}, 
+                    React.DOM.div({className: "col-md-2 fullHeight noLeft"}, 
+                        Sidebar(null)
                     ), 
-                    React.DOM.div({className: "row"}, 
-                        React.DOM.div({className: "col-xs-12 col-sm-5"}, 
-                            "Grpah data coming soon"
-                        ), 
-                        React.DOM.div({className: "col-xs-12 col-sm-7"}, 
-                            Map(null)
-                        )
+                    React.DOM.div({id: "stats", className: "col-md-10"}, 
+                        React.DOM.h1(null, "Statistics"), 
+                        Numbers({totalViews: this.state.totalViews, socialViews: this.state.socialViews})
+                    ), 
+                    React.DOM.div({id: "mapHolder", className: "col-md-10"}, 
+                        React.DOM.h1(null, "Views by location"), 
+                        Map(null)
                     )
                 )
             )
@@ -18916,4 +19027,4 @@ React.renderComponent(
 );
 /*jshint ignore:end*/
 
-},{"./global/adblock.jsx":146,"./global/allViews.jsx":147,"./global/currentViews.jsx":148,"./global/map.jsx":149,"./global/socialFollowing.jsx":150,"react":145}]},{},[146,147,148,149,150,151,152]);
+},{"./components/map.jsx":146,"./components/numbers.jsx":147,"./components/sidebar.jsx":148,"react":145}]},{},[146,147,148,149,150,151,152,153,154,155]);

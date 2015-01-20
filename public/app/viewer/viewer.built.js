@@ -18723,9 +18723,6 @@ var Page = React.createClass({displayName: 'Page',
         };
     },
     componentDidMount: function(){
-        if(tt === 'b')
-            $('#viewToolbar').addClass('simpleTracking');
-
         $('#debugMessage').hide();
         setTimeout(function(){
             $('#debugMessage').fadeIn();

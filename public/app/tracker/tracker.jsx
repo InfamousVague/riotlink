@@ -1,11 +1,9 @@
 /** @jsx React.DOM */
 
 var React           = require('react'),
-    CurrentViews    = require('./global/currentViews.jsx'),
-    AllViews        = require('./global/allViews.jsx'),
-    SocialFollowing = require('./global/socialFollowing.jsx'),
-    Map             = require('./global/map.jsx'),
-    AdBlock         = require('./global/adblock.jsx'),
+    Sidebar         = require('./components/sidebar.jsx'),
+    Numbers         = require('./components/numbers.jsx'),
+    Map             = require('./components/map.jsx'),
     socket          = io();
 
 
@@ -32,7 +30,20 @@ var Page = React.createClass({
         };
     },
     componentDidMount: function(){
+        $('#mapHolder').hide();
+        $('#statsButton').click(function(){
+            $('#sidebar ul li').removeClass('active');
+            $(this).addClass('active');
+            $('#mapHolder').hide();
+            $('#stats').show();
+        });
+        $('#geoButton').click(function(){
+            $('#sidebar ul li').removeClass('active');
+            $(this).addClass('active');
+            $('#mapHolder').show();
+            $('#stats').hide();
 
+        });
 
         var that = this;
         /*==================
@@ -93,26 +104,17 @@ var Page = React.createClass({
     render: function(){
         return(
             <div className="reactBody tracker">
-                <div className="container-fluid">
-                    <div className="row">
-                        <div className="col-xs-12 col-sm-4" style={{'padding-right':'0'}}>
-                            <CurrentViews currentViews={this.state.currentViews}/>
-                        </div>
-                        <div className="col-xs-12 col-sm-5 socialViewsContainer" style={{'padding-left':'0'}}>
-                            <AllViews totalViews={this.state.totalViews}/>
-                            <SocialFollowing socialViews={this.state.socialViews}/>
-                        </div>
-                        <div className="col-xs-12 col-sm-3 adContainer">
-                            <AdBlock />
-                        </div>
+                <div className="container-fluid fullHeight">
+                    <div className="col-md-2 fullHeight noLeft">
+                        <Sidebar />
                     </div>
-                    <div className="row">
-                        <div className="col-xs-12 col-sm-5">
-                            Grpah data coming soon
-                        </div>
-                        <div className="col-xs-12 col-sm-7">
-                            <Map />
-                        </div>
+                    <div id="stats" className="col-md-10">
+                        <h1>Statistics</h1>
+                        <Numbers totalViews={this.state.totalViews} socialViews={this.state.socialViews} />
+                    </div>
+                    <div id="mapHolder" className="col-md-10">
+                        <h1>Views by location</h1>
+                        <Map />
                     </div>
                 </div>
             </div>
