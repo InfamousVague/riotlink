@@ -16,6 +16,12 @@
     margin-left:calc(50% - 150px);
     padding-top:3.5em;
 }
+#mapView{
+    height:100%;
+}
+#mapHolder{
+    height:calc(100% - 10em);
+}
 #map{
     height:100%;
     min-height:40em;
