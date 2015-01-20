@@ -111,10 +111,18 @@ var Page = React.createClass({
                     </div>
                     <div id="stats" className="col-md-10">
                         <h1 className="pageTitle">Statistics</h1>
+                        <ol className="breadcrumb">
+                            <li>Tracker</li>
+                            <li className="active">Statistics</li>
+                        </ol>
                         <Numbers totalViews={this.state.totalViews} socialViews={this.state.socialViews} />
                     </div>
                     <div id="mapHolder" className="col-md-10">
                         <h1 className="pageTitle">Views by location</h1>
+                            <ol className="breadcrumb">
+                            <li>Tracker</li>
+                            <li className="active">Location Map</li>
+                        </ol>
                         <Map />
                     </div>
                 </div>

@@ -53,7 +53,7 @@ body, html {
 }
 
 #mapHolder {
-  height: calc(100% - 10em);
+  height: calc(100% - 15em);
 }
 
 #map {
@@ -172,24 +172,6 @@ body, html {
     padding: 0;
   }
 }
-@media screen and (max-width: 400px) {
-  .adContainer {
-    height: 13em;
-  }
-
-  #AdBlock {
-    padding-top: 1em;
-    padding-bottom: 1em;
-  }
-
-  #map {
-    min-height: 20em;
-  }
-
-  .col-xs-12 {
-    padding: 0;
-  }
-}
 .fullHeight {
   height: 100%;
 }
@@ -284,6 +266,36 @@ body, html {
   margin-top: .2em;
 }
 
+@media screen and (max-width: 400px) {
+  .adContainer {
+    height: 13em;
+  }
+
+  #AdBlock {
+    padding-top: 1em;
+    padding-bottom: 1em;
+  }
+
+  #map {
+    min-height: 20em;
+  }
+
+  .col-xs-12 {
+    padding: 0;
+  }
+
+  #sidebar {
+    height: auto;
+  }
+
+  .fullHeight {
+    height: auto;
+  }
+
+  .noLeft {
+    padding-right: 0;
+  }
+}
 .simpleTracking {
   position: absolute;
   top: 0;

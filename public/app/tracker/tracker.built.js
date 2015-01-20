@@ -19010,10 +19010,18 @@ var Page = React.createClass({displayName: 'Page',
                     ), 
                     React.DOM.div({id: "stats", className: "col-md-10"}, 
                         React.DOM.h1({className: "pageTitle"}, "Statistics"), 
+                        React.DOM.ol({className: "breadcrumb"}, 
+                            React.DOM.li(null, "Tracker"), 
+                            React.DOM.li({className: "active"}, "Statistics")
+                        ), 
                         Numbers({totalViews: this.state.totalViews, socialViews: this.state.socialViews})
                     ), 
                     React.DOM.div({id: "mapHolder", className: "col-md-10"}, 
                         React.DOM.h1({className: "pageTitle"}, "Views by location"), 
+                            React.DOM.ol({className: "breadcrumb"}, 
+                            React.DOM.li(null, "Tracker"), 
+                            React.DOM.li({className: "active"}, "Location Map")
+                        ), 
                         Map(null)
                     )
                 )
