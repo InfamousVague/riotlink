@@ -1,43 +1,171 @@
-body,html{
-    margin:0;
-    padding:0;
-    height:100%;
-    width:100%;
+*{
+    font-family: 'Roboto', sans-serif;
 }
-#logo{
-    position:absolute;
-    bottom:1em;
-    right:1em;
-    width:250px;
-    opacity:.5;
+
+#header{
+    background-image:url('./assets/background.png');
+    padding-top:8em;
+    overflow-x:hidden;
 }
-#riot{
-    position:absolute;
-    top:calc(50% - 120px);
-    left:12.5%;
-    right:12.5%;
-    bottom:calc(50% + 40px);
+
+.tagline{
+    font-size:18pt;
+    color:#fff;
+    font-family: 'Roboto', sans-serif;
+    font-weight:200;
+    margin:3.5em 0 .5em 0;
+}
+::-webkit-input-placeholder{
+    font-family: 'Roboto', sans-serif;
+    font-weight:200;
+}
+:-moz-placeholder{
+    font-family: 'Roboto', sans-serif;
+    font-weight:200;
+
+}
+::-moz-placeholder{
+    font-family: 'Roboto', sans-serif;
+    font-weight:200;
+
+}
+:-ms-input-placeholder{
+    font-family: 'Roboto', sans-serif;
+    font-weight:200;
+
+}
+*:focus{
+    outline:0;
+}
+textarea:focus, input:focus{
+    outline:0;
+}
+#link, #track{
+    font-family: 'Roboto', sans-serif;
+    font-size:24pt;
+    padding:.3em;
+
+}
+#link{
+    width:80%;
     border-radius:4px 0 0 4px;
+    border:1px solid #ccc;
+    border-right:none;
+    font-weight:200;
 }
 #track{
-    position:absolute;
-    top:0;
-    bottom:0;
-    right:0;
-    width:10em;
-
-}
-#options{
-    position:absolute;
-    bottom:-1.5em;
+    width:20%;
+    border-radius:0 4px 4px 0;
+    border:1px solid #444;
+    border-left:none;
+    background:#333333;
+    font-weight:200;
     color:#fff;
-    font-weight:bolder;
-    font-family: 'Poiret One', cursive;
-    text-shadow:1px 1px 5px #000;
-    font-size:18pt;
+    cursor:pointer;
+}
+#track:hover{
+    background:#222;
+}
+#track:active{
+    background:#111;
+}
+.trackerHolder{
+    position:relative;
+}
+.trackedToDate{
+    position:absolute;
+    bottom:1em;
+    font-size:14pt;
+    color:rgba(255,255,255,.3);
+    font-weight:200;
+    margin-left:12px;
+}
+.trackedToDate .number{
+    font-size:30pt;
+}
+.laptop{
+    margin-bottom:3em;
+    height:100%;
+}
+#offerings{
+    background:#eee;
+    padding:3em 0;
+}
+.module{
+    margin:1em;
+    background:#fff;
+    border-radius:3px;
+    border:1px solid #ddd;
+    padding:.5em;
+    box-shadow:2px 2px 2px rgba(0,0,0,.02);
+}
+.module i{
+    font-size:40pt;
+    padding:.2em 0;
+}
+#testimonials{
+    height:5em;
+    background:#f5f5f5;
+    border-top:1px solid #ddd;
+    border-bottom:1px solid #ddd;
+}
+.quotes{
+    font-size:30pt;
+    padding-top:.5em;
+    color:#555;
+}
+.quote{
+    max-width:100%;
+    text-overflow: ellipsis;
+    height:28px;
+    overflow:hidden;
+    margin-top:1em;
+    color:#f8705f;
+    font-size:16pt;
+    font-weight:200;
+}
+#socialMedia{
+    background:#fff;
+    padding-top:4em;
+}
+#socialMedia h2{
+    font-weight:200;
+    color:#f8705f;
+    margin:0;
+    font-size:26pt;
+    margin-bottom:.5em;
+}
+#socialMedia .subtext{
+    font-size:16pt;
+    font-weight:200;
+}
+.right{
+    float:right;
+}
+.showcase{
+    width:80%;
+    float:right;
+}
+#footer{
+    width:100%;
+    height:4em;
+    background:#333;
+}
+.madewith{
+    color:#fff;
+    font-size:16pt;
+    font-weight:200;
+    margin-top:.8em;
+    float:right;
+}
+.fa-heart{
+    color:#f8705f;
 }
 /* Checkbox */
-
+.trackingMode{
+    margin-left:1em;
+    color:#fff;
+}
 .regular-radio {
     position:relative;
     top:.6em;
@@ -91,160 +219,26 @@ body,html{
     -moz-transition: all 0.3s ease;
     -o-transition: all 0.3s ease;
 }
-@-webkit-keyframes droplet {
-    from {
-        width:0;
-        height:0;
-        left:calc(50%);
-        top:calc(50%);
-        opacity:1;
-        border:0em solid rgba(255,255,255,.7);
-
+@media screen and (max-width: 800px) {
+    .laptop{
+        display:none;
     }
-    to {
-        width:8em;
-        height:8em;
-        left:calc(50% - 6em);
-        top:calc(50% - 6em);
-        opacity:0;
-        border:2em solid rgba(255,255,255,.7);
-
+    #link{
+        width:65%;
     }
-}
-@keyframes droplet {
-    from {
-        width:0;
-        height:0;
-        left:calc(50%);
-        top:calc(50%);
-        opacity:1;
-        border:0em solid rgba(255,255,255,.5);
-
+    #track{
+        width:35%;
     }
-    to {
-        width:8em;
-        height:8em;
-        left:calc(50% - 4em);
-        top:calc(50% - 4em);
-        opacity:.2;
-        border:2em solid rgba(255,255,255,.5);
-
+    .tagline{
+        display:none;
     }
-}
-
-.droplet{
-    cursor:pointer;
-    margin:0 auto;
-    max-width:20%;
-    font-size:36pt;
-    overflow:hidden;
-    border-radius:0 4px 4px 0;
-    border:none;
-    color:#fff;
-    position:relative;
-    outline:none;
-    background:transparent;
-    overflow:hidden;
-    z-index:1;
-    text-shadow:1px 1px 1px rgba(0,0,0,.2);
-}
-.droplet:hover:before{
-    -webkit-animation: droplet .3s linear;
-    animation: droplet .3s linear;
-
-}
-.droplet:active:after{
-    background:#c0392b;
-}
-
-.droplet:after{
-    content: ' ';
-    position:absolute;
-    top:0;
-    right:0;
-    bottom:0;
-    left:0;
-    background:#c0392b;
-    z-index:-2;
-
-
-}
-.droplet:before{
-    content:' ';
-    position:absolute;
-    background:#B80B0B;
-    z-index:-1;
-    width:0;
-    height:0;
-    left:calc(50%);
-    top:calc(50%);
-    opacity:1;
-    border:0 solid
-    rgba(255,255,255,.5);
-    border-radius:100%;
-    transition:left .3s ease, top .3s ease, height .3s ease, width .3s ease, opacity .3s ease;
-}
-
-
-
-
-textarea, input { outline: none; }
-::-webkit-input-placeholder {
-    font-family: 'Poiret One', cursive;
-    color:#ccc;
-}
-input{
-    font-family: 'Poiret One', cursive;
-    color:#333;
-}
-:-ms-input-placeholder {
-    font-family: 'Poiret One', cursive;
-    color:#ccc;
-}
-
-:-moz-placeholder {
-    font-family: 'Poiret One', cursive;
-    color:#ccc;
-}
-
-::-moz-placeholder {
-    font-family: 'Poiret One', cursive;
-    color:#ccc;
-}
-
-#link{
-    position:absolute;
-    width:90%;
-    font-size:30pt;
-    padding:.3em;
-    border-radius:4px 0 0 4px;
-    background:#fff;
-    top:0;
-    left:0;
-    bottom:0;
-    border:1px solid #ccc;
-
-}
-
-@media screen and (max-width: 400px) {
-    #options{
-        position:absolute;
-        bottom:-1.5em;
-        color:#fff;
-        font-weight:bolder;
-        font-family: 'Poiret One', cursive;
-        text-shadow:1px 1px 5px #000;
-        font-size:14pt;
+    #logo{
+        margin-bottom:2em;
     }
-    #riot{
-        position:absolute;
-        top:calc(50% - 120px);
-        left:2%;
-        right:2%;
-        bottom:calc(50% + 40px);
-        border-radius:5px;
+    #header{
+        height:30em;
     }
-    .droplet{
-        border-radius:0 4px 4px 0;
+    .trackedToDate{
+        display:none;
     }
 }
