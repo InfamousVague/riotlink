@@ -198,53 +198,66 @@ body, html {
 }
 
 #viewToolbar {
-  width: 100%;
+  width: 30em;
   height: auto;
   z-index: 1000;
-  background: #333;
+  background: #444;
+  border: 1px solid #333;
   position: absolute;
-  bottom: 0;
+  top: calc(50% - 15em);
+  left: calc(50% - 15em);
+  padding-bottom: 2em;
   font-family: 'Poiret One', cursive;
   overflow-x: hidden;
+  border-radius: 5px;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.5);
+}
+#viewToolbar .title {
+  background: url("../../../h/assets/background.png");
+  padding: 1em 0;
+}
+#viewToolbar .descript {
+  color: #fff;
+  padding: 1em;
 }
 #viewToolbar .logo {
   height: 20px;
-  margin-top: 10px;
   margin-left: 10px;
-}
-#viewToolbar label {
-  color: #ccc;
-  margin-left: 2em;
-  margin-right: 1em;
 }
 #viewToolbar input {
   border: none;
   height: 100%;
   font-size: 18pt;
-  width: calc(100% - 80px);
-  background: #444;
-  color: #eee;
+  width: 80%;
+  background: #fff;
+  color: #333;
+  float: left;
   padding-left: .5em;
   font-family: 'Poiret One', cursive;
+  margin: 0;
+  border-radius: 3px 0 0 3px;
 }
-#viewToolbar .getRighted {
-  margin-right: 2em;
+#viewToolbar .container {
+  position: relative;
+  width: 100%;
 }
 #viewToolbar .button {
   border: none;
   position: absolute;
   top: 0;
+  height: 36px;
   bottom: 0;
   padding: .6em;
-  margin-top: 0;
-  background: #c0392b;
+  border-radius: 0 3px 3px 0;
+  background: #f76f5f;
   font-weight: bolder;
   color: #fff;
-  overflow: hidden;
+  float: right;
 }
 #viewToolbar .button:hover {
-  background: #B80B0B;
+  background: #f06c5c;
   text-decoration: none;
+  cursor: pointer;
 }
 #viewToolbar .inputWrapper {
   position: absolute;
@@ -255,24 +268,22 @@ body, html {
 }
 
 @media screen and (max-width: 400px) {
-  #viewToolbar {
-    padding: 0 1em;
-  }
-  #viewToolbar .logo {
-    margin-bottom: 1em;
-  }
-  #viewToolbar input {
-    width: calc(100% - 50px);
-  }
-  #viewToolbar label {
-    display: none;
-  }
-  #viewToolbar .button {
-    width: 100%;
+  body {
+    overflow: hidden;
   }
 
-  .simpleTracking {
-    padding-top: calc(50% - 2em);
+  #viewToolbar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    border-radius: 0;
+    border: none;
+  }
+
+  .innerBody {
+    padding: .5em;
   }
 }
 
