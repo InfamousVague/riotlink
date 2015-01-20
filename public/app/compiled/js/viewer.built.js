@@ -18658,24 +18658,26 @@ var ViewToolbar = React.createClass({displayName: 'ViewToolbar',
     render: function(){
         return(
             React.DOM.div({id: "viewToolbar"}, 
-                React.DOM.div({className: "title"}, 
-                    React.DOM.a({href: "/"}, 
-                        React.DOM.img({src: "app/img/logo.png", className: "logo"})
-                    )
-                ), 
-                React.DOM.div({className: "row innerBody"}, 
-                    React.DOM.div({className: "col-xs-12"}, 
-                        React.DOM.p({className: "descript"}, "Your share link is:"), 
-                        React.DOM.div({className: "container"}, 
-                            React.DOM.input({id: "shortLink", value: 'http://rls.li/r/' + this.props.rid}), 
-                            React.DOM.a({className: "button", 'data-clipboard-text': 'http://rls.li/r/' + this.props.rid, href: "#", id: "shortLinkLink"}, "Share")
+                React.DOM.div({className: "container-fluid"}, 
+                    React.DOM.div({className: "title"}, 
+                        React.DOM.a({href: "/"}, 
+                            React.DOM.img({src: "app/img/logo.png", className: "logo"})
                         )
                     ), 
-                    React.DOM.div({className: "col-xs-12"}, 
-                        React.DOM.p({className: "descript"}, "Track it with:"), 
-                        React.DOM.div({className: "container"}, 
-                            React.DOM.input({id: "trackingLink", value: 'http://rls.li/t/' + this.props.tid}), 
-                            React.DOM.a({className: "button", href: 'http://rls.li/t/' + this.props.tid, target: "_blank", id: "trackingLinkLink"}, "Track")
+                    React.DOM.div({className: "row innerBody"}, 
+                        React.DOM.div({className: "col-xs-12"}, 
+                            React.DOM.p({className: "descript"}, "Your share link is:"), 
+                            React.DOM.div({className: "container"}, 
+                                React.DOM.input({id: "shortLink", value: 'http://rls.li/r/' + this.props.rid}), 
+                                React.DOM.a({className: "button", 'data-clipboard-text': 'http://rls.li/r/' + this.props.rid, href: "#", id: "shortLinkLink"}, "Share")
+                            )
+                        ), 
+                        React.DOM.div({className: "col-xs-12"}, 
+                            React.DOM.p({className: "descript"}, "Track it with:"), 
+                            React.DOM.div({className: "container"}, 
+                                React.DOM.input({id: "trackingLink", value: 'http://rls.li/t/' + this.props.tid}), 
+                                React.DOM.a({className: "button", href: 'http://rls.li/t/' + this.props.tid, target: "_blank", id: "trackingLinkLink"}, "Track")
+                            )
                         )
                     )
                 )
