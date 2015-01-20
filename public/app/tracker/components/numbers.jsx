@@ -14,7 +14,7 @@ var Numbers = React.createClass({
                             <p className="isa">Total Views</p>
                         </div>
                         <div className="col-xs-5 totalViews">
-                            <i className="fa fa-twitter"></i>
+                            <i className="fa fa-eye"></i>
                         </div>
                     </div>
                     <div className="col-xs-12 col-sm-3 viewModule">
@@ -32,7 +32,7 @@ var Numbers = React.createClass({
                             <p className="isa">Facebook Views</p>
                         </div>
                         <div className="col-xs-5 facebookViews">
-                            <i className="fa fa-twitter"></i>
+                            <i className="fa fa-facebook"></i>
                         </div>
                     </div>
                     <div className="col-xs-12 col-sm-3 viewModule">
@@ -41,7 +41,7 @@ var Numbers = React.createClass({
                             <p className="isa">Google Views</p>
                         </div>
                         <div className="col-xs-5 googleViews">
-                            <i className="fa fa-twitter"></i>
+                            <i className="fa fa-google-plus"></i>
                         </div>
                     </div>
                 </div>

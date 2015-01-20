@@ -18684,7 +18684,7 @@ var Numbers = React.createClass({displayName: 'Numbers',
                             React.DOM.p({className: "isa"}, "Total Views")
                         ), 
                         React.DOM.div({className: "col-xs-5 totalViews"}, 
-                            React.DOM.i({className: "fa fa-twitter"})
+                            React.DOM.i({className: "fa fa-eye"})
                         )
                     ), 
                     React.DOM.div({className: "col-xs-12 col-sm-3 viewModule"}, 
@@ -18702,7 +18702,7 @@ var Numbers = React.createClass({displayName: 'Numbers',
                             React.DOM.p({className: "isa"}, "Facebook Views")
                         ), 
                         React.DOM.div({className: "col-xs-5 facebookViews"}, 
-                            React.DOM.i({className: "fa fa-twitter"})
+                            React.DOM.i({className: "fa fa-facebook"})
                         )
                     ), 
                     React.DOM.div({className: "col-xs-12 col-sm-3 viewModule"}, 
@@ -18711,7 +18711,7 @@ var Numbers = React.createClass({displayName: 'Numbers',
                             React.DOM.p({className: "isa"}, "Google Views")
                         ), 
                         React.DOM.div({className: "col-xs-5 googleViews"}, 
-                            React.DOM.i({className: "fa fa-twitter"})
+                            React.DOM.i({className: "fa fa-google-plus"})
                         )
                     )
                 )
@@ -18940,6 +18940,7 @@ var Page = React.createClass({displayName: 'Page',
             $('#sidebar ul li').removeClass('active');
             $(this).addClass('active');
             $('#mapHolder').show();
+            map.invalidateSize(false);
             $('#stats').hide();
 
         });
@@ -19008,11 +19009,11 @@ var Page = React.createClass({displayName: 'Page',
                         Sidebar(null)
                     ), 
                     React.DOM.div({id: "stats", className: "col-md-10"}, 
-                        React.DOM.h1(null, "Statistics"), 
+                        React.DOM.h1({className: "pageTitle"}, "Statistics"), 
                         Numbers({totalViews: this.state.totalViews, socialViews: this.state.socialViews})
                     ), 
                     React.DOM.div({id: "mapHolder", className: "col-md-10"}, 
-                        React.DOM.h1(null, "Views by location"), 
+                        React.DOM.h1({className: "pageTitle"}, "Views by location"), 
                         Map(null)
                     )
                 )

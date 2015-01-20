@@ -245,6 +245,10 @@ body, html {
   background: #222;
 }
 
+.pageTitle {
+  margin-bottom: 1em;
+}
+
 #numbers .viewModule {
   padding: 1em;
 }

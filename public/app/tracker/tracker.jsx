@@ -41,6 +41,7 @@ var Page = React.createClass({
             $('#sidebar ul li').removeClass('active');
             $(this).addClass('active');
             $('#mapHolder').show();
+            map.invalidateSize(false);
             $('#stats').hide();
 
         });
@@ -109,11 +110,11 @@ var Page = React.createClass({
                         <Sidebar />
                     </div>
                     <div id="stats" className="col-md-10">
-                        <h1>Statistics</h1>
+                        <h1 className="pageTitle">Statistics</h1>
                         <Numbers totalViews={this.state.totalViews} socialViews={this.state.socialViews} />
                     </div>
                     <div id="mapHolder" className="col-md-10">
-                        <h1>Views by location</h1>
+                        <h1 className="pageTitle">Views by location</h1>
                         <Map />
                     </div>
                 </div>
