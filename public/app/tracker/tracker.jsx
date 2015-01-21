@@ -118,15 +118,15 @@ var Page = React.createClass({
                 socialViews     : {
                     twitter     : {
                         numbers : twitterViews,
-                        percent : (twitterViews === 0) ? 0 : (twitterViews / data.totalViews) * 100,
+                        percent : (twitterViews === 0) ? 0 : Math.floor((twitterViews / data.totalViews) * 100),
                     },
                     facebook    : {
                         numbers : facebookViews,
-                        percent : (facebookViews === 0) ? 0 : (facebookViews / data.totalViews) * 100,
+                        percent : (facebookViews === 0) ? 0 : Math.floor((facebookViews / data.totalViews) * 100),
                     },
                     google      : {
                         numbers : googlePlusViews,
-                        percent : (googlePlusViews === 0) ? 0 : (googlePlusViews / data.totalViews) * 100,
+                        percent : (googlePlusViews === 0) ? 0 : Math.floor((googlePlusViews / data.totalViews) * 100),
                     }
                 }
             });
