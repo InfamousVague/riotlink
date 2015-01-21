@@ -239,6 +239,9 @@ body, html {
   margin-bottom: 1em;
 }
 
+#numbers .number {
+  font-size: 28pt;
+}
 #numbers .viewModule {
   padding: 1em;
 }
@@ -252,7 +255,7 @@ body, html {
   overflow: hidden;
 }
 #numbers .viewModule .percentBar p {
-  font-size: 30pt;
+  font-size: 28pt;
   font-weight: bolder;
   color: rgba(255, 255, 255, 0.5);
   float: right;
