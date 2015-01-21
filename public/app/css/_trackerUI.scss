@@ -12,9 +12,9 @@
     overflow-x:hidden;
     background:#eee;
 }
-#AdBlock{
-    margin-left:calc(50% - 150px);
-    padding-top:3.5em;
+#AdBlock, #AdBlock2{
+    float:right;
+    margin-top:1em;
 }
 #mapView{
     height:100%;

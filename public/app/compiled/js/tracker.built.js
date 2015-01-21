@@ -18755,7 +18755,7 @@ var Sidebar = React.createClass({displayName: 'Sidebar',
                             )
                         )
                     ), 
-                    React.DOM.li(null, 
+                    React.DOM.li({id: "settingsButton"}, 
                         React.DOM.div({className: "row"}, 
                             React.DOM.div({className: "col-xs-3"}, 
                                 React.DOM.i({className: "fa fa-cog"})
@@ -18784,7 +18784,7 @@ var AdBlock = React.createClass({displayName: 'AdBlock',
     componentDidMount: function(){
         ( function() {
             if (window.CHITIKA === undefined) { window.CHITIKA = { 'units' : [] }; };
-            var unit = {"calltype":"async[2]","publisher":"mdwisniewski","width":300,"height":150,"sid":"Chitika Default"};
+            var unit = {"calltype":"async[2]","publisher":"mdwisniewski","width":728,"height":90,"sid":"Chitika Default"};
             var placement_id = window.CHITIKA.units.length;
             window.CHITIKA.units.push(unit);
             $('#AdBlock').html('<div id="chitikaAdBlock-' + placement_id + '"></div>');
@@ -18808,6 +18808,34 @@ module.exports = AdBlock;
 var React = require('react');
 
 /*jshint ignore:start*/
+var AdBlock = React.createClass({displayName: 'AdBlock',
+    componentDidMount: function(){
+        ( function() {
+            if (window.CHITIKA === undefined) { window.CHITIKA = { 'units' : [] }; };
+            var unit = {"calltype":"async[2]","publisher":"mdwisniewski","width":728,"height":90,"sid":"Chitika Default2"};
+            var placement_id = window.CHITIKA.units.length;
+            window.CHITIKA.units.push(unit);
+            $('#AdBlock2').html('<div id="chitikaAdBlock-' + placement_id + '"></div>');
+        }());
+    },
+    render: function(){
+        return(
+            React.DOM.div({id: "AdBlock2"}, 
+                "Ad Goes Here"
+            )
+        );
+    }
+});
+/*jshint ignore:end*/
+
+module.exports = AdBlock;
+
+},{"react":145}],151:[function(require,module,exports){
+/** @jsx React.DOM */
+
+var React = require('react');
+
+/*jshint ignore:start*/
 var AllViews = React.createClass({displayName: 'AllViews',
     render: function(){
         return(
@@ -18824,7 +18852,7 @@ var AllViews = React.createClass({displayName: 'AllViews',
 
 module.exports = AllViews;
 
-},{"react":145}],151:[function(require,module,exports){
+},{"react":145}],152:[function(require,module,exports){
 /** @jsx React.DOM */
 
 var React = require('react');
@@ -18847,9 +18875,9 @@ var CurrentViews = React.createClass({displayName: 'CurrentViews',
 
 module.exports = CurrentViews;
 
-},{"react":145}],152:[function(require,module,exports){
+},{"react":145}],153:[function(require,module,exports){
 arguments[4][146][0].apply(exports,arguments)
-},{"dup":146,"react":145}],153:[function(require,module,exports){
+},{"dup":146,"react":145}],154:[function(require,module,exports){
 /** @jsx React.DOM */
 
 var React = require('react');
@@ -18879,7 +18907,7 @@ var SocialFollowing = React.createClass({displayName: 'SocialFollowing',
 
 module.exports = SocialFollowing;
 
-},{"react":145}],154:[function(require,module,exports){
+},{"react":145}],155:[function(require,module,exports){
 /** @jsx React.DOM */
 
 var React = require('react');
@@ -18896,13 +18924,15 @@ var ViewsChart = React.createClass({displayName: 'ViewsChart',
 
 module.exports = ViewsChart;
 
-},{"react":145}],155:[function(require,module,exports){
+},{"react":145}],156:[function(require,module,exports){
 /** @jsx React.DOM */
 
 var React           = require('react'),
     Sidebar         = require('./components/sidebar.jsx'),
     Numbers         = require('./components/numbers.jsx'),
     Map             = require('./components/map.jsx'),
+    AdBlock         = require('./global/adblock.jsx'),
+    AdBlock2        = require('./global/adblock2.jsx'),
     socket          = io();
 
 
@@ -18935,6 +18965,7 @@ var Page = React.createClass({displayName: 'Page',
             $(this).addClass('active');
             $('#mapHolder').hide();
             $('#stats').show();
+            $('#settings').hide();
         });
         $('#geoButton').click(function(){
             $('#sidebar ul li').removeClass('active');
@@ -18942,9 +18973,17 @@ var Page = React.createClass({displayName: 'Page',
             $('#mapHolder').show();
             map.invalidateSize(false);
             $('#stats').hide();
+            $('#settings').hide();
 
         });
+        $('#settingsButton').click(function(){
+            $('#sidebar ul li').removeClass('active');
+            $(this).addClass('active');
+            $('#settings').show();
+            $('#stats').hide();
+            $('#mapHolder').hide();
 
+        });
         var that = this;
         /*==================
         =     SocketIO     =
@@ -19009,7 +19048,15 @@ var Page = React.createClass({displayName: 'Page',
                         Sidebar(null)
                     ), 
                     React.DOM.div({id: "stats", className: "col-md-10"}, 
-                        React.DOM.h1({className: "pageTitle"}, "Statistics"), 
+                        React.DOM.div({className: "row"}, 
+                            React.DOM.div({className: "col-xs-12 col-sm-2"}, 
+                                React.DOM.h1({className: "pageTitle"}, "Statistics")
+                            ), 
+                            React.DOM.div({className: "col-xs-12 col-sm-10"}, 
+                                AdBlock(null)
+                            )
+                        ), 
+
                         React.DOM.ol({className: "breadcrumb"}, 
                             React.DOM.li(null, "Tracker"), 
                             React.DOM.li({className: "active"}, "Statistics")
@@ -19017,11 +19064,34 @@ var Page = React.createClass({displayName: 'Page',
                         Numbers({totalViews: this.state.totalViews, socialViews: this.state.socialViews})
                     ), 
                     React.DOM.div({id: "mapHolder", className: "col-md-10"}, 
-                        React.DOM.h1({className: "pageTitle"}, "Views by location"), 
+                        React.DOM.div({className: "row"}, 
+                            React.DOM.div({className: "col-xs-12 col-sm-2"}, 
+                                React.DOM.h1({className: "pageTitle"}, "Geolocation")
+                            ), 
+                            React.DOM.div({className: "col-xs-12 col-sm-10"}, 
+                                AdBlock2(null)
+                            )
+                        ), 
                             React.DOM.ol({className: "breadcrumb"}, 
                             React.DOM.li(null, "Tracker"), 
                             React.DOM.li({className: "active"}, "Location Map")
                         ), 
+                        Map(null)
+                    ), 
+
+                    React.DOM.div({id: "settings", className: "col-md-10"}, 
+                        React.DOM.div({className: "row"}, 
+                            React.DOM.div({className: "col-xs-12 col-sm-2"}, 
+                                React.DOM.h1({className: "pageTitle"}, "Settings")
+                            ), 
+                            React.DOM.div({className: "col-xs-12 col-sm-10"}
+
+                            )
+                        ), 
+                            React.DOM.ol({className: "breadcrumb"}, 
+                            React.DOM.li(null, "Tracker"), 
+                            React.DOM.li({className: "active"}, "Settings")
+                            ), 
                         Map(null)
                     )
                 )
@@ -19036,4 +19106,4 @@ React.renderComponent(
 );
 /*jshint ignore:end*/
 
-},{"./components/map.jsx":146,"./components/numbers.jsx":147,"./components/sidebar.jsx":148,"react":145}]},{},[146,147,148,149,150,151,152,153,154,155]);
+},{"./components/map.jsx":146,"./components/numbers.jsx":147,"./components/sidebar.jsx":148,"./global/adblock.jsx":149,"./global/adblock2.jsx":150,"react":145}]},{},[146,147,148,149,150,151,152,153,154,155,156]);

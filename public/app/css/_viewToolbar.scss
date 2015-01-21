@@ -85,6 +85,10 @@
     body{
         overflow:hidden;
     }
+    .container-fluid{
+        padding:0;
+        margin:0;
+    }
     #viewToolbar{
         position:absolute;
         top:0;
@@ -93,6 +97,7 @@
         right:0;
         border-radius:0;
         border:none;
+        width:100%;
     }
     .innerBody{
         padding:.5em;

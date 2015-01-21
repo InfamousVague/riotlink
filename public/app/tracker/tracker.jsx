@@ -4,6 +4,8 @@ var React           = require('react'),
     Sidebar         = require('./components/sidebar.jsx'),
     Numbers         = require('./components/numbers.jsx'),
     Map             = require('./components/map.jsx'),
+    AdBlock         = require('./global/adblock.jsx'),
+    AdBlock2        = require('./global/adblock2.jsx'),
     socket          = io();
 
 
@@ -36,6 +38,7 @@ var Page = React.createClass({
             $(this).addClass('active');
             $('#mapHolder').hide();
             $('#stats').show();
+            $('#settings').hide();
         });
         $('#geoButton').click(function(){
             $('#sidebar ul li').removeClass('active');
@@ -43,9 +46,17 @@ var Page = React.createClass({
             $('#mapHolder').show();
             map.invalidateSize(false);
             $('#stats').hide();
+            $('#settings').hide();
 
         });
+        $('#settingsButton').click(function(){
+            $('#sidebar ul li').removeClass('active');
+            $(this).addClass('active');
+            $('#settings').show();
+            $('#stats').hide();
+            $('#mapHolder').hide();
 
+        });
         var that = this;
         /*==================
         =     SocketIO     =
@@ -110,7 +121,15 @@ var Page = React.createClass({
                         <Sidebar />
                     </div>
                     <div id="stats" className="col-md-10">
-                        <h1 className="pageTitle">Statistics</h1>
+                        <div className="row">
+                            <div className="col-xs-12 col-sm-2">
+                                <h1 className="pageTitle">Statistics</h1>
+                            </div>
+                            <div className="col-xs-12 col-sm-10">
+                                <AdBlock />
+                            </div>
+                        </div>
+
                         <ol className="breadcrumb">
                             <li>Tracker</li>
                             <li className="active">Statistics</li>
@@ -118,11 +137,34 @@ var Page = React.createClass({
                         <Numbers totalViews={this.state.totalViews} socialViews={this.state.socialViews} />
                     </div>
                     <div id="mapHolder" className="col-md-10">
-                        <h1 className="pageTitle">Views by location</h1>
+                        <div className="row">
+                            <div className="col-xs-12 col-sm-2">
+                                <h1 className="pageTitle">Geolocation</h1>
+                            </div>
+                            <div className="col-xs-12 col-sm-10">
+                                <AdBlock2 />
+                            </div>
+                        </div>
                             <ol className="breadcrumb">
                             <li>Tracker</li>
                             <li className="active">Location Map</li>
                         </ol>
+                        <Map />
+                    </div>
+
+                    <div id="settings" className="col-md-10">
+                        <div className="row">
+                            <div className="col-xs-12 col-sm-2">
+                                <h1 className="pageTitle">Settings</h1>
+                            </div>
+                            <div className="col-xs-12 col-sm-10">
+
+                            </div>
+                        </div>
+                            <ol className="breadcrumb">
+                            <li>Tracker</li>
+                            <li className="active">Settings</li>
+                            </ol>
                         <Map />
                     </div>
                 </div>

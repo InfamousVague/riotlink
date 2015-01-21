@@ -29,7 +29,7 @@ var Sidebar = React.createClass({
                             </div>
                         </div>
                     </li>
-                    <li>
+                    <li id="settingsButton">
                         <div className="row">
                             <div className="col-xs-3">
                                 <i className="fa fa-cog"></i>

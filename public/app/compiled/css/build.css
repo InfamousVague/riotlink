@@ -48,9 +48,9 @@ body, html {
   background: #eee;
 }
 
-#AdBlock {
-  margin-left: calc(50% - 150px);
-  padding-top: 3.5em;
+#AdBlock, #AdBlock2 {
+  float: right;
+  margin-top: 1em;
 }
 
 #mapView {
@@ -386,6 +386,11 @@ body, html {
     overflow: hidden;
   }
 
+  .container-fluid {
+    padding: 0;
+    margin: 0;
+  }
+
   #viewToolbar {
     position: absolute;
     top: 0;
@@ -394,6 +399,7 @@ body, html {
     right: 0;
     border-radius: 0;
     border: none;
+    width: 100%;
   }
 
   .innerBody {
