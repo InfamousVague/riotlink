@@ -33,6 +33,7 @@ var Page = React.createClass({
     },
     componentDidMount: function(){
         $('#mapHolder').hide();
+        $('#settings').hide();
         $('#statsButton').click(function(){
             $('#sidebar ul li').removeClass('active');
             $(this).addClass('active');
