@@ -16,6 +16,11 @@ var Numbers = React.createClass({
                         <div className="col-xs-5 totalViews">
                             <i className="fa fa-eye"></i>
                         </div>
+                        <div className="col-xs-12 percentBar">
+                            <p>
+                                &nbsp;
+                            </p>
+                        </div>
                     </div>
                     <div className="col-xs-12 col-sm-3 viewModule">
                         <div className="col-xs-7 twitterViews">
@@ -25,8 +30,11 @@ var Numbers = React.createClass({
                         <div className="col-xs-5 twitterViews">
                             <i className="fa fa-twitter"></i>
                         </div>
-                        <div className="col-xs-12">
-                            {this.props.socialViews.twitter.percent}
+                        <div className="col-xs-12 percentBar twitterPercent">
+                            <div className="sliderBar" style={{'width': this.props.socialViews.twitter.percent + '%'}}></div>
+                            <p>
+                                {this.props.socialViews.twitter.percent}%
+                            </p>
                         </div>
                     </div>
                     <div className="col-xs-12 col-sm-3 viewModule">
@@ -37,6 +45,12 @@ var Numbers = React.createClass({
                         <div className="col-xs-5 facebookViews">
                             <i className="fa fa-facebook"></i>
                         </div>
+                        <div className="col-xs-12 percentBar facebookPercent">
+                            <div className="sliderBar" style={{'width': this.props.socialViews.facebook.percent + '%'}}></div>
+                            <p>
+                                {this.props.socialViews.facebook.percent}%
+                            </p>
+                        </div>
                     </div>
                     <div className="col-xs-12 col-sm-3 viewModule">
                         <div className="col-xs-7 googleViews">
@@ -45,6 +59,12 @@ var Numbers = React.createClass({
                         </div>
                         <div className="col-xs-5 googleViews">
                             <i className="fa fa-google-plus"></i>
+                        </div>
+                        <div className="col-xs-12 percentBar googlePercent">
+                            <div className="sliderBar" style={{'width': this.props.socialViews.google.percent + '%'}}></div>
+                            <p>
+                                {this.props.socialViews.google.percent}%
+                            </p>
                         </div>
                     </div>
                 </div>

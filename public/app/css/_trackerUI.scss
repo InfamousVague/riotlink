@@ -207,20 +207,44 @@ body,html{
 
         .col-xs-7, .col-xs-5{
             background:#00bef6;
-            height:9em;
-            border-bottom:2em solid #00abde;
+            height:7em;
+        }
+        .percentBar{
+            height:3em;
+            background:#009641;
+            overflow:hidden;
+        }
+        .percentBar p{
+            font-size:30pt;
+            font-weight:bolder;
+            color:rgba(255,255,255,.5);
+            float:right;
+
+        }
+        .sliderBar{
+            position:absolute;
+            left:0;
+            top:0;
+            bottom:0;
+            background:rgba(0,0,0,.3);
+        }
+        .twitterPercent{
+            background:#00abde;
         }
         .totalViews{
             background:#00a74b;
-            border-bottom:2em solid #009641;
         }
         .facebookViews{
             background:#0285ff;
-            border-bottom:2em solid #1164b1;
+        }
+        .facebookPercent{
+            background:#1164b1;
         }
         .googleViews{
             background:#f76946;
-            border-bottom:2em solid #df603f;
+        }
+        .googlePercent{
+            background:#df603f;
         }
         .col-xs-7{
             color:#fff;

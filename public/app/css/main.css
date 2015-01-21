@@ -239,20 +239,43 @@ body, html {
 }
 #numbers .viewModule .col-xs-7, #numbers .viewModule .col-xs-5 {
   background: #00bef6;
-  height: 9em;
-  border-bottom: 2em solid #00abde;
+  height: 7em;
+}
+#numbers .viewModule .percentBar {
+  height: 3em;
+  background: #009641;
+  overflow: hidden;
+}
+#numbers .viewModule .percentBar p {
+  font-size: 30pt;
+  font-weight: bolder;
+  color: rgba(255, 255, 255, 0.5);
+  float: right;
+}
+#numbers .viewModule .sliderBar {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.3);
+}
+#numbers .viewModule .twitterPercent {
+  background: #00abde;
 }
 #numbers .viewModule .totalViews {
   background: #00a74b;
-  border-bottom: 2em solid #009641;
 }
 #numbers .viewModule .facebookViews {
   background: #0285ff;
-  border-bottom: 2em solid #1164b1;
+}
+#numbers .viewModule .facebookPercent {
+  background: #1164b1;
 }
 #numbers .viewModule .googleViews {
   background: #f76946;
-  border-bottom: 2em solid #df603f;
+}
+#numbers .viewModule .googlePercent {
+  background: #df603f;
 }
 #numbers .viewModule .col-xs-7 {
   color: #fff;

@@ -18685,6 +18685,11 @@ var Numbers = React.createClass({displayName: 'Numbers',
                         ), 
                         React.DOM.div({className: "col-xs-5 totalViews"}, 
                             React.DOM.i({className: "fa fa-eye"})
+                        ), 
+                        React.DOM.div({className: "col-xs-12 percentBar"}, 
+                            React.DOM.p(null, 
+                                " "
+                            )
                         )
                     ), 
                     React.DOM.div({className: "col-xs-12 col-sm-3 viewModule"}, 
@@ -18695,8 +18700,11 @@ var Numbers = React.createClass({displayName: 'Numbers',
                         React.DOM.div({className: "col-xs-5 twitterViews"}, 
                             React.DOM.i({className: "fa fa-twitter"})
                         ), 
-                        React.DOM.div({className: "col-xs-12"}, 
-                            this.props.socialViews.twitter.percent
+                        React.DOM.div({className: "col-xs-12 percentBar twitterPercent"}, 
+                            React.DOM.div({className: "sliderBar", style: {'width': this.props.socialViews.twitter.percent + '%'}}), 
+                            React.DOM.p(null, 
+                                this.props.socialViews.twitter.percent, "%"
+                            )
                         )
                     ), 
                     React.DOM.div({className: "col-xs-12 col-sm-3 viewModule"}, 
@@ -18706,6 +18714,12 @@ var Numbers = React.createClass({displayName: 'Numbers',
                         ), 
                         React.DOM.div({className: "col-xs-5 facebookViews"}, 
                             React.DOM.i({className: "fa fa-facebook"})
+                        ), 
+                        React.DOM.div({className: "col-xs-12 percentBar facebookPercent"}, 
+                            React.DOM.div({className: "sliderBar", style: {'width': this.props.socialViews.facebook.percent + '%'}}), 
+                            React.DOM.p(null, 
+                                this.props.socialViews.facebook.percent, "%"
+                            )
                         )
                     ), 
                     React.DOM.div({className: "col-xs-12 col-sm-3 viewModule"}, 
@@ -18715,6 +18729,12 @@ var Numbers = React.createClass({displayName: 'Numbers',
                         ), 
                         React.DOM.div({className: "col-xs-5 googleViews"}, 
                             React.DOM.i({className: "fa fa-google-plus"})
+                        ), 
+                        React.DOM.div({className: "col-xs-12 percentBar googlePercent"}, 
+                            React.DOM.div({className: "sliderBar", style: {'width': this.props.socialViews.google.percent + '%'}}), 
+                            React.DOM.p(null, 
+                                this.props.socialViews.google.percent, "%"
+                            )
                         )
                     )
                 )
@@ -19048,15 +19068,15 @@ var Page = React.createClass({displayName: 'Page',
                 socialViews     : {
                     twitter     : {
                         numbers : twitterViews,
-                        percent : (twitterViews / data.totalViews) * 100,
+                        percent : (twitterViews === 0) ? 0 : (twitterViews / data.totalViews) * 100,
                     },
                     facebook    : {
                         numbers : facebookViews,
-                        percent : (facebookViews / data.totalViews) * 100,
+                        percent : (facebookViews === 0) ? 0 : (facebookViews / data.totalViews) * 100,
                     },
                     google      : {
                         numbers : googlePlusViews,
-                        percent : (googlePlusViews / data.totalViews) * 100,
+                        percent : (googlePlusViews === 0) ? 0 : (googlePlusViews / data.totalViews) * 100,
                     }
                 }
             });
