@@ -19,16 +19,19 @@ var Numbers = React.createClass({
                     </div>
                     <div className="col-xs-12 col-sm-3 viewModule">
                         <div className="col-xs-7 twitterViews">
-                            <h2 className="number">{this.props.socialViews.twitter}</h2>
+                            <h2 className="number">{this.props.socialViews.twitter.numbers}</h2>
                             <p className="isa">Twitter Views</p>
                         </div>
                         <div className="col-xs-5 twitterViews">
                             <i className="fa fa-twitter"></i>
                         </div>
+                        <div className="col-xs-12">
+                            {this.props.socialViews.twitter.percent}
+                        </div>
                     </div>
                     <div className="col-xs-12 col-sm-3 viewModule">
                         <div className="col-xs-7 facebookViews">
-                            <h2 className="number">{this.props.socialViews.facebook}</h2>
+                            <h2 className="number">{this.props.socialViews.facebook.numbers}</h2>
                             <p className="isa">Facebook Views</p>
                         </div>
                         <div className="col-xs-5 facebookViews">
@@ -37,7 +40,7 @@ var Numbers = React.createClass({
                     </div>
                     <div className="col-xs-12 col-sm-3 viewModule">
                         <div className="col-xs-7 googleViews">
-                            <h2 className="number">{this.props.socialViews.google}</h2>
+                            <h2 className="number">{this.props.socialViews.google.numbers}</h2>
                             <p className="isa">Google Views</p>
                         </div>
                         <div className="col-xs-5 googleViews">

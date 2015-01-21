@@ -18689,16 +18689,19 @@ var Numbers = React.createClass({displayName: 'Numbers',
                     ), 
                     React.DOM.div({className: "col-xs-12 col-sm-3 viewModule"}, 
                         React.DOM.div({className: "col-xs-7 twitterViews"}, 
-                            React.DOM.h2({className: "number"}, this.props.socialViews.twitter), 
+                            React.DOM.h2({className: "number"}, this.props.socialViews.twitter.numbers), 
                             React.DOM.p({className: "isa"}, "Twitter Views")
                         ), 
                         React.DOM.div({className: "col-xs-5 twitterViews"}, 
                             React.DOM.i({className: "fa fa-twitter"})
+                        ), 
+                        React.DOM.div({className: "col-xs-12"}, 
+                            this.props.socialViews.twitter.percent
                         )
                     ), 
                     React.DOM.div({className: "col-xs-12 col-sm-3 viewModule"}, 
                         React.DOM.div({className: "col-xs-7 facebookViews"}, 
-                            React.DOM.h2({className: "number"}, this.props.socialViews.facebook), 
+                            React.DOM.h2({className: "number"}, this.props.socialViews.facebook.numbers), 
                             React.DOM.p({className: "isa"}, "Facebook Views")
                         ), 
                         React.DOM.div({className: "col-xs-5 facebookViews"}, 
@@ -18707,7 +18710,7 @@ var Numbers = React.createClass({displayName: 'Numbers',
                     ), 
                     React.DOM.div({className: "col-xs-12 col-sm-3 viewModule"}, 
                         React.DOM.div({className: "col-xs-7 googleViews"}, 
-                            React.DOM.h2({className: "number"}, this.props.socialViews.google), 
+                            React.DOM.h2({className: "number"}, this.props.socialViews.google.numbers), 
                             React.DOM.p({className: "isa"}, "Google Views")
                         ), 
                         React.DOM.div({className: "col-xs-5 googleViews"}, 
@@ -18949,12 +18952,21 @@ var tid = getUrlVars()['tid'];
 var Page = React.createClass({displayName: 'Page',
     getInitialState: function(){
         return{
-            currentViews : 0,
-            totalViews   : 0,
-            socialViews  : {
-                twitterViews    : 0,
-                facebookViews   : 0,
-                googlePlusViews : 0
+            currentViews    : 0,
+            totalViews      : 0,
+            socialViews     : {
+                twitter     : {
+                    numbers : 0,
+                    percent : 0
+                },
+                facebook    : {
+                    numbers : 0,
+                    percent : 0
+                },
+                google      : {
+                    numbers : 0,
+                    percent : 0
+                }
             }
         };
     },
@@ -19034,9 +19046,18 @@ var Page = React.createClass({displayName: 'Page',
                 currentViews    : data.currentViews,
                 totalViews      : data.totalViews,
                 socialViews     : {
-                    twitter     : twitterViews,
-                    facebook    : facebookViews,
-                    google      : googlePlusViews
+                    twitter     : {
+                        numbers : twitterViews,
+                        percent : (twitterViews / data.totalViews) * 100,
+                    },
+                    facebook    : {
+                        numbers : facebookViews,
+                        percent : (facebookViews / data.totalViews) * 100,
+                    },
+                    google      : {
+                        numbers : googlePlusViews,
+                        percent : (googlePlusViews / data.totalViews) * 100,
+                    }
                 }
             });
         });

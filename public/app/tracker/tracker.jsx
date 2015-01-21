@@ -22,12 +22,21 @@ var tid = getUrlVars()['tid'];
 var Page = React.createClass({
     getInitialState: function(){
         return{
-            currentViews : 0,
-            totalViews   : 0,
-            socialViews  : {
-                twitterViews    : 0,
-                facebookViews   : 0,
-                googlePlusViews : 0
+            currentViews    : 0,
+            totalViews      : 0,
+            socialViews     : {
+                twitter     : {
+                    numbers : 0,
+                    percent : 0
+                },
+                facebook    : {
+                    numbers : 0,
+                    percent : 0
+                },
+                google      : {
+                    numbers : 0,
+                    percent : 0
+                }
             }
         };
     },
@@ -107,9 +116,18 @@ var Page = React.createClass({
                 currentViews    : data.currentViews,
                 totalViews      : data.totalViews,
                 socialViews     : {
-                    twitter     : twitterViews,
-                    facebook    : facebookViews,
-                    google      : googlePlusViews
+                    twitter     : {
+                        numbers : twitterViews,
+                        percent : (twitterViews / data.totalViews) * 100,
+                    },
+                    facebook    : {
+                        numbers : facebookViews,
+                        percent : (facebookViews / data.totalViews) * 100,
+                    },
+                    google      : {
+                        numbers : googlePlusViews,
+                        percent : (googlePlusViews / data.totalViews) * 100,
+                    }
                 }
             });
         });
