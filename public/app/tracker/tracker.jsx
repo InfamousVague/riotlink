@@ -113,7 +113,8 @@ var Page = React.createClass({
 
             markerGroup.clearLayers();
             data.views.map(function(view){
-                console.log(viewsPerDate[timeConverter(view.timestamp)]);
+                console.log(view.timestamp);
+                console.log(timeConverter(view.timestamp));
                 if(viewsPerDate[timeConverter(view.timestamp)]){
                     viewsPerDate[timeConverter(view.timestamp)]++;
                 }else{
