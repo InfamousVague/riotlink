@@ -19072,10 +19072,9 @@ var Page = React.createClass({displayName: 'Page',
 
                 }
 
-                if(typeof(view.geo) != 'null') {
-                    if(typeof(view.geo) != 'undefined')
-                        L.marker(view.geo.ll).addTo(markerGroup);
-                }
+                if(geo != 'null')
+                    L.marker(view.geo.ll).addTo(markerGroup);
+
                 if(view.referer_c === "Twitter") twitterViews++;
                 if(view.referer_c === "Facebook") facebookViews++;
                 if(view.referer_c === "Google") googlePlusViews++;
