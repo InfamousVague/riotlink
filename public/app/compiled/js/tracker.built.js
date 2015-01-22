@@ -19047,7 +19047,7 @@ var Page = React.createClass({displayName: 'Page',
             var year = a.getFullYear();
             var month = months[a.getMonth()];
             var date = a.getDate();
-            var time = date + ',' + month + ' ' + year;
+            var time = date + '-' + month + '-' + year;
             return time;
         }
         /*==================
@@ -19063,15 +19063,11 @@ var Page = React.createClass({displayName: 'Page',
 
             markerGroup.clearLayers();
             data.views.map(function(view){
-                console.log(view.timestamp);
-                console.log(timeConverter(view.timestamp));
-                if(viewsPerDate[timeConverter(view.timestamp)]){
-                    viewsPerDate[timeConverter(view.timestamp)]++;
-                    console.log('incramented');
-                }else{
-                    viewsPerDate[ JSON.stringify( timeConverter( view.timestamp ) ) ] = 1;
-                    console.log('created');
-                }
+                if ( typeof( viewsPerDate[ timeConverter( view.timestamp ) ] ) === 'undefined' )
+                    viewsPerDate[ timeConverter( view.timestamp ) ] = 0;
+
+                viewsPerDate[ timeConverter( view.timestamp ) ]++;
+                console.log(viewsPerDate);
 
 
                 if(typeof(view.geo) != 'null') L.marker(view.geo.ll).addTo(markerGroup);
