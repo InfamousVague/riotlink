@@ -124,7 +124,7 @@ io.on('connection', function(socket){
     // on connection add a view and a live view
     socket.on('connected', function(options){
         totalConnections++;
-        console.log('user ' + totalConnections ' connected!');
+        console.log('user ' + totalConnections + ' connected!');
         rid = options.rid;
         var query  = RiotLink.where({ rid: rid });
         query.findOne(function (err, link) {
