@@ -19041,7 +19041,15 @@ var Page = React.createClass({displayName: 'Page',
             maxZoom: 18
         }).addTo(map);
 
-
+        function timeConverter(UNIX_timestamp){
+            var a = new Date(UNIX_timestamp*1000);
+            var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+            var year = a.getFullYear();
+            var month = months[a.getMonth()];
+            var date = a.getDate();
+            var time = date + ',' + month + ' ' + year;
+            return time;
+        }
         /*==================
         =    Views/Map     =
         ==================*/
@@ -19050,11 +19058,19 @@ var Page = React.createClass({displayName: 'Page',
             var twitterViews = 0,
                 facebookViews = 0,
                 googlePlusViews = 0,
-                viewsTimestamps = [];
+                viewsTimestamps = [],
+                viewsPerDate = {};
 
             markerGroup.clearLayers();
             data.views.map(function(view){
-                viewsTimestamps.push(view.timestamp);
+                console.log(viewsPerDate[timeConverter(view.timestamp)]);
+                if(viewsPerDate[timeConverter(view.timestamp)]){
+                    viewsPerDate[timeConverter(view.timestamp)]++;
+                }else{
+                    viewsPerDate[timeConverter(view.timestamp)] = 1;
+                }
+
+
                 if(typeof(view.geo) != 'null') L.marker(view.geo.ll).addTo(markerGroup);
                 if(view.referer_c === "Twitter") twitterViews++;
                 if(view.referer_c === "Facebook") facebookViews++;
@@ -19094,8 +19110,8 @@ var Page = React.createClass({displayName: 'Page',
                             React.DOM.div({className: "col-xs-12 col-sm-2"}, 
                                 React.DOM.h1({className: "pageTitle"}, "Statistics")
                             ), 
-                            React.DOM.div({className: "col-xs-12 col-sm-10"}, 
-                                AdBlock(null)
+                            React.DOM.div({className: "col-xs-12 col-sm-10"}
+
                             )
                         ), 
 
@@ -19110,8 +19126,8 @@ var Page = React.createClass({displayName: 'Page',
                             React.DOM.div({className: "col-xs-12 col-sm-2"}, 
                                 React.DOM.h1({className: "pageTitle"}, "Geolocation")
                             ), 
-                            React.DOM.div({className: "col-xs-12 col-sm-10"}, 
-                                AdBlock2(null)
+                            React.DOM.div({className: "col-xs-12 col-sm-10"}
+
                             )
                         ), 
                             React.DOM.ol({className: "breadcrumb"}, 
