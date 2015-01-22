@@ -19072,7 +19072,7 @@ var Page = React.createClass({displayName: 'Page',
 
                 }
 
-                if(typeof(view.geo) === 'null' || view.geo === 'null')
+                if(!!view.geo)
                     console.log(view.geo);
                 //    L.marker(view.geo.ll).addTo(markerGroup);
 
