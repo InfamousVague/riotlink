@@ -117,8 +117,6 @@ var Page = React.createClass({
                     viewsPerDate[ timeConverter( view.timestamp ) ] = 0;
 
                 viewsPerDate[ timeConverter( view.timestamp ) ]++;
-                console.log(viewsPerDate);
-
 
                 if(typeof(view.geo) != 'null') L.marker(view.geo.ll).addTo(markerGroup);
                 if(view.referer_c === "Twitter") twitterViews++;
