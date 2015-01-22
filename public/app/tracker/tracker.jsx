@@ -145,7 +145,7 @@ var Page = React.createClass({
                                 <h1 className="pageTitle">Statistics</h1>
                             </div>
                             <div className="col-xs-12 col-sm-10">
-                                <AdBlock />
+                                
                             </div>
                         </div>
 
@@ -161,7 +161,7 @@ var Page = React.createClass({
                                 <h1 className="pageTitle">Geolocation</h1>
                             </div>
                             <div className="col-xs-12 col-sm-10">
-                                <AdBlock2 />
+
                             </div>
                         </div>
                             <ol className="breadcrumb">
