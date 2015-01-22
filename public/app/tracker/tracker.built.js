@@ -19067,8 +19067,10 @@ var Page = React.createClass({displayName: 'Page',
                 console.log(timeConverter(view.timestamp));
                 if(viewsPerDate[timeConverter(view.timestamp)]){
                     viewsPerDate[timeConverter(view.timestamp)]++;
+                    console.log('incramented')
                 }else{
                     viewsPerDate[timeConverter(view.timestamp)] = 1;
+                    console.log('created');
                 }
 
 
