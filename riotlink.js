@@ -123,7 +123,8 @@ io.on('connection', function(socket){
 
     // on connection add a view and a live view
     socket.on('connected', function(options){
-        console.log(Client connected at)
+        totalConnections++;
+        console.log('user ' + totalConnections ' connected!');
         rid = options.rid;
         var query  = RiotLink.where({ rid: rid });
         query.findOne(function (err, link) {
@@ -137,8 +138,6 @@ io.on('connection', function(socket){
 
 
     socket.on('requestData', function(tid){
-        totalConnections++;
-        console.log('user ' + totalConnections ' connected!');
         var query  = RiotLink.where({ tid: tid });
         query.findOne(function (err, link) {
             if (err) return handleError(err);
