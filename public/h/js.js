@@ -22,11 +22,17 @@ if(typeof(linkCount) === 'undefined'){
     });
 
     $('#track').click(function(){
-        var tt          = ($('#trackingCheckbox').is(":checked")) ? "a" : "b",
-        link        = $('#link').val(),
-        builtURL    = "/minify?tt=" + tt + "&link=" + link;
+        var tt      = ($('#trackingCheckbox').is(":checked")) ? "a" : "b",
+            link    = $('#link').val(),
+            builtURL;
 
-        window.location = builtURL;
+        if (link.substring(0,7) === "http://" || link.substring(0,8) === "https://" ){
+            builtURL = "/minify?tt=" + tt + "&link=" + link;
+            window.location = builtURL;
+        }else{
+            builtURL    = "/minify?tt=" + tt + "&link=http://" + link;
+            window.location = builtURL;
+        }
     });
     // adding enter key functionality
     $('#link').keypress(function(e){
