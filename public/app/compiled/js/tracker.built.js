@@ -19068,7 +19068,11 @@ var Page = React.createClass({displayName: 'Page',
 
                 viewsPerDate[ timeConverter( view.timestamp ) ]++;
 
-                if(typeof(view.geo) != 'null') L.marker(view.geo.ll).addTo(markerGroup);
+                function getLast30Days(){
+
+                }
+
+                if(typeof(view.geo) != 'null' && typeof(view.geo.ll) != 'undefined') L.marker(view.geo.ll).addTo(markerGroup);
                 if(view.referer_c === "Twitter") twitterViews++;
                 if(view.referer_c === "Facebook") facebookViews++;
                 if(view.referer_c === "Google") googlePlusViews++;
