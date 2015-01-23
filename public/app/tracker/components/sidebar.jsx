@@ -7,7 +7,9 @@ var Sidebar = React.createClass({
     render: function(){
         return(
             <div id="sidebar">
-                <img id="logo" src="app/img/logo.png" />
+                <a href="/">
+                    <img id="logo" src="app/img/logo.png" />
+                </a>
                 <ul>
                     <li className="active" id="statsButton">
                         <div className="row">

@@ -18756,7 +18756,9 @@ var Sidebar = React.createClass({displayName: 'Sidebar',
     render: function(){
         return(
             React.DOM.div({id: "sidebar"}, 
-                React.DOM.img({id: "logo", src: "app/img/logo.png"}), 
+                React.DOM.a({href: "/"}, 
+                    React.DOM.img({id: "logo", src: "app/img/logo.png"})
+                ), 
                 React.DOM.ul(null, 
                     React.DOM.li({className: "active", id: "statsButton"}, 
                         React.DOM.div({className: "row"}, 
