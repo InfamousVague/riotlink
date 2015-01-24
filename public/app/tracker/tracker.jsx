@@ -4,10 +4,10 @@ var React           = require('react'),
     Sidebar         = require('./components/sidebar.jsx'),
     Numbers         = require('./components/numbers.jsx'),
     Map             = require('./components/map.jsx'),
+    ViewsChart      = require('./components/viewsChart.jsx'),
     AdBlock         = require('./global/adblock.jsx'),
     AdBlock2        = require('./global/adblock2.jsx'),
     socket          = io();
-
 
 function getUrlVars() {
     var vars = {};
@@ -23,6 +23,7 @@ var Page = React.createClass({
     getInitialState: function(){
         return{
             currentViews    : 0,
+            viewsData       : {},
             totalViews      : 0,
             socialViews     : {
                 twitter     : {
@@ -92,11 +93,14 @@ var Page = React.createClass({
         }).addTo(map);
 
         function timeConverter(UNIX_timestamp){
-            var a = new Date(UNIX_timestamp*1000);
+            var a = new Date(UNIX_timestamp);
             var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
             var year = a.getFullYear();
             var month = months[a.getMonth()];
             var date = a.getDate();
+            var hour = a.getHours();
+            var min = a.getMinutes();
+            var sec = a.getSeconds();
             var time = date + '-' + month + '-' + year;
             return time;
         }
@@ -109,18 +113,15 @@ var Page = React.createClass({
                 facebookViews = 0,
                 googlePlusViews = 0,
                 viewsTimestamps = [],
-                viewsPerDate = {};
+                tempViewsData   = {},
+                tempViewsArray  = [];
 
             markerGroup.clearLayers();
             data.views.map(function(view){
-                if ( typeof( viewsPerDate[ timeConverter( view.timestamp ) ] ) === 'undefined' )
-                    viewsPerDate[ timeConverter( view.timestamp ) ] = 0;
+                if ( typeof( tempViewsData[ timeConverter( view.timestamp ) ] ) === 'undefined' )
+                    tempViewsData[ timeConverter( view.timestamp ) ] = 0;
 
-                viewsPerDate[ timeConverter( view.timestamp ) ]++;
-
-                function getLast30Days(){
-
-                }
+                tempViewsData[ timeConverter( view.timestamp ) ]++;
 
                 if(!!view.geo)
                     L.marker(view.geo.ll).addTo(markerGroup);
@@ -131,9 +132,14 @@ var Page = React.createClass({
             });
             markerGroup.addTo(map);
 
+            for (var key in tempViewsData) {
+                tempViewsArray.push({date: key.toString().slice(0, -4) + key.toString().slice(-2), close: tempViewsData[key]});
+            }
+
             that.setState({
                 currentViews    : data.currentViews,
                 totalViews      : data.totalViews,
+                viewsData       : tempViewsArray,
                 socialViews     : {
                     twitter     : {
                         numbers : twitterViews,
@@ -173,6 +179,7 @@ var Page = React.createClass({
                             <li className="active">Statistics</li>
                         </ol>
                         <Numbers totalViews={this.state.totalViews} socialViews={this.state.socialViews} />
+                        <ViewsChart viewsData={this.state.viewsData} />
                     </div>
                     <div id="mapHolder" className="col-md-10">
                         <div className="row">

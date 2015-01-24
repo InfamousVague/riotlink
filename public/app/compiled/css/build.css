@@ -432,5 +432,15 @@ body, html {
     padding: .5em;
   }
 }
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.area {
+  fill: steelblue;
+}
 
 /*# sourceMappingURL=main.css.map */
