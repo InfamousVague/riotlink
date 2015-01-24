@@ -38,7 +38,6 @@ var ViewsChart = React.createClass({
             .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
         var data = this.props.viewsData;
-        console.log(data);
         data.forEach(function(d) {
             d.date = parseDate(d.date);
             d.close = +d.close;

@@ -206,10 +206,12 @@ body,html{
     }
     .viewModule {
         padding:1em;
+        border-radius:4px;
 
         .col-xs-7, .col-xs-5{
             background:#00bef6;
             height:7em;
+            
         }
         .percentBar{
             height:3em;
