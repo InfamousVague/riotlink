@@ -179,7 +179,11 @@ var Page = React.createClass({
                             <li className="active">Statistics</li>
                         </ol>
                         <Numbers totalViews={this.state.totalViews} socialViews={this.state.socialViews} />
-                        <ViewsChart viewsData={this.state.viewsData} />
+                            <div className="col-xs-12 col-sm-8 graph">
+                                <h2>Views by date</h2>
+                                <ViewsChart viewsData={this.state.viewsData} />
+                            </div>
+
                     </div>
                     <div id="mapHolder" className="col-md-10">
                         <div className="row">

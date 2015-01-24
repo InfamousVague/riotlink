@@ -7,7 +7,7 @@ var ViewsChart = React.createClass({
     componentDidUpdate: function(){
         var margin = {top: 20, right: 20, bottom: 30, left: 50},
             width = 960 - margin.left - margin.right,
-            height = 500 - margin.top - margin.bottom;
+            height = 400 - margin.top - margin.bottom;
 
         var parseDate = d3.time.format("%d-%b-%y").parse;
 
@@ -32,7 +32,7 @@ var ViewsChart = React.createClass({
 
         $('#viewsMap').html(' ');
         var svg = d3.select("#viewsMap").append("svg")
-            .attr("width", width + margin.left + margin.right)
+            .attr("width", '100%')
             .attr("height", height + margin.top + margin.bottom)
             .append("g")
             .attr("transform", "translate(" + margin.left + "," + margin.top + ")");

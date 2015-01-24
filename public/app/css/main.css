@@ -427,6 +427,11 @@ body, html {
     padding: .5em;
   }
 }
+.graph {
+  background: #fff;
+  border: 1px solid #eee;
+}
+
 .axis path,
 .axis line {
   fill: none;

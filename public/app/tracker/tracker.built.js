@@ -18809,7 +18809,7 @@ var ViewsChart = React.createClass({displayName: 'ViewsChart',
     componentDidUpdate: function(){
         var margin = {top: 20, right: 20, bottom: 30, left: 50},
             width = 960 - margin.left - margin.right,
-            height = 500 - margin.top - margin.bottom;
+            height = 400 - margin.top - margin.bottom;
 
         var parseDate = d3.time.format("%d-%b-%y").parse;
 
@@ -18834,7 +18834,7 @@ var ViewsChart = React.createClass({displayName: 'ViewsChart',
 
         $('#viewsMap').html(' ');
         var svg = d3.select("#viewsMap").append("svg")
-            .attr("width", width + margin.left + margin.right)
+            .attr("width", '100%')
             .attr("height", height + margin.top + margin.bottom)
             .append("g")
             .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
@@ -19213,7 +19213,11 @@ var Page = React.createClass({displayName: 'Page',
                             React.DOM.li({className: "active"}, "Statistics")
                         ), 
                         Numbers({totalViews: this.state.totalViews, socialViews: this.state.socialViews}), 
-                        ViewsChart({viewsData: this.state.viewsData})
+                            React.DOM.div({className: "col-xs-12 col-sm-8 graph"}, 
+                                React.DOM.h2(null, "Views by date"), 
+                                ViewsChart({viewsData: this.state.viewsData})
+                            )
+
                     ), 
                     React.DOM.div({id: "mapHolder", className: "col-md-10"}, 
                         React.DOM.div({className: "row"}, 
