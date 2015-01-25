@@ -147,6 +147,7 @@ body,html{
 #sidebar{
     height:100%;
     width:100%;
+    position:fixed;
     background:#333;
     padding-top:1em;
 
@@ -211,7 +212,7 @@ body,html{
         .col-xs-7, .col-xs-5{
             background:#00bef6;
             height:7em;
-            
+
         }
         .percentBar{
             height:3em;
