@@ -24,7 +24,12 @@ body,html {
     top:calc(50% - 200px);
     left:calc(50% - 200px);
 }
-
+::selection {
+    background: #000000; /* WebKit/Blink Browsers */
+}
+::-moz-selection {
+    background: #000000; /* Gecko Browsers */
+}
 @import 'trackerUI';
 @import 'viewToolbar';
 @import 'd3';
