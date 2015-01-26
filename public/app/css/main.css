@@ -184,7 +184,6 @@ body, html {
 #sidebar {
   height: 100%;
   width: 100%;
-  position: fixed;
   background: #333;
   padding-top: 1em;
 }
