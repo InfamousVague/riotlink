@@ -28,6 +28,16 @@ body, html {
   left: calc(50% - 200px);
 }
 
+::selection {
+  background: #000000;
+  /* WebKit/Blink Browsers */
+}
+
+::-moz-selection {
+  background: #000000;
+  /* Gecko Browsers */
+}
+
 #tracker {
   background-size: cover;
   font-family: 'Poiret One', cursive;
