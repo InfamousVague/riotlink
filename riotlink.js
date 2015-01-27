@@ -326,7 +326,7 @@ io.on('connection', function(socket){
             if (err) return handleError(err);
             if (user) {
                 socket.emit('newUserData', {
-                    links   : user.links
+                    links   : user.links.reverse()
                 });
             }
         });
