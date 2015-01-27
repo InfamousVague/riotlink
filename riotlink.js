@@ -126,10 +126,7 @@ app.get('/', function(req, res){
     if(typeof(req.user) != 'undefined'){
         RiotLink.count({}, function( err, count){
             checkAuth(req.user, function(err, options){
-                if(err)
-                    console.log("Error cehcing auth!");
-
-                res.redirect('h?lt=' + count + '&u=' + options.userid);
+                res.redirect('h?lt=' + count + '&u=' + options.service);    
             });
         });
     }else{
