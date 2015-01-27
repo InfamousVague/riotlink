@@ -98,4 +98,5 @@ module.exports = function(grunt){
 
     // tell grunt what to do when we run it
     grunt.registerTask('default', ['browserify', 'sass', 'concat', 'uglify', 'cssmin', 'react', 'watch']);
+    grunt.registerTask('build', ['browserify', 'sass', 'concat', 'uglify', 'cssmin', 'react']);
 };
