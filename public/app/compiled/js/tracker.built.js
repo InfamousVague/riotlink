@@ -19273,6 +19273,12 @@ var Page = React.createClass({displayName: 'Page',
         });
     },
     render: function(){
+        var allLinks;
+        if(uid && uid != 'undefined'){
+            allLinks = AllLinks({links: this.state.links});
+        }else{
+            allLinks = React.DOM.p(null, "Please login to view link history");
+        }
         return(
             React.DOM.div({className: "reactBody tracker"}, 
                 React.DOM.div({className: "container-fluid fullHeight"}, 
@@ -19328,7 +19334,9 @@ var Page = React.createClass({displayName: 'Page',
                             React.DOM.li(null, "Tracker"), 
                             React.DOM.li({className: "active"}, "All Links")
                         ), 
-                        AllLinks({links: this.state.links})
+
+                        allLinks
+
                     ), 
                     React.DOM.div({id: "settings", className: "col-md-10"}, 
                         React.DOM.div({className: "row"}, 
@@ -19342,8 +19350,7 @@ var Page = React.createClass({displayName: 'Page',
                             React.DOM.ol({className: "breadcrumb"}, 
                             React.DOM.li(null, "Tracker"), 
                             React.DOM.li({className: "active"}, "Settings")
-                            ), 
-                        Map(null)
+                            )
                     )
                 )
             )

@@ -187,6 +187,12 @@ var Page = React.createClass({
         });
     },
     render: function(){
+        var allLinks;
+        if(uid && uid != 'undefined'){
+            allLinks = <AllLinks links={this.state.links} />;
+        }else{
+            allLinks = <p>Please login to view link history</p>;
+        }
         return(
             <div className="reactBody tracker">
                 <div className="container-fluid fullHeight">
@@ -242,7 +248,9 @@ var Page = React.createClass({
                             <li>Tracker</li>
                             <li className="active">All Links</li>
                         </ol>
-                        <AllLinks links={this.state.links} />
+
+                        {allLinks}
+
                     </div>
                     <div id="settings" className="col-md-10">
                         <div className="row">
@@ -257,7 +265,6 @@ var Page = React.createClass({
                             <li>Tracker</li>
                             <li className="active">Settings</li>
                             </ol>
-                        <Map />
                     </div>
                 </div>
             </div>
