@@ -19185,7 +19185,7 @@ var Page = React.createClass({displayName: 'Page',
 
         }, 1000);
 
-    //    window.history.replaceState('Object', 'Title', 't/' + tid);
+        window.history.replaceState('Object', 'Title', 't/' + tid);
 
 
         /*==================
