@@ -120,8 +120,30 @@ app.get('/', function(req, res){
     }
 });
 
+var checkAuth = function(requestUser, callback){
+    if(typeof(requestUser) === 'undefined'){
+        callback(true, {});
+    }else{
+        if(typeof(requestUser.twitter) != 'undefined'){
+            callback(false, {service: 'twitter', username: requestUser.twitter.screen_name});
+        }else if(typeof(requestUser.google) != 'undefined'){
+            callback(false, {service: 'google', username: requestUser.google.screen_name});
+        }else if(typeof(requestUser.facebook) != 'undefined'){
+            callback(false, {service: 'facebook', username: requestUser.facebook.screen_name});
+        }
+    }
+};
+
 app.get('/usercheck', function(req, res){
-    res.send(req.user.twitter.screen_name);
+    checkAuth(req.user, function(err, options){
+        if(err){
+            console.log('err checking userauth!');
+            res.send('error!');
+        }else{
+            console.log('Authenticated with: ' + options.service + ' as user ' + options.username);
+            res.send('Authenticated with: ' + options.service + ' as user ' + options.username);
+        }
+    });
 });
 
 app.get('/t/:t', function(req, res){
