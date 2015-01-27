@@ -16,9 +16,9 @@ var express = require('express'),
 
 
 
-
-//Everyauth
-
+//
+// Everyauth
+//
 everyauth.debug = true;
 var usersById = {};
 var nextUserId = 0;
@@ -38,6 +38,20 @@ function addUser (source, sourceUser) {
   }
   return user;
 }
+
+var checkAuth = function(requestUser, callback){
+    if(typeof(requestUser) === 'undefined'){
+        callback(true, {});
+    }else{
+        if(typeof(requestUser.twitter) != 'undefined'){
+            callback(false, {service: 'twitter', userid: requestUser.twitter.id});
+        }else if(typeof(requestUser.google) != 'undefined'){
+            callback(false, {service: 'google', userid: requestUser.google.id});
+        }else if(typeof(requestUser.facebook) != 'undefined'){
+            callback(false, {service: 'facebook', userid: requestUser.facebook.id});
+        }
+    }
+};
 
 everyauth
     .twitter
@@ -76,8 +90,12 @@ everyauth.everymodule
     callback(null, usersById[id]);
   });
 
-// Mongoose stuff
+//
 
+
+//
+// Mongoose stuff
+//
 mongoose.connect('mongodb://localhost/riotlink');
 
 var Schema      = mongoose.Schema,
@@ -96,37 +114,31 @@ mongoose.model('RiotLink', RiotLink);
 var RiotLink = mongoose.model('RiotLink');
 
 var RiotUser = new Schema({
-    username        : String,
-    links           : Array
+    service       : String,
+    userid        : String,
+    links         : Array
 });
 mongoose.model('RiotUser', RiotUser);
 var RiotUser = mongoose.model('RiotUser');
 
-var checkAuth = function(requestUser, callback){
-    if(typeof(requestUser) === 'undefined'){
-        callback(true, {});
-    }else{
-        if(typeof(requestUser.twitter) != 'undefined'){
-            callback(false, {service: 'twitter', userid: requestUser.twitter.id});
-        }else if(typeof(requestUser.google) != 'undefined'){
-            callback(false, {service: 'google', userid: requestUser.google.id});
-        }else if(typeof(requestUser.facebook) != 'undefined'){
-            callback(false, {service: 'facebook', userid: requestUser.facebook.id});
-        }
-    }
-};
+//
 
+//
+// Express Configuration
+//
 app.use(express.static(__dirname + '/public'));
 app.use(bodyparser())
     .use(cookieparser('mr ripley'))
     .use(session())
     .use(everyauth.middleware(app));
 
+//
+
 app.get('/', function(req, res){
     if(typeof(req.user) != 'undefined'){
         RiotLink.count({}, function( err, count){
             checkAuth(req.user, function(err, options){
-                res.redirect('h?lt=' + count + '&u=' + options.service);    
+                res.redirect('h?lt=' + count + '&u=' + options.service);
             });
         });
     }else{
@@ -216,19 +228,74 @@ app.get('/minify', function(req, res){
         link    = req.query.link,
         tt      = req.query.tt;
 
-    var Link = new RiotLink({
-        rid             : rid,
-        tid             : tid,
-        link            : link,
-        tt              : tt,
-        totalViews      : 0,
-        currentViews    : 0,
-        views           : []
-    });
+    if(typeof(req.user) != 'undefined'){
+        checkAuth(req.user, function(err, options){
+            var query  = RiotUser.where({ userid: options.userid });
+            query.findOne(function (err, user) {
+                if (user === null) {
+                    var User = new RiotUser({
+                        service : options.service,
+                        userid  : options.userid,
+                        links   : [{
+                            rid : rid,
+                            tid : tid,
+                            tt  : tt
+                        }]
+                    });
+                    User.save(function(err){
+                        var Link = new RiotLink({
+                            rid             : rid,
+                            tid             : tid,
+                            link            : link,
+                            tt              : tt,
+                            totalViews      : 0,
+                            currentViews    : 0,
+                            views           : []
+                        });
 
-    Link.save(function (err) {
-        res.redirect('./viewer.html?rid=' + rid + '&tid=' + tid + '&link=' + link + '&tt=' + tt);
-    });
+                        Link.save(function (err) {
+                            res.redirect('./viewer.html?rid=' + rid + '&tid=' + tid + '&link=' + link + '&tt=' + tt);
+                        });
+                    });
+                }else{
+                    user.links.push({
+                        rid : rid,
+                        tid : tid,
+                        tt  : tt
+                    });
+                    user.save(function(err){
+                        var Link = new RiotLink({
+                            rid             : rid,
+                            tid             : tid,
+                            link            : link,
+                            tt              : tt,
+                            totalViews      : 0,
+                            currentViews    : 0,
+                            views           : []
+                        });
+
+                        Link.save(function (err) {
+                            res.redirect('./viewer.html?rid=' + rid + '&tid=' + tid + '&link=' + link + '&tt=' + tt);
+                        });
+                    });
+                }
+            });
+        });
+    }else{
+        var Link = new RiotLink({
+            rid             : rid,
+            tid             : tid,
+            link            : link,
+            tt              : tt,
+            totalViews      : 0,
+            currentViews    : 0,
+            views           : []
+        });
+
+        Link.save(function (err) {
+            res.redirect('./viewer.html?rid=' + rid + '&tid=' + tid + '&link=' + link + '&tt=' + tt);
+        });
+    }
 });
 
 io.on('connection', function(socket){
