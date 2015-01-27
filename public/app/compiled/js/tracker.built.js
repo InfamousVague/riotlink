@@ -18654,6 +18654,49 @@ module.exports = require('./lib/React');
 var React = require('react');
 
 /*jshint ignore:start*/
+var allLinks = React.createClass({displayName: 'allLinks',
+    render: function(){
+        var allLinks = this.props.links.reverse().map(function(link){
+            return(
+                React.DOM.tr(null, 
+                    React.DOM.td(null, link.link), 
+                    React.DOM.td(null, 'http://rls.li/r/' + link.rid), 
+                    React.DOM.td(null, 
+                        React.DOM.a({href: 'http://rls.li/t/' + link.tid}, 
+                            React.DOM.button({className: "default-button"}, "Track")
+                        )
+                    )
+                )
+            );
+        });
+        return(
+            React.DOM.div({id: "allLinks"}, 
+                React.DOM.table({className: "table table-striped"}, 
+                    React.DOM.thead(null, 
+                        React.DOM.tr(null, 
+                            React.DOM.th({'data-field': "link"}, "Full Link"), 
+                            React.DOM.th({'data-field': "share"}, "Share Link"), 
+                            React.DOM.th({'data-field': "track"}, "Track")
+                        )
+                    ), 
+                    React.DOM.tbody(null, 
+                        allLinks
+                    )
+                )
+            )
+        );
+    }
+});
+/*jshint ignore:end*/
+
+module.exports = allLinks;
+
+},{"react":145}],147:[function(require,module,exports){
+/** @jsx React.DOM */
+
+var React = require('react');
+
+/*jshint ignore:start*/
 var mapView = React.createClass({displayName: 'mapView',
     render: function(){
         return(
@@ -18667,7 +18710,7 @@ var mapView = React.createClass({displayName: 'mapView',
 
 module.exports = mapView;
 
-},{"react":145}],147:[function(require,module,exports){
+},{"react":145}],148:[function(require,module,exports){
 /** @jsx React.DOM */
 
 var React = require('react');
@@ -18746,7 +18789,7 @@ var Numbers = React.createClass({displayName: 'Numbers',
 
 module.exports = Numbers;
 
-},{"react":145}],148:[function(require,module,exports){
+},{"react":145}],149:[function(require,module,exports){
 /** @jsx React.DOM */
 
 var React = require('react');
@@ -18780,6 +18823,16 @@ var Sidebar = React.createClass({displayName: 'Sidebar',
                             )
                         )
                     ), 
+                    React.DOM.li({id: "linksButton"}, 
+                        React.DOM.div({className: "row"}, 
+                            React.DOM.div({className: "col-xs-3"}, 
+                                React.DOM.i({className: "fa fa-link"})
+                            ), 
+                            React.DOM.div({className: "col-xs-9"}, 
+                                "Link History"
+                            )
+                        )
+                    ), 
                     React.DOM.li({id: "settingsButton"}, 
                         React.DOM.div({className: "row"}, 
                             React.DOM.div({className: "col-xs-3"}, 
@@ -18799,7 +18852,7 @@ var Sidebar = React.createClass({displayName: 'Sidebar',
 
 module.exports = Sidebar;
 
-},{"react":145}],149:[function(require,module,exports){
+},{"react":145}],150:[function(require,module,exports){
 /** @jsx React.DOM */
 
 var React = require('react');
@@ -18880,7 +18933,7 @@ var ViewsChart = React.createClass({displayName: 'ViewsChart',
 
 module.exports = ViewsChart;
 
-},{"react":145}],150:[function(require,module,exports){
+},{"react":145}],151:[function(require,module,exports){
 /** @jsx React.DOM */
 
 var React = require('react');
@@ -18908,7 +18961,7 @@ var AdBlock = React.createClass({displayName: 'AdBlock',
 
 module.exports = AdBlock;
 
-},{"react":145}],151:[function(require,module,exports){
+},{"react":145}],152:[function(require,module,exports){
 /** @jsx React.DOM */
 
 var React = require('react');
@@ -18936,7 +18989,7 @@ var AdBlock = React.createClass({displayName: 'AdBlock',
 
 module.exports = AdBlock;
 
-},{"react":145}],152:[function(require,module,exports){
+},{"react":145}],153:[function(require,module,exports){
 /** @jsx React.DOM */
 
 var React = require('react');
@@ -18958,7 +19011,7 @@ var AllViews = React.createClass({displayName: 'AllViews',
 
 module.exports = AllViews;
 
-},{"react":145}],153:[function(require,module,exports){
+},{"react":145}],154:[function(require,module,exports){
 /** @jsx React.DOM */
 
 var React = require('react');
@@ -18981,9 +19034,9 @@ var CurrentViews = React.createClass({displayName: 'CurrentViews',
 
 module.exports = CurrentViews;
 
-},{"react":145}],154:[function(require,module,exports){
-arguments[4][146][0].apply(exports,arguments)
-},{"dup":146,"react":145}],155:[function(require,module,exports){
+},{"react":145}],155:[function(require,module,exports){
+arguments[4][147][0].apply(exports,arguments)
+},{"dup":147,"react":145}],156:[function(require,module,exports){
 /** @jsx React.DOM */
 
 var React = require('react');
@@ -19013,7 +19066,7 @@ var SocialFollowing = React.createClass({displayName: 'SocialFollowing',
 
 module.exports = SocialFollowing;
 
-},{"react":145}],156:[function(require,module,exports){
+},{"react":145}],157:[function(require,module,exports){
 /** @jsx React.DOM */
 
 var React = require('react');
@@ -19030,7 +19083,7 @@ var ViewsChart = React.createClass({displayName: 'ViewsChart',
 
 module.exports = ViewsChart;
 
-},{"react":145}],157:[function(require,module,exports){
+},{"react":145}],158:[function(require,module,exports){
 /** @jsx React.DOM */
 
 var React           = require('react'),
@@ -19038,6 +19091,7 @@ var React           = require('react'),
     Numbers         = require('./components/numbers.jsx'),
     Map             = require('./components/map.jsx'),
     ViewsChart      = require('./components/viewsChart.jsx'),
+    AllLinks        = require('./components/allLinks.jsx'),
     AdBlock         = require('./global/adblock.jsx'),
     AdBlock2        = require('./global/adblock2.jsx'),
     socket          = io();
@@ -19050,12 +19104,14 @@ function getUrlVars() {
     return vars;
 }
 var tid = getUrlVars()['tid'];
+var uid = getUrlVars()['uid'];
 
 /*jshint ignore:start*/
 var Page = React.createClass({displayName: 'Page',
     getInitialState: function(){
         return{
             currentViews    : 0,
+            links           : [],
             viewsData       : {},
             totalViews      : 0,
             socialViews     : {
@@ -19077,11 +19133,13 @@ var Page = React.createClass({displayName: 'Page',
     componentDidMount: function(){
         $('#mapHolder').hide();
         $('#settings').hide();
+        $('#allLinksHolder').hide();
         $('#statsButton').click(function(){
             $('#sidebar ul li').removeClass('active');
             $(this).addClass('active');
             $('#mapHolder').hide();
             $('#stats').show();
+            $('#allLinksHolder').hide();
             $('#settings').hide();
         });
         $('#geoButton').click(function(){
@@ -19090,8 +19148,17 @@ var Page = React.createClass({displayName: 'Page',
             $('#mapHolder').show();
             map.invalidateSize(false);
             $('#stats').hide();
+            $('#allLinksHolder').hide();
             $('#settings').hide();
 
+        });
+        $('#linksButton').click(function(){
+            $('#sidebar ul li').removeClass('active');
+            $(this).addClass('active');
+            $('#allLinksHolder').show();
+            $('#stats').hide();
+            $('#settings').hide();
+            $('#mapHolder').hide();
         });
         $('#settingsButton').click(function(){
             $('#sidebar ul li').removeClass('active');
@@ -19099,6 +19166,7 @@ var Page = React.createClass({displayName: 'Page',
             $('#settings').show();
             $('#stats').hide();
             $('#mapHolder').hide();
+            $('#allLinksHolder').hide();
 
         });
         var that = this;
@@ -19111,9 +19179,13 @@ var Page = React.createClass({displayName: 'Page',
 
         var pollData = setInterval(function(){
             socket.emit('requestData', tid);
+
+            if(uid)
+                socket.emit('requestUserData', uid);
+
         }, 1000);
 
-        window.history.replaceState('Object', 'Title', 't/' + tid);
+    //    window.history.replaceState('Object', 'Title', 't/' + tid);
 
 
         /*==================
@@ -19137,10 +19209,20 @@ var Page = React.createClass({displayName: 'Page',
             var time = date + '-' + month + '-' + year;
             return time;
         }
+
+        /*==================
+        =    User Page     =
+        ==================*/
+        socket.on('newUserData', function(data){
+            that.setState({links: data.links});
+        });
+
+
         /*==================
         =    Views/Map     =
         ==================*/
         var markerGroup = L.layerGroup();
+
         socket.on('newData', function(data){
             var twitterViews = 0,
                 facebookViews = 0,
@@ -19233,7 +19315,21 @@ var Page = React.createClass({displayName: 'Page',
                         ), 
                         Map(null)
                     ), 
+                    React.DOM.div({id: "allLinksHolder", className: "col-md-10"}, 
+                        React.DOM.div({className: "row"}, 
+                            React.DOM.div({className: "col-xs-12 col-sm-2"}, 
+                                React.DOM.h1({className: "pageTitle"}, "Link History")
+                            ), 
+                            React.DOM.div({className: "col-xs-12 col-sm-10"}
 
+                            )
+                        ), 
+                            React.DOM.ol({className: "breadcrumb"}, 
+                            React.DOM.li(null, "Tracker"), 
+                            React.DOM.li({className: "active"}, "All Links")
+                        ), 
+                        AllLinks({links: this.state.links})
+                    ), 
                     React.DOM.div({id: "settings", className: "col-md-10"}, 
                         React.DOM.div({className: "row"}, 
                             React.DOM.div({className: "col-xs-12 col-sm-2"}, 
@@ -19261,4 +19357,4 @@ React.renderComponent(
 );
 /*jshint ignore:end*/
 
-},{"./components/map.jsx":146,"./components/numbers.jsx":147,"./components/sidebar.jsx":148,"./components/viewsChart.jsx":149,"./global/adblock.jsx":150,"./global/adblock2.jsx":151,"react":145}]},{},[146,147,148,149,150,151,152,153,154,155,156,157]);
+},{"./components/allLinks.jsx":146,"./components/map.jsx":147,"./components/numbers.jsx":148,"./components/sidebar.jsx":149,"./components/viewsChart.jsx":150,"./global/adblock.jsx":151,"./global/adblock2.jsx":152,"react":145}]},{},[146,147,148,149,150,151,152,153,154,155,156,157,158]);

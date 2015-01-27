@@ -33,13 +33,20 @@ body, html {
   left: calc(50% - 200px);
 }
 
+.default-button {
+  background: #333;
+  color: #fff;
+  border: none;
+  border-radius: 2px;
+}
+
 ::selection {
-  background: #000000;
+  background: rgba(0, 0, 0, 0.4);
   /* WebKit/Blink Browsers */
 }
 
 ::-moz-selection {
-  background: #000000;
+  background: rgba(0, 0, 0, 0.4);
   /* Gecko Browsers */
 }
 

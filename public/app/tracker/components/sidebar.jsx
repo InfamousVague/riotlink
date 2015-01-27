@@ -31,6 +31,16 @@ var Sidebar = React.createClass({
                             </div>
                         </div>
                     </li>
+                    <li id="linksButton">
+                        <div className="row">
+                            <div className="col-xs-3">
+                                <i className="fa fa-link"></i>
+                            </div>
+                            <div className="col-xs-9">
+                                Link History
+                            </div>
+                        </div>
+                    </li>
                     <li id="settingsButton">
                         <div className="row">
                             <div className="col-xs-3">

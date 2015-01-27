@@ -5,6 +5,7 @@ var React           = require('react'),
     Numbers         = require('./components/numbers.jsx'),
     Map             = require('./components/map.jsx'),
     ViewsChart      = require('./components/viewsChart.jsx'),
+    AllLinks        = require('./components/allLinks.jsx'),
     AdBlock         = require('./global/adblock.jsx'),
     AdBlock2        = require('./global/adblock2.jsx'),
     socket          = io();
@@ -17,12 +18,14 @@ function getUrlVars() {
     return vars;
 }
 var tid = getUrlVars()['tid'];
+var uid = getUrlVars()['uid'];
 
 /*jshint ignore:start*/
 var Page = React.createClass({
     getInitialState: function(){
         return{
             currentViews    : 0,
+            links           : [],
             viewsData       : {},
             totalViews      : 0,
             socialViews     : {
@@ -44,11 +47,13 @@ var Page = React.createClass({
     componentDidMount: function(){
         $('#mapHolder').hide();
         $('#settings').hide();
+        $('#allLinksHolder').hide();
         $('#statsButton').click(function(){
             $('#sidebar ul li').removeClass('active');
             $(this).addClass('active');
             $('#mapHolder').hide();
             $('#stats').show();
+            $('#allLinksHolder').hide();
             $('#settings').hide();
         });
         $('#geoButton').click(function(){
@@ -57,8 +62,17 @@ var Page = React.createClass({
             $('#mapHolder').show();
             map.invalidateSize(false);
             $('#stats').hide();
+            $('#allLinksHolder').hide();
             $('#settings').hide();
 
+        });
+        $('#linksButton').click(function(){
+            $('#sidebar ul li').removeClass('active');
+            $(this).addClass('active');
+            $('#allLinksHolder').show();
+            $('#stats').hide();
+            $('#settings').hide();
+            $('#mapHolder').hide();
         });
         $('#settingsButton').click(function(){
             $('#sidebar ul li').removeClass('active');
@@ -66,6 +80,7 @@ var Page = React.createClass({
             $('#settings').show();
             $('#stats').hide();
             $('#mapHolder').hide();
+            $('#allLinksHolder').hide();
 
         });
         var that = this;
@@ -78,9 +93,13 @@ var Page = React.createClass({
 
         var pollData = setInterval(function(){
             socket.emit('requestData', tid);
+
+            if(uid)
+                socket.emit('requestUserData', uid);
+
         }, 1000);
 
-        window.history.replaceState('Object', 'Title', 't/' + tid);
+    //    window.history.replaceState('Object', 'Title', 't/' + tid);
 
 
         /*==================
@@ -104,10 +123,20 @@ var Page = React.createClass({
             var time = date + '-' + month + '-' + year;
             return time;
         }
+
+        /*==================
+        =    User Page     =
+        ==================*/
+        socket.on('newUserData', function(data){
+            that.setState({links: data.links});
+        });
+
+
         /*==================
         =    Views/Map     =
         ==================*/
         var markerGroup = L.layerGroup();
+
         socket.on('newData', function(data){
             var twitterViews = 0,
                 facebookViews = 0,
@@ -200,7 +229,21 @@ var Page = React.createClass({
                         </ol>
                         <Map />
                     </div>
+                    <div id="allLinksHolder" className="col-md-10">
+                        <div className="row">
+                            <div className="col-xs-12 col-sm-2">
+                                <h1 className="pageTitle">Link&nbsp;History</h1>
+                            </div>
+                            <div className="col-xs-12 col-sm-10">
 
+                            </div>
+                        </div>
+                            <ol className="breadcrumb">
+                            <li>Tracker</li>
+                            <li className="active">All Links</li>
+                        </ol>
+                        <AllLinks links={this.state.links} />
+                    </div>
                     <div id="settings" className="col-md-10">
                         <div className="row">
                             <div className="col-xs-12 col-sm-2">

@@ -161,7 +161,9 @@ app.get('/usercheck', function(req, res){
 });
 
 app.get('/t/:t', function(req, res){
-    res.redirect('/tracker.html?tid=' + req.params.t);
+    checkAuth(req.user, function(err, options){
+        res.redirect('/tracker.html?tid=' + req.params.t + '&uid=' + options.userid);
+    });
 });
 
 app.get('/r/:r', function(req,res){
@@ -239,7 +241,8 @@ app.get('/minify', function(req, res){
                         links   : [{
                             rid : rid,
                             tid : tid,
-                            tt  : tt
+                            tt  : tt,
+                            link: link
                         }]
                     });
                     User.save(function(err){
@@ -261,7 +264,8 @@ app.get('/minify', function(req, res){
                     user.links.push({
                         rid : rid,
                         tid : tid,
-                        tt  : tt
+                        tt  : tt,
+                        link: link
                     });
                     user.save(function(err){
                         var Link = new RiotLink({
@@ -316,6 +320,17 @@ io.on('connection', function(socket){
         });
     });
 
+    socket.on('requestUserData', function(userid){
+        var query = RiotUser.where({ userid: userid });
+        query.findOne(function(err, user){
+            if (err) return handleError(err);
+            if (user) {
+                socket.emit('newUserData', {
+                    links   : user.links
+                });
+            }
+        });
+    });
 
     socket.on('requestData', function(tid){
         var query  = RiotLink.where({ tid: tid });

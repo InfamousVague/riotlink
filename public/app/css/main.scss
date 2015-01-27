@@ -24,11 +24,17 @@ body,html {
     top:calc(50% - 200px);
     left:calc(50% - 200px);
 }
+.default-button{
+    background:#333;
+    color:#fff;
+    border:none;
+    border-radius:2px;
+}
 ::selection {
-    background: #000000; /* WebKit/Blink Browsers */
+    background: rgba(0,0,0,.4); /* WebKit/Blink Browsers */
 }
 ::-moz-selection {
-    background: #000000; /* Gecko Browsers */
+    background: rgba(0,0,0,.4); /* Gecko Browsers */
 }
 @import 'trackerUI';
 @import 'viewToolbar';
