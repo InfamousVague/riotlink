@@ -18656,7 +18656,8 @@ var React = require('react');
 /*jshint ignore:start*/
 var allLinks = React.createClass({displayName: 'allLinks',
     render: function(){
-        var allLinks = this.props.links.reverse().map(function(link){
+        var links = this.props.links.reverse();
+        var allLinks = links.map(function(link){
             return(
                 React.DOM.tr(null, 
                     React.DOM.td(null, link.link), 

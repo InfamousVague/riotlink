@@ -5,7 +5,8 @@ var React = require('react');
 /*jshint ignore:start*/
 var allLinks = React.createClass({
     render: function(){
-        var allLinks = this.props.links.reverse().map(function(link){
+        var links = this.props.links.reverse();
+        var allLinks = links.map(function(link){
             return(
                 <tr>
                     <td>{link.link}</td>
