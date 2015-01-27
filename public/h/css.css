@@ -7,6 +7,43 @@
     padding-top:8em;
     overflow-x:hidden;
 }
+#loginGroup{
+    position:absolute;
+    top:1em;
+    right:1em;
+    color:#fff;
+}
+.loginButton{
+    font-size:16pt;
+    color:#fff;
+    text-decoration:none;
+    background:#ccc;
+    min-width:200px;
+    padding:.3em .5em;
+}
+#twitterLogin{
+    background:#4099FF;
+}
+#twitterLogin:hover{
+    background:#3783DB;
+    color:#4099FF;
+}
+#googleLogin{
+    background:#dd4b39;
+}
+#googleLogin:hover{
+    background:#C44535;
+    color:#dd4b39;
+}
+#facebookLogin{
+    background:#3B5998;
+    padding:.3em 1em .3em 1em;
+    text-align:center;
+}
+#facebookLogin:hover{
+    background:#314B82;
+    color:#3B5998;
+}
 
 .tagline{
     font-size:18pt;

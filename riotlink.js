@@ -23,6 +23,8 @@ everyauth.debug = true;
 var usersById = {};
 var nextUserId = 0;
 var usersByTwitId = {};
+var usersByGoogleId = {};
+var usersByFbId = {};
 
 function addUser (source, sourceUser) {
   var user;
@@ -38,13 +40,36 @@ function addUser (source, sourceUser) {
 }
 
 everyauth
-  .twitter
-    .consumerKey(conf.twit.consumerKey)
-    .consumerSecret(conf.twit.consumerSecret)
-    .findOrCreateUser( function (sess, accessToken, accessSecret, twitUser) {
-      return usersByTwitId[twitUser.id] || (usersByTwitId[twitUser.id] = addUser('twitter', twitUser));
-    })
-    .redirectPath('/');
+    .twitter
+        .consumerKey(conf.twit.consumerKey)
+        .consumerSecret(conf.twit.consumerSecret)
+        .findOrCreateUser( function (sess, accessToken, accessSecret, twitUser) {
+            return usersByTwitId[twitUser.id] || (usersByTwitId[twitUser.id] = addUser('twitter', twitUser));
+        })
+        .redirectPath('/');
+
+
+everyauth
+    .facebook
+        .appId(conf.fb.appId)
+        .appSecret(conf.fb.appSecret)
+        .findOrCreateUser( function (session, accessToken, accessTokenExtra, fbUserMetadata) {
+            return usersByFbId[fbUserMetadata.id] || (usersByFbId[fbUserMetadata.id] = addUser('facebook', fbUserMetadata));
+        })
+        .redirectPath('/');
+
+
+everyauth
+    .google
+        .appId(conf.google.clientId)
+        .appSecret(conf.google.clientSecret)
+        .scope('https://www.googleapis.com/auth/userinfo.profile https://www.google.com/m8/feeds/')
+        .findOrCreateUser( function (sess, accessToken, extra, googleUser) {
+            googleUser.refreshToken = extra.refresh_token;
+            googleUser.expiresIn = extra.expires_in;
+            return usersByGoogleId[googleUser.id] || (usersByGoogleId[googleUser.id] = addUser('google', googleUser));
+        })
+        .redirectPath('/');
 
 everyauth.everymodule
   .findUserById( function (id, callback) {
@@ -70,6 +95,13 @@ var RiotLink = new Schema({
 mongoose.model('RiotLink', RiotLink);
 var RiotLink = mongoose.model('RiotLink');
 
+var RiotUser = new Schema({
+    username        : String,
+    links           : Array
+});
+mongoose.model('RiotUser', RiotUser);
+var RiotUser = mongoose.model('RiotUser');
+
 app.use(express.static(__dirname + '/public'));
 app.use(bodyparser())
     .use(cookieparser('mr ripley'))
@@ -77,9 +109,15 @@ app.use(bodyparser())
     .use(everyauth.middleware(app));
 
 app.get('/', function(req, res){
-    RiotLink.count({}, function( err, count){
-        res.redirect('h?lt=' + count);
-    });
+    if(typeof(req.user) != 'undefined'){
+        RiotLink.count({}, function( err, count){
+            res.redirect('h?lt=' + count + '&u=' + req.user.twitter.screen_name);
+        });
+    }else{
+        RiotLink.count({}, function( err, count){
+            res.redirect('h?lt=' + count + '&u=' + false);
+        });
+    }
 });
 
 app.get('/usercheck', function(req, res){
