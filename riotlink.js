@@ -6,7 +6,50 @@ var express = require('express'),
     shortId = require('shortid'),
     mongoose = require('mongoose'),
     geoip = require('geoip-lite'),
+    everyauth = require('everyauth'),
+    conf = require('./conf'),
+    everyauthRoot = __dirname + '/..',
+    bodyparser = require('body-parser'),
+    cookieparser = require('cookie-parser'),
+    session = require('express-session'),
     totalConnections = 0;
+
+
+
+
+//Everyauth
+
+everyauth.debug = true;
+var usersById = {};
+var nextUserId = 0;
+var usersByTwitId = {};
+
+function addUser (source, sourceUser) {
+  var user;
+  if (arguments.length === 1) { // password-based
+    user = sourceUser = source;
+    user.id = ++nextUserId;
+    return usersById[nextUserId] = user;
+  } else { // non-password-based
+    user = usersById[++nextUserId] = {id: nextUserId};
+    user[source] = sourceUser;
+  }
+  return user;
+}
+
+everyauth
+  .twitter
+    .consumerKey(conf.twit.consumerKey)
+    .consumerSecret(conf.twit.consumerSecret)
+    .findOrCreateUser( function (sess, accessToken, accessSecret, twitUser) {
+      return usersByTwitId[twitUser.id] || (usersByTwitId[twitUser.id] = addUser('twitter', twitUser));
+    })
+    .redirectPath('/');
+
+everyauth.everymodule
+  .findUserById( function (id, callback) {
+    callback(null, usersById[id]);
+  });
 
 // Mongoose stuff
 
@@ -28,11 +71,19 @@ mongoose.model('RiotLink', RiotLink);
 var RiotLink = mongoose.model('RiotLink');
 
 app.use(express.static(__dirname + '/public'));
+app.use(bodyparser())
+    .use(cookieparser('mr ripley'))
+    .use(session())
+    .use(everyauth.middleware(app));
 
 app.get('/', function(req, res){
     RiotLink.count({}, function( err, count){
         res.redirect('h?lt=' + count);
-    })
+    });
+});
+
+app.get('/usercheck', function(req, res){
+    res.send(req.user.twitter.screen_name);
 });
 
 app.get('/t/:t', function(req, res){
