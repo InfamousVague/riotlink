@@ -102,6 +102,20 @@ var RiotUser = new Schema({
 mongoose.model('RiotUser', RiotUser);
 var RiotUser = mongoose.model('RiotUser');
 
+var checkAuth = function(requestUser, callback){
+    if(typeof(requestUser) === 'undefined'){
+        callback(true, {});
+    }else{
+        if(typeof(requestUser.twitter) != 'undefined'){
+            callback(false, {service: 'twitter', userid: requestUser.twitter.id});
+        }else if(typeof(requestUser.google) != 'undefined'){
+            callback(false, {service: 'google', userid: requestUser.google.id});
+        }else if(typeof(requestUser.facebook) != 'undefined'){
+            callback(false, {service: 'facebook', userid: requestUser.facebook.id});
+        }
+    }
+};
+
 app.use(express.static(__dirname + '/public'));
 app.use(bodyparser())
     .use(cookieparser('mr ripley'))
@@ -111,7 +125,12 @@ app.use(bodyparser())
 app.get('/', function(req, res){
     if(typeof(req.user) != 'undefined'){
         RiotLink.count({}, function( err, count){
-            res.redirect('h?lt=' + count + '&u=' + req.user.twitter.screen_name);
+            checkAuth(req.user, function(err, options){
+                if(err)
+                    console.log("Error cehcing auth!");
+
+                res.redirect('h?lt=' + count + '&u=' + options.userid);
+            });
         });
     }else{
         RiotLink.count({}, function( err, count){
@@ -120,28 +139,14 @@ app.get('/', function(req, res){
     }
 });
 
-var checkAuth = function(requestUser, callback){
-    if(typeof(requestUser) === 'undefined'){
-        callback(true, {});
-    }else{
-        if(typeof(requestUser.twitter) != 'undefined'){
-            callback(false, {service: 'twitter', username: requestUser.twitter.screen_name});
-        }else if(typeof(requestUser.google) != 'undefined'){
-            callback(false, {service: 'google', username: requestUser.google.screen_name});
-        }else if(typeof(requestUser.facebook) != 'undefined'){
-            callback(false, {service: 'facebook', username: requestUser.facebook.screen_name});
-        }
-    }
-};
-
 app.get('/usercheck', function(req, res){
     checkAuth(req.user, function(err, options){
         if(err){
             console.log('err checking userauth!');
             res.send('error!');
         }else{
-            console.log('Authenticated with: ' + options.service + ' as user ' + options.username);
-            res.send('Authenticated with: ' + options.service + ' as user ' + options.username);
+            console.log('Authenticated with: ' + options.service + ' as user ' + options.userid);
+            res.send('Authenticated with: ' + options.service + ' as user ' + options.v);
         }
     });
 });
