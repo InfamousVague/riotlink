@@ -24,6 +24,10 @@ body,html {
     top:calc(50% - 200px);
     left:calc(50% - 200px);
 }
+.overflowAuto{
+    height:100%;
+    overflow-y:auto
+}
 .default-button{
     background:#333;
     color:#fff;
@@ -35,6 +39,59 @@ body,html {
 }
 ::-moz-selection {
     background: rgba(0,0,0,.4); /* Gecko Browsers */
+}
+.regular-radio {
+    position:relative;
+    top:.6em;
+    border-radius:4px;
+}
+
+.regular-radio:focus { outline: none; }
+
+.regular-radio {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -o-appearance: none;
+    appearance: none;
+    display: inline-block;
+    position: relative;
+    height: 20px;
+    width: 50px;
+    background-color: #e56c69;
+    transition: all 0.3s ease;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+}
+
+.regular-radio:checked:after {
+    content: '';
+    width: 25px;
+    height: 14px;
+    top: 3px;
+    left: 3px;
+    border-radius:4px;
+    position: absolute;
+    background: #fff;
+}
+
+.regular-radio:checked {
+    background-color: #6ADD75;
+}
+
+.regular-radio:after {
+    content: ' ';
+    width: 25px;
+    height: 14px;
+    top: 3px;
+    border-radius:4px;
+    left: 22px;
+    position: absolute;
+    background: #fff;
+    transition: all 0.3s ease;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
 }
 @import 'trackerUI';
 @import 'viewToolbar';

@@ -18792,6 +18792,55 @@ module.exports = Numbers;
 },{"react":145}],149:[function(require,module,exports){
 /** @jsx React.DOM */
 
+var React = require('react'),
+    socket = io();
+
+/*jshint ignore:start*/
+var Settings = React.createClass({displayName: 'Settings',
+    toggleTrackingType: function(){
+        var futureTrackingType = (this.props.settings.tt === 'b') ? 'a' : 'b';
+        socket.emit('setTrackingType', {tid: this.props.tid, type: futureTrackingType});
+    },
+    render: function(){
+        var AdvancedTrackingCheckbox = (this.props.settings.tt === 'b') ?
+            React.DOM.input({type: "checkbox", className: "regular-radio", onClick: this.toggleTrackingType, id: "trackingCheckbox"}) :
+            React.DOM.input({type: "checkbox", className: "regular-radio", onChange: function(){}, onClick: this.toggleTrackingType, checked: true, id: "trackingCheckbox"})
+
+
+        return(
+            React.DOM.div({id: "settings"}, 
+                React.DOM.table({className: "table table-striped"}, 
+                    React.DOM.thead(null, 
+                        React.DOM.tr(null, 
+                            React.DOM.th({'data-field': "Setting"}, "Setting"), 
+                            React.DOM.th({'data-field': "Toggle"}, "Toggle")
+                        )
+                    ), 
+                    React.DOM.tbody(null, 
+                        React.DOM.tr(null, 
+                            React.DOM.td(null, 
+                                React.DOM.h3(null, "Advanced Tracking"), React.DOM.br(null), 
+                                React.DOM.p(null, "Advanced tracking allows you to see your viewers in real time, live." + ' ' +
+                                "this is a alpha feature and is not reccomended without testing first.")
+                            ), 
+                            React.DOM.td(null, 
+                                AdvancedTrackingCheckbox
+                            )
+                        )
+
+                    )
+                )
+            )
+        );
+    }
+});
+/*jshint ignore:end*/
+
+module.exports = Settings;
+
+},{"react":145}],150:[function(require,module,exports){
+/** @jsx React.DOM */
+
 var React = require('react');
 
 /*jshint ignore:start*/
@@ -18852,7 +18901,7 @@ var Sidebar = React.createClass({displayName: 'Sidebar',
 
 module.exports = Sidebar;
 
-},{"react":145}],150:[function(require,module,exports){
+},{"react":145}],151:[function(require,module,exports){
 /** @jsx React.DOM */
 
 var React = require('react');
@@ -18933,7 +18982,7 @@ var ViewsChart = React.createClass({displayName: 'ViewsChart',
 
 module.exports = ViewsChart;
 
-},{"react":145}],151:[function(require,module,exports){
+},{"react":145}],152:[function(require,module,exports){
 /** @jsx React.DOM */
 
 var React = require('react');
@@ -18961,7 +19010,7 @@ var AdBlock = React.createClass({displayName: 'AdBlock',
 
 module.exports = AdBlock;
 
-},{"react":145}],152:[function(require,module,exports){
+},{"react":145}],153:[function(require,module,exports){
 /** @jsx React.DOM */
 
 var React = require('react');
@@ -18989,7 +19038,7 @@ var AdBlock = React.createClass({displayName: 'AdBlock',
 
 module.exports = AdBlock;
 
-},{"react":145}],153:[function(require,module,exports){
+},{"react":145}],154:[function(require,module,exports){
 /** @jsx React.DOM */
 
 var React = require('react');
@@ -19011,7 +19060,7 @@ var AllViews = React.createClass({displayName: 'AllViews',
 
 module.exports = AllViews;
 
-},{"react":145}],154:[function(require,module,exports){
+},{"react":145}],155:[function(require,module,exports){
 /** @jsx React.DOM */
 
 var React = require('react');
@@ -19034,9 +19083,9 @@ var CurrentViews = React.createClass({displayName: 'CurrentViews',
 
 module.exports = CurrentViews;
 
-},{"react":145}],155:[function(require,module,exports){
+},{"react":145}],156:[function(require,module,exports){
 arguments[4][147][0].apply(exports,arguments)
-},{"dup":147,"react":145}],156:[function(require,module,exports){
+},{"dup":147,"react":145}],157:[function(require,module,exports){
 /** @jsx React.DOM */
 
 var React = require('react');
@@ -19066,7 +19115,7 @@ var SocialFollowing = React.createClass({displayName: 'SocialFollowing',
 
 module.exports = SocialFollowing;
 
-},{"react":145}],157:[function(require,module,exports){
+},{"react":145}],158:[function(require,module,exports){
 /** @jsx React.DOM */
 
 var React = require('react');
@@ -19083,7 +19132,7 @@ var ViewsChart = React.createClass({displayName: 'ViewsChart',
 
 module.exports = ViewsChart;
 
-},{"react":145}],158:[function(require,module,exports){
+},{"react":145}],159:[function(require,module,exports){
 /** @jsx React.DOM */
 
 var React           = require('react'),
@@ -19092,6 +19141,7 @@ var React           = require('react'),
     Map             = require('./components/map.jsx'),
     ViewsChart      = require('./components/viewsChart.jsx'),
     AllLinks        = require('./components/allLinks.jsx'),
+    Settings        = require('./components/settings.jsx'),
     AdBlock         = require('./global/adblock.jsx'),
     AdBlock2        = require('./global/adblock2.jsx'),
     socket          = io();
@@ -19113,6 +19163,9 @@ var Page = React.createClass({displayName: 'Page',
             currentViews    : 0,
             links           : [],
             viewsData       : {},
+            settings        : {
+                    tt      : 'b'
+                },
             totalViews      : 0,
             socialViews     : {
                 twitter     : {
@@ -19255,6 +19308,9 @@ var Page = React.createClass({displayName: 'Page',
                 currentViews    : data.currentViews,
                 totalViews      : data.totalViews,
                 viewsData       : tempViewsArray,
+                settings        : {
+                        tt      : data.tt
+                    },
                 socialViews     : {
                     twitter     : {
                         numbers : twitterViews,
@@ -19285,7 +19341,7 @@ var Page = React.createClass({displayName: 'Page',
                     React.DOM.div({className: "col-md-2 fullHeight noLeft"}, 
                         Sidebar(null)
                     ), 
-                    React.DOM.div({id: "stats", className: "col-md-10"}, 
+                    React.DOM.div({id: "stats", className: "col-md-10 overflowAuto"}, 
                         React.DOM.div({className: "row"}, 
                             React.DOM.div({className: "col-xs-12 col-sm-2"}, 
                                 React.DOM.h1({className: "pageTitle"}, "Statistics")
@@ -19321,7 +19377,7 @@ var Page = React.createClass({displayName: 'Page',
                         ), 
                         Map(null)
                     ), 
-                    React.DOM.div({id: "allLinksHolder", className: "col-md-10"}, 
+                    React.DOM.div({id: "allLinksHolder", className: "col-md-10 overflowAuto"}, 
                         React.DOM.div({className: "row"}, 
                             React.DOM.div({className: "col-xs-12 col-sm-2"}, 
                                 React.DOM.h1({className: "pageTitle"}, "Link History")
@@ -19338,7 +19394,7 @@ var Page = React.createClass({displayName: 'Page',
                         allLinks
 
                     ), 
-                    React.DOM.div({id: "settings", className: "col-md-10"}, 
+                    React.DOM.div({id: "settings", className: "col-md-10 overflowAuto"}, 
                         React.DOM.div({className: "row"}, 
                             React.DOM.div({className: "col-xs-12 col-sm-2"}, 
                                 React.DOM.h1({className: "pageTitle"}, "Settings")
@@ -19348,9 +19404,10 @@ var Page = React.createClass({displayName: 'Page',
                             )
                         ), 
                             React.DOM.ol({className: "breadcrumb"}, 
-                            React.DOM.li(null, "Tracker"), 
-                            React.DOM.li({className: "active"}, "Settings")
-                            )
+                                React.DOM.li(null, "Tracker"), 
+                                React.DOM.li({className: "active"}, "Settings")
+                            ), 
+                        Settings({settings: this.state.settings, tid: tid})
                     )
                 )
             )
@@ -19364,4 +19421,4 @@ React.renderComponent(
 );
 /*jshint ignore:end*/
 
-},{"./components/allLinks.jsx":146,"./components/map.jsx":147,"./components/numbers.jsx":148,"./components/sidebar.jsx":149,"./components/viewsChart.jsx":150,"./global/adblock.jsx":151,"./global/adblock2.jsx":152,"react":145}]},{},[146,147,148,149,150,151,152,153,154,155,156,157,158]);
+},{"./components/allLinks.jsx":146,"./components/map.jsx":147,"./components/numbers.jsx":148,"./components/settings.jsx":149,"./components/sidebar.jsx":150,"./components/viewsChart.jsx":151,"./global/adblock.jsx":152,"./global/adblock2.jsx":153,"react":145}]},{},[146,147,148,149,150,151,152,153,154,155,156,157,158,159]);

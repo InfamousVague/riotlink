@@ -6,6 +6,7 @@ var React           = require('react'),
     Map             = require('./components/map.jsx'),
     ViewsChart      = require('./components/viewsChart.jsx'),
     AllLinks        = require('./components/allLinks.jsx'),
+    Settings        = require('./components/settings.jsx'),
     AdBlock         = require('./global/adblock.jsx'),
     AdBlock2        = require('./global/adblock2.jsx'),
     socket          = io();
@@ -27,6 +28,9 @@ var Page = React.createClass({
             currentViews    : 0,
             links           : [],
             viewsData       : {},
+            settings        : {
+                    tt      : 'b'
+                },
             totalViews      : 0,
             socialViews     : {
                 twitter     : {
@@ -169,6 +173,9 @@ var Page = React.createClass({
                 currentViews    : data.currentViews,
                 totalViews      : data.totalViews,
                 viewsData       : tempViewsArray,
+                settings        : {
+                        tt      : data.tt
+                    },
                 socialViews     : {
                     twitter     : {
                         numbers : twitterViews,
@@ -199,7 +206,7 @@ var Page = React.createClass({
                     <div className="col-md-2 fullHeight noLeft">
                         <Sidebar />
                     </div>
-                    <div id="stats" className="col-md-10">
+                    <div id="stats" className="col-md-10 overflowAuto">
                         <div className="row">
                             <div className="col-xs-12 col-sm-2">
                                 <h1 className="pageTitle">Statistics</h1>
@@ -235,7 +242,7 @@ var Page = React.createClass({
                         </ol>
                         <Map />
                     </div>
-                    <div id="allLinksHolder" className="col-md-10">
+                    <div id="allLinksHolder" className="col-md-10 overflowAuto">
                         <div className="row">
                             <div className="col-xs-12 col-sm-2">
                                 <h1 className="pageTitle">Link&nbsp;History</h1>
@@ -252,7 +259,7 @@ var Page = React.createClass({
                         {allLinks}
 
                     </div>
-                    <div id="settings" className="col-md-10">
+                    <div id="settings" className="col-md-10 overflowAuto">
                         <div className="row">
                             <div className="col-xs-12 col-sm-2">
                                 <h1 className="pageTitle">Settings</h1>
@@ -262,9 +269,10 @@ var Page = React.createClass({
                             </div>
                         </div>
                             <ol className="breadcrumb">
-                            <li>Tracker</li>
-                            <li className="active">Settings</li>
+                                <li>Tracker</li>
+                                <li className="active">Settings</li>
                             </ol>
+                        <Settings settings={this.state.settings} tid={tid}/>
                     </div>
                 </div>
             </div>

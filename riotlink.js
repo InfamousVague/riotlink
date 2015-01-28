@@ -305,6 +305,19 @@ app.get('/minify', function(req, res){
 io.on('connection', function(socket){
     var rid = "unknown";
 
+    socket.on('setTrackingType', function(options){
+        var query = RiotLink.where({tid: options.tid});
+        console.log(options);
+        console.log(options.tid + ' request to change ' + options.type);
+        query.findOne(function(err, link){
+            if (err) return handleError(err);
+            if (link){
+                link.tt = options.type;
+                link.save();
+            }
+        });
+    });
+
     // on connection add a view and a live view
     socket.on('connected', function(options){
         totalConnections++;
@@ -341,7 +354,8 @@ io.on('connection', function(socket){
                     totalViews      : link.totalViews,
                     currentViews    : link.currentViews,
                     views           : link.views,
-                    rid             : link.rid
+                    rid             : link.rid,
+                    tt              : link.tt
                 });
             }
         });
