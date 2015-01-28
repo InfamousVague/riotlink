@@ -143,6 +143,12 @@ app.get('/usercheck', function(req, res){
     });
 });
 
+
+app.get('/logout', function(req, res){
+    req.logout();
+    res.redirect('/');    
+});
+
 app.get('/t/:t', function(req, res){
     checkAuth(req.user, function(err, options){
         res.redirect('/tracker.html?tid=' + req.params.t + '&uid=' + options.userid);
