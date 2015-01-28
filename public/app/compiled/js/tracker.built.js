@@ -18662,7 +18662,7 @@ var allLinks = React.createClass({displayName: 'allLinks',
                     React.DOM.td(null, link.link), 
                     React.DOM.td(null, 'http://rls.li/r/' + link.rid), 
                     React.DOM.td(null, 
-                        React.DOM.a({href: 'http://rls.li/t/' + link.tid}, 
+                        React.DOM.a({href: 'http://riotlink.net/t/' + link.tid}, 
                             React.DOM.button({className: "default-button"}, "Track")
                         )
                     )
@@ -19240,7 +19240,6 @@ var Page = React.createClass({displayName: 'Page',
 
         window.history.replaceState('Object', 'Title', 't/' + tid);
 
-
         /*==================
         =     Map          =
         ==================*/
@@ -19308,6 +19307,7 @@ var Page = React.createClass({displayName: 'Page',
                 currentViews    : data.currentViews,
                 totalViews      : data.totalViews,
                 viewsData       : tempViewsArray,
+                rid             : data.rid,
                 settings        : {
                         tt      : data.tt
                     },
@@ -19337,6 +19337,10 @@ var Page = React.createClass({displayName: 'Page',
         }
         return(
             React.DOM.div({className: "reactBody tracker"}, 
+                React.DOM.div({className: "shareLink"}, 
+                    "Share: ", React.DOM.span({className: "link"}, 'http://rls.li/r/' + this.state.rid)
+                ), 
+
                 React.DOM.div({className: "container-fluid fullHeight"}, 
                     React.DOM.div({className: "col-md-2 fullHeight noLeft"}, 
                         Sidebar(null)

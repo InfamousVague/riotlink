@@ -264,9 +264,24 @@ body, html {
   padding-left: 0;
 }
 
+.shareLink {
+  position: absolute;
+  top: 1em;
+  right: .5em;
+  width: auto;
+  z-index: 1000;
+  color: #666;
+  background: #f5f5f5;
+  font-size: 20pt;
+  padding-left: 1em;
+  padding-right: 1em;
+  border-radius: 2px;
+}
+
 #sidebar {
   height: 100%;
   width: 100%;
+  position: relative;
   background: #333;
   padding-top: 1em;
 }

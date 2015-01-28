@@ -11,7 +11,7 @@ var allLinks = React.createClass({
                     <td>{link.link}</td>
                     <td>{'http://rls.li/r/' + link.rid}</td>
                     <td>
-                        <a href={'http://rls.li/t/' + link.tid}>
+                        <a href={'http://riotlink.net/t/' + link.tid}>
                             <button className="default-button">Track</button>
                         </a>
                     </td>

@@ -105,7 +105,6 @@ var Page = React.createClass({
 
         window.history.replaceState('Object', 'Title', 't/' + tid);
 
-
         /*==================
         =     Map          =
         ==================*/
@@ -173,6 +172,7 @@ var Page = React.createClass({
                 currentViews    : data.currentViews,
                 totalViews      : data.totalViews,
                 viewsData       : tempViewsArray,
+                rid             : data.rid,
                 settings        : {
                         tt      : data.tt
                     },
@@ -202,6 +202,10 @@ var Page = React.createClass({
         }
         return(
             <div className="reactBody tracker">
+                <div className="shareLink">
+                    Share: <span className="linkGrey">{'http://rls.li/r/' + this.state.rid}</span>
+                </div>
+
                 <div className="container-fluid fullHeight">
                     <div className="col-md-2 fullHeight noLeft">
                         <Sidebar />

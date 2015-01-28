@@ -24,8 +24,8 @@ var ViewToolbar = React.createClass({
                         <div className="col-xs-12">
                             <p className="descript">Track it with:</p>
                             <div className="container">
-                                <input id="trackingLink" value={'http://rls.li/t/' + this.props.tid}></input>
-                                <a className="button" href={'http://rls.li/t/' + this.props.tid} target="_blank" id="trackingLinkLink">Track</a>
+                                <input id="trackingLink" value={'http://riotlink.net/t/' + this.props.tid}></input>
+                                <a className="button" href={'http://riotlink.net/t/' + this.props.tid} target="_blank" id="trackingLinkLink">Track</a>
                             </div>
                         </div>
                     </div>

@@ -18675,8 +18675,8 @@ var ViewToolbar = React.createClass({displayName: 'ViewToolbar',
                         React.DOM.div({className: "col-xs-12"}, 
                             React.DOM.p({className: "descript"}, "Track it with:"), 
                             React.DOM.div({className: "container"}, 
-                                React.DOM.input({id: "trackingLink", value: 'http://rls.li/t/' + this.props.tid}), 
-                                React.DOM.a({className: "button", href: 'http://rls.li/t/' + this.props.tid, target: "_blank", id: "trackingLinkLink"}, "Track")
+                                React.DOM.input({id: "trackingLink", value: 'http://riotlink.net/t/' + this.props.tid}), 
+                                React.DOM.a({className: "button", href: 'http://riotlink.net/t/' + this.props.tid, target: "_blank", id: "trackingLinkLink"}, "Track")
                             )
                         )
                     )
