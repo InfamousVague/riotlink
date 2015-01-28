@@ -14,7 +14,7 @@ var express = require('express'),
     session = require('express-session'),
     totalConnections = 0;
 
-everyauth.debug = true;
+everyauth.debug = false;
 var usersById = {};
 var nextUserId = 0;
 var usersByTwitId = {};

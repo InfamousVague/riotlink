@@ -11,7 +11,7 @@ var Numbers = React.createClass({
                     <div className="col-xs-12 col-sm-3 viewModule">
                         <div className="col-xs-7 totalViews">
                             <h2 className="number">{this.props.totalViews}</h2>
-                            <p className="isa">Total Views</p>
+                            <p className="isa">Total&nbsp;Views</p>
                         </div>
                         <div className="col-xs-5 totalViews">
                             <i className="fa fa-eye"></i>
@@ -25,7 +25,7 @@ var Numbers = React.createClass({
                     <div className="col-xs-12 col-sm-3 viewModule">
                         <div className="col-xs-7 twitterViews">
                             <h2 className="number">{this.props.socialViews.twitter.numbers}</h2>
-                            <p className="isa">Twitter Views</p>
+                            <p className="isa">Twitter&nbsp;Views</p>
                         </div>
                         <div className="col-xs-5 twitterViews">
                             <i className="fa fa-twitter"></i>
@@ -40,7 +40,7 @@ var Numbers = React.createClass({
                     <div className="col-xs-12 col-sm-3 viewModule">
                         <div className="col-xs-7 facebookViews">
                             <h2 className="number">{this.props.socialViews.facebook.numbers}</h2>
-                            <p className="isa">Facebook Views</p>
+                            <p className="isa">Facebook&nbsp;Views</p>
                         </div>
                         <div className="col-xs-5 facebookViews">
                             <i className="fa fa-facebook"></i>
@@ -55,7 +55,7 @@ var Numbers = React.createClass({
                     <div className="col-xs-12 col-sm-3 viewModule">
                         <div className="col-xs-7 googleViews">
                             <h2 className="number">{this.props.socialViews.google.numbers}</h2>
-                            <p className="isa">Google Views</p>
+                            <p className="isa">Google&nbsp;Views</p>
                         </div>
                         <div className="col-xs-5 googleViews">
                             <i className="fa fa-google-plus"></i>

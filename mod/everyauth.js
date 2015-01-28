@@ -1,4 +1,4 @@
-everyauth.debug = true;
+everyauth.debug = false;
 var usersById = {};
 var nextUserId = 0;
 var usersByTwitId = {};

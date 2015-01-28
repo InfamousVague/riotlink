@@ -18724,7 +18724,7 @@ var Numbers = React.createClass({displayName: 'Numbers',
                     React.DOM.div({className: "col-xs-12 col-sm-3 viewModule"}, 
                         React.DOM.div({className: "col-xs-7 totalViews"}, 
                             React.DOM.h2({className: "number"}, this.props.totalViews), 
-                            React.DOM.p({className: "isa"}, "Total Views")
+                            React.DOM.p({className: "isa"}, "Total Views")
                         ), 
                         React.DOM.div({className: "col-xs-5 totalViews"}, 
                             React.DOM.i({className: "fa fa-eye"})
@@ -18738,7 +18738,7 @@ var Numbers = React.createClass({displayName: 'Numbers',
                     React.DOM.div({className: "col-xs-12 col-sm-3 viewModule"}, 
                         React.DOM.div({className: "col-xs-7 twitterViews"}, 
                             React.DOM.h2({className: "number"}, this.props.socialViews.twitter.numbers), 
-                            React.DOM.p({className: "isa"}, "Twitter Views")
+                            React.DOM.p({className: "isa"}, "Twitter Views")
                         ), 
                         React.DOM.div({className: "col-xs-5 twitterViews"}, 
                             React.DOM.i({className: "fa fa-twitter"})
@@ -18753,7 +18753,7 @@ var Numbers = React.createClass({displayName: 'Numbers',
                     React.DOM.div({className: "col-xs-12 col-sm-3 viewModule"}, 
                         React.DOM.div({className: "col-xs-7 facebookViews"}, 
                             React.DOM.h2({className: "number"}, this.props.socialViews.facebook.numbers), 
-                            React.DOM.p({className: "isa"}, "Facebook Views")
+                            React.DOM.p({className: "isa"}, "Facebook Views")
                         ), 
                         React.DOM.div({className: "col-xs-5 facebookViews"}, 
                             React.DOM.i({className: "fa fa-facebook"})
@@ -18768,7 +18768,7 @@ var Numbers = React.createClass({displayName: 'Numbers',
                     React.DOM.div({className: "col-xs-12 col-sm-3 viewModule"}, 
                         React.DOM.div({className: "col-xs-7 googleViews"}, 
                             React.DOM.h2({className: "number"}, this.props.socialViews.google.numbers), 
-                            React.DOM.p({className: "isa"}, "Google Views")
+                            React.DOM.p({className: "isa"}, "Google Views")
                         ), 
                         React.DOM.div({className: "col-xs-5 googleViews"}, 
                             React.DOM.i({className: "fa fa-google-plus"})

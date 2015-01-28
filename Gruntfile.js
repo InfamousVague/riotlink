@@ -37,6 +37,14 @@ module.exports = function(grunt){
             build: {
                 src: 'public/app/compiled/js/build.js',
                 dest: 'public/app/compiled/js/build.min.js'
+            },
+            tracker: {
+                src: 'public/app/compiled/js/tracker.built.js',
+                dest: 'public/app/compiled/js/tracker.min.js'
+            },
+            viewer: {
+                src: 'public/app/compiled/js/viewer.built.js',
+                dest: 'public/app/compiled/js/viewer.min.js'
             }
         },
         cssmin: {
@@ -74,7 +82,11 @@ module.exports = function(grunt){
             },
             tracker: {
                 files: 'public/app/tracker/**/*.jsx',
-                tasks: ['browserify', 'react']
+                tasks: ['browserify', 'react', 'uglify']
+            },
+            viewer: {
+                files: 'public/app/viewer/**/*.jsx',
+                tasks: ['browserify', 'react', 'uglify']
             },
             server: {
                 files: 'mod/*.js',
