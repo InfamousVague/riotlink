@@ -10,12 +10,27 @@ module.exports = function(grunt){
                 ],
                 dest: 'public/app/dist/js/build.js'
             },
-                css:{
+            css:{
                 src: [
                     'public/app/components/bootstrap/dist/css/bootstrap.min.css',
                     'public/app/css/main.css'
                 ],
                 dest: 'public/app/compiled/css/build.css'
+            },
+            server:{
+                src: [
+                        'mod/global.js',
+                        'mod/everyauth.js',
+                        'mod/mongoose.js',
+                        'mod/expressconfig.js',
+                        'mod/root.js',
+                        'mod/track.js',
+                        'mod/resolve.js',
+                        'mod/minify.js',
+                        'mod/socket.js',
+                        'mod/http.js',
+                    ],
+                dest: 'riotlink.js'
             }
         },
         uglify: {
@@ -60,6 +75,10 @@ module.exports = function(grunt){
             tracker: {
                 files: 'public/app/tracker/**/*.jsx',
                 tasks: ['browserify', 'react']
+            },
+            server: {
+                files: 'mod/*.js',
+                tasks: ['concat:server']
             }
         },
         react:{

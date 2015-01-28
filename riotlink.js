@@ -14,11 +14,6 @@ var express = require('express'),
     session = require('express-session'),
     totalConnections = 0;
 
-
-
-//
-// Everyauth
-//
 everyauth.debug = true;
 var usersById = {};
 var nextUserId = 0;
@@ -90,12 +85,6 @@ everyauth.everymodule
     callback(null, usersById[id]);
   });
 
-//
-
-
-//
-// Mongoose stuff
-//
 mongoose.connect('mongodb://localhost/riotlink');
 
 var Schema      = mongoose.Schema,
@@ -121,18 +110,11 @@ var RiotUser = new Schema({
 mongoose.model('RiotUser', RiotUser);
 var RiotUser = mongoose.model('RiotUser');
 
-//
-
-//
-// Express Configuration
-//
 app.use(express.static(__dirname + '/public'));
 app.use(bodyparser())
     .use(cookieparser('mr ripley'))
     .use(session())
     .use(everyauth.middleware(app));
-
-//
 
 app.get('/', function(req, res){
     if(typeof(req.user) != 'undefined'){
@@ -147,6 +129,7 @@ app.get('/', function(req, res){
         });
     }
 });
+
 
 app.get('/usercheck', function(req, res){
     checkAuth(req.user, function(err, options){
@@ -222,7 +205,6 @@ app.get('/r/:r', function(req,res){
     });
 
 });
-
 
 app.get('/minify', function(req, res){
     var rid     = shortId.generate(),
