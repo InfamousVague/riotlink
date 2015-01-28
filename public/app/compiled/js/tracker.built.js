@@ -18909,9 +18909,9 @@ var React = require('react');
 /*jshint ignore:start*/
 var ViewsChart = React.createClass({displayName: 'ViewsChart',
     componentDidUpdate: function(){
-        var margin = {top: 20, right: 20, bottom: 30, left: 50},
+        var margin = {top: 20, right: 20, bottom: 30, left: 20},
             width = 960 - margin.left - margin.right,
-            height = 400 - margin.top - margin.bottom;
+            height = 300 - margin.top - margin.bottom;
 
         var parseDate = d3.time.format("%d-%b-%y").parse;
 
@@ -19337,10 +19337,6 @@ var Page = React.createClass({displayName: 'Page',
         }
         return(
             React.DOM.div({className: "reactBody tracker"}, 
-                React.DOM.div({className: "shareLink"}, 
-                    "Share: ", React.DOM.span({className: "link"}, 'http://rls.li/r/' + this.state.rid)
-                ), 
-
                 React.DOM.div({className: "container-fluid fullHeight"}, 
                     React.DOM.div({className: "col-md-2 fullHeight noLeft"}, 
                         Sidebar(null)
@@ -19350,8 +19346,10 @@ var Page = React.createClass({displayName: 'Page',
                             React.DOM.div({className: "col-xs-12 col-sm-2"}, 
                                 React.DOM.h1({className: "pageTitle"}, "Statistics")
                             ), 
-                            React.DOM.div({className: "col-xs-12 col-sm-10"}
-
+                            React.DOM.div({className: "col-xs-12 col-sm-10"}, 
+                                React.DOM.div({className: "shareLink"}, 
+                                    "Share: ", React.DOM.span({className: "linkGrey"}, 'http://rls.li/r/' + this.state.rid)
+                                )
                             )
                         ), 
 
@@ -19360,8 +19358,8 @@ var Page = React.createClass({displayName: 'Page',
                             React.DOM.li({className: "active"}, "Statistics")
                         ), 
                         Numbers({totalViews: this.state.totalViews, socialViews: this.state.socialViews}), 
-                            React.DOM.div({className: "col-xs-12 col-sm-8 graph"}, 
-                                React.DOM.h2(null, "Views by date"), 
+                            React.DOM.div({className: "col-xs-12 col-sm-6 graph"}, 
+                                React.DOM.h2({className: "bannerTitleBar"}, "Views by date"), 
                                 ViewsChart({viewsData: this.state.viewsData})
                             )
 
@@ -19371,8 +19369,10 @@ var Page = React.createClass({displayName: 'Page',
                             React.DOM.div({className: "col-xs-12 col-sm-2"}, 
                                 React.DOM.h1({className: "pageTitle"}, "Geolocation")
                             ), 
-                            React.DOM.div({className: "col-xs-12 col-sm-10"}
-
+                            React.DOM.div({className: "col-xs-12 col-sm-10"}, 
+                                React.DOM.div({className: "shareLink"}, 
+                                    "Share: ", React.DOM.span({className: "linkGrey"}, 'http://rls.li/r/' + this.state.rid)
+                                )
                             )
                         ), 
                             React.DOM.ol({className: "breadcrumb"}, 
@@ -19386,8 +19386,10 @@ var Page = React.createClass({displayName: 'Page',
                             React.DOM.div({className: "col-xs-12 col-sm-2"}, 
                                 React.DOM.h1({className: "pageTitle"}, "Link History")
                             ), 
-                            React.DOM.div({className: "col-xs-12 col-sm-10"}
-
+                            React.DOM.div({className: "col-xs-12 col-sm-10"}, 
+                                React.DOM.div({className: "shareLink"}, 
+                                    "Share: ", React.DOM.span({className: "linkGrey"}, 'http://rls.li/r/' + this.state.rid)
+                                )
                             )
                         ), 
                             React.DOM.ol({className: "breadcrumb"}, 
@@ -19403,8 +19405,10 @@ var Page = React.createClass({displayName: 'Page',
                             React.DOM.div({className: "col-xs-12 col-sm-2"}, 
                                 React.DOM.h1({className: "pageTitle"}, "Settings")
                             ), 
-                            React.DOM.div({className: "col-xs-12 col-sm-10"}
-
+                            React.DOM.div({className: "col-xs-12 col-sm-10"}, 
+                                React.DOM.div({className: "shareLink"}, 
+                                    "Share: ", React.DOM.span({className: "linkGrey"}, 'http://rls.li/r/' + this.state.rid)
+                                )
                             )
                         ), 
                             React.DOM.ol({className: "breadcrumb"}, 

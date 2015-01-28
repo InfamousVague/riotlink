@@ -202,10 +202,6 @@ var Page = React.createClass({
         }
         return(
             <div className="reactBody tracker">
-                <div className="shareLink">
-                    Share: <span className="linkGrey">{'http://rls.li/r/' + this.state.rid}</span>
-                </div>
-
                 <div className="container-fluid fullHeight">
                     <div className="col-md-2 fullHeight noLeft">
                         <Sidebar />
@@ -216,7 +212,9 @@ var Page = React.createClass({
                                 <h1 className="pageTitle">Statistics</h1>
                             </div>
                             <div className="col-xs-12 col-sm-10">
-
+                                <div className="shareLink">
+                                    Share: <span className="linkGrey">{'http://rls.li/r/' + this.state.rid}</span>
+                                </div>
                             </div>
                         </div>
 
@@ -225,8 +223,8 @@ var Page = React.createClass({
                             <li className="active">Statistics</li>
                         </ol>
                         <Numbers totalViews={this.state.totalViews} socialViews={this.state.socialViews} />
-                            <div className="col-xs-12 col-sm-8 graph">
-                                <h2>Views by date</h2>
+                            <div className="col-xs-12 col-sm-6 graph">
+                                <h2 className="bannerTitleBar">Views by date</h2>
                                 <ViewsChart viewsData={this.state.viewsData} />
                             </div>
 
@@ -237,7 +235,9 @@ var Page = React.createClass({
                                 <h1 className="pageTitle">Geolocation</h1>
                             </div>
                             <div className="col-xs-12 col-sm-10">
-
+                                <div className="shareLink">
+                                    Share: <span className="linkGrey">{'http://rls.li/r/' + this.state.rid}</span>
+                                </div>
                             </div>
                         </div>
                             <ol className="breadcrumb">
@@ -252,7 +252,9 @@ var Page = React.createClass({
                                 <h1 className="pageTitle">Link&nbsp;History</h1>
                             </div>
                             <div className="col-xs-12 col-sm-10">
-
+                                <div className="shareLink">
+                                    Share: <span className="linkGrey">{'http://rls.li/r/' + this.state.rid}</span>
+                                </div>
                             </div>
                         </div>
                             <ol className="breadcrumb">
@@ -269,7 +271,9 @@ var Page = React.createClass({
                                 <h1 className="pageTitle">Settings</h1>
                             </div>
                             <div className="col-xs-12 col-sm-10">
-
+                                <div className="shareLink">
+                                    Share: <span className="linkGrey">{'http://rls.li/r/' + this.state.rid}</span>
+                                </div>
                             </div>
                         </div>
                             <ol className="breadcrumb">

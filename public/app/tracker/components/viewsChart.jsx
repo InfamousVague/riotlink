@@ -5,9 +5,9 @@ var React = require('react');
 /*jshint ignore:start*/
 var ViewsChart = React.createClass({
     componentDidUpdate: function(){
-        var margin = {top: 20, right: 20, bottom: 30, left: 50},
+        var margin = {top: 20, right: 20, bottom: 30, left: 20},
             width = 960 - margin.left - margin.right,
-            height = 400 - margin.top - margin.bottom;
+            height = 300 - margin.top - margin.bottom;
 
         var parseDate = d3.time.format("%d-%b-%y").parse;
 

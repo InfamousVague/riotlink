@@ -259,6 +259,16 @@ body, html {
   padding-left: 0;
 }
 
+.bannerTitleBar {
+  width: calc(100% + 1.3em);
+  background: #f76f5f;
+  margin: 0 -.6em;
+  border-radius: 2px 2px 0 0;
+  padding: .5em;
+  font-size: 18pt;
+  color: #fff;
+}
+
 .shareLink {
   position: absolute;
   top: 1em;
