@@ -15,7 +15,7 @@ if(typeof(linkCount) === 'undefined'){
 }
 (function(){
     if (username != 'false'){
-        $('#loginGroup').html('Logged in with: ' + '<i class="fa fa-' + username + '"></i>');
+        $('#loginGroup').html('<a href="/logout"><button class="logoutButton">Logout</button></a>');
         $('#twitterLogin').attr('href', '#');
     }
     $('#trackingCheckbox').click(function(){

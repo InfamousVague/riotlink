@@ -1,7 +1,14 @@
 *{
     font-family: 'Roboto', sans-serif;
 }
-
+.logoutButton{
+    background:#000;
+    color:#fff;
+    border:none;
+    font-size:10pt;
+    padding:.5em 1em;
+    border-radius:2px;
+}
 #header{
     background-image:url('./assets/background.png');
     padding-top:8em;
@@ -45,12 +52,15 @@
     color:#3B5998;
 }
 
+#logo{
+    height:60px;
+}
 .tagline{
     font-size:18pt;
     color:#fff;
     font-family: 'Roboto', sans-serif;
     font-weight:200;
-    margin:3.5em 0 .5em 0;
+    margin:1.5em 0 .5em 0;
 }
 ::-webkit-input-placeholder{
     font-family: 'Roboto', sans-serif;
