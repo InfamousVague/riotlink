@@ -1,15 +1,17 @@
 /** @jsx React.DOM */
 
-var React           = require('react'),
-    Sidebar         = require('./components/sidebar.jsx'),
-    Numbers         = require('./components/numbers.jsx'),
-    Map             = require('./components/map.jsx'),
-    ViewsChart      = require('./components/viewsChart.jsx'),
-    AllLinks        = require('./components/allLinks.jsx'),
-    Settings        = require('./components/settings.jsx'),
-    AdBlock         = require('./global/adblock.jsx'),
-    AdBlock2        = require('./global/adblock2.jsx'),
-    socket          = io();
+var React               = require('react'),
+    Sidebar             = require('./components/sidebar.jsx'),
+    Numbers             = require('./components/numbers.jsx'),
+    Map                 = require('./components/map.jsx'),
+    ViewsChart          = require('./components/viewsChart.jsx'),
+    AdvancedPanel       = require('./components/advancedPanel.jsx'),
+    AdvancedPanelOff    = require('./components/advancedPanelOff.jsx'),
+    AllLinks            = require('./components/allLinks.jsx'),
+    Settings            = require('./components/settings.jsx'),
+    AdBlock             = require('./global/adblock.jsx'),
+    AdBlock2            = require('./global/adblock2.jsx'),
+    socket              = io();
 
 function getUrlVars() {
     var vars = {};
@@ -200,6 +202,9 @@ var Page = React.createClass({
         }else{
             allLinks = <p>Please login to view link history</p>;
         }
+
+        var trackingStatus = (this.state.settings.tt === 'b') ? '( inactive )' : '';
+        var advancedTrackingPanel = (this.state.settings.tt === 'b') ? <AdvancedPanelOff /> : <AdvancedPanel currentViews={this.state.currentViews}/>
         return(
             <div className="reactBody tracker">
                 <div className="container-fluid fullHeight">
@@ -223,11 +228,18 @@ var Page = React.createClass({
                             <li className="active">Statistics</li>
                         </ol>
                         <Numbers totalViews={this.state.totalViews} socialViews={this.state.socialViews} />
+
+                        <div className="autoWrapper">
                             <div className="col-xs-12 col-sm-6 graph">
                                 <h2 className="bannerTitleBar">Views by date</h2>
                                 <ViewsChart viewsData={this.state.viewsData} />
                             </div>
 
+                            <div className="col-xs-12 col-sm-6 graph2">
+                                <h2 className="bannerTitleBar">Advanced Tracking {trackingStatus}</h2>
+                                {advancedTrackingPanel}
+                            </div>
+                        </div>
                     </div>
                     <div id="mapHolder" className="col-md-10">
                         <div className="row">

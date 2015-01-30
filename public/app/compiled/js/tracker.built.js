@@ -18654,6 +18654,46 @@ module.exports = require('./lib/React');
 var React = require('react');
 
 /*jshint ignore:start*/
+var AdvancedPanel = React.createClass({displayName: 'AdvancedPanel',
+    render: function(){
+        return(
+            React.DOM.div({id: "AdvancedPanel", className: "trackingPanel"}, 
+                "Live Views: ", this.props.currentViews
+            )
+        );
+    }
+});
+/*jshint ignore:end*/
+
+module.exports = AdvancedPanel;
+
+},{"react":145}],147:[function(require,module,exports){
+/** @jsx React.DOM */
+
+var React = require('react');
+
+/*jshint ignore:start*/
+var AdvancedPanelOff = React.createClass({displayName: 'AdvancedPanelOff',
+    render: function(){
+        return(
+            React.DOM.div({id: "AdvancedPanelOff", className: "trackingPanel"}, 
+                React.DOM.h3(null, "Advanced tracking is off!"), 
+                React.DOM.p(null, "To enable advanced tracking select settings from the left menu" + ' ' +
+                    "and check the Advanced Tracking toggle on.")
+            )
+        );
+    }
+});
+/*jshint ignore:end*/
+
+module.exports = AdvancedPanelOff;
+
+},{"react":145}],148:[function(require,module,exports){
+/** @jsx React.DOM */
+
+var React = require('react');
+
+/*jshint ignore:start*/
 var allLinks = React.createClass({displayName: 'allLinks',
     render: function(){
         var allLinks = this.props.links.map(function(link){
@@ -18691,7 +18731,7 @@ var allLinks = React.createClass({displayName: 'allLinks',
 
 module.exports = allLinks;
 
-},{"react":145}],147:[function(require,module,exports){
+},{"react":145}],149:[function(require,module,exports){
 /** @jsx React.DOM */
 
 var React = require('react');
@@ -18710,7 +18750,7 @@ var mapView = React.createClass({displayName: 'mapView',
 
 module.exports = mapView;
 
-},{"react":145}],148:[function(require,module,exports){
+},{"react":145}],150:[function(require,module,exports){
 /** @jsx React.DOM */
 
 var React = require('react');
@@ -18789,7 +18829,7 @@ var Numbers = React.createClass({displayName: 'Numbers',
 
 module.exports = Numbers;
 
-},{"react":145}],149:[function(require,module,exports){
+},{"react":145}],151:[function(require,module,exports){
 /** @jsx React.DOM */
 
 var React = require('react'),
@@ -18838,7 +18878,7 @@ var Settings = React.createClass({displayName: 'Settings',
 
 module.exports = Settings;
 
-},{"react":145}],150:[function(require,module,exports){
+},{"react":145}],152:[function(require,module,exports){
 /** @jsx React.DOM */
 
 var React = require('react');
@@ -18901,7 +18941,7 @@ var Sidebar = React.createClass({displayName: 'Sidebar',
 
 module.exports = Sidebar;
 
-},{"react":145}],151:[function(require,module,exports){
+},{"react":145}],153:[function(require,module,exports){
 /** @jsx React.DOM */
 
 var React = require('react');
@@ -18982,7 +19022,7 @@ var ViewsChart = React.createClass({displayName: 'ViewsChart',
 
 module.exports = ViewsChart;
 
-},{"react":145}],152:[function(require,module,exports){
+},{"react":145}],154:[function(require,module,exports){
 /** @jsx React.DOM */
 
 var React = require('react');
@@ -19010,7 +19050,7 @@ var AdBlock = React.createClass({displayName: 'AdBlock',
 
 module.exports = AdBlock;
 
-},{"react":145}],153:[function(require,module,exports){
+},{"react":145}],155:[function(require,module,exports){
 /** @jsx React.DOM */
 
 var React = require('react');
@@ -19038,7 +19078,7 @@ var AdBlock = React.createClass({displayName: 'AdBlock',
 
 module.exports = AdBlock;
 
-},{"react":145}],154:[function(require,module,exports){
+},{"react":145}],156:[function(require,module,exports){
 /** @jsx React.DOM */
 
 var React = require('react');
@@ -19060,7 +19100,7 @@ var AllViews = React.createClass({displayName: 'AllViews',
 
 module.exports = AllViews;
 
-},{"react":145}],155:[function(require,module,exports){
+},{"react":145}],157:[function(require,module,exports){
 /** @jsx React.DOM */
 
 var React = require('react');
@@ -19083,9 +19123,9 @@ var CurrentViews = React.createClass({displayName: 'CurrentViews',
 
 module.exports = CurrentViews;
 
-},{"react":145}],156:[function(require,module,exports){
-arguments[4][147][0].apply(exports,arguments)
-},{"dup":147,"react":145}],157:[function(require,module,exports){
+},{"react":145}],158:[function(require,module,exports){
+arguments[4][149][0].apply(exports,arguments)
+},{"dup":149,"react":145}],159:[function(require,module,exports){
 /** @jsx React.DOM */
 
 var React = require('react');
@@ -19115,7 +19155,7 @@ var SocialFollowing = React.createClass({displayName: 'SocialFollowing',
 
 module.exports = SocialFollowing;
 
-},{"react":145}],158:[function(require,module,exports){
+},{"react":145}],160:[function(require,module,exports){
 /** @jsx React.DOM */
 
 var React = require('react');
@@ -19132,19 +19172,21 @@ var ViewsChart = React.createClass({displayName: 'ViewsChart',
 
 module.exports = ViewsChart;
 
-},{"react":145}],159:[function(require,module,exports){
+},{"react":145}],161:[function(require,module,exports){
 /** @jsx React.DOM */
 
-var React           = require('react'),
-    Sidebar         = require('./components/sidebar.jsx'),
-    Numbers         = require('./components/numbers.jsx'),
-    Map             = require('./components/map.jsx'),
-    ViewsChart      = require('./components/viewsChart.jsx'),
-    AllLinks        = require('./components/allLinks.jsx'),
-    Settings        = require('./components/settings.jsx'),
-    AdBlock         = require('./global/adblock.jsx'),
-    AdBlock2        = require('./global/adblock2.jsx'),
-    socket          = io();
+var React               = require('react'),
+    Sidebar             = require('./components/sidebar.jsx'),
+    Numbers             = require('./components/numbers.jsx'),
+    Map                 = require('./components/map.jsx'),
+    ViewsChart          = require('./components/viewsChart.jsx'),
+    AdvancedPanel       = require('./components/advancedPanel.jsx'),
+    AdvancedPanelOff    = require('./components/advancedPanelOff.jsx'),
+    AllLinks            = require('./components/allLinks.jsx'),
+    Settings            = require('./components/settings.jsx'),
+    AdBlock             = require('./global/adblock.jsx'),
+    AdBlock2            = require('./global/adblock2.jsx'),
+    socket              = io();
 
 function getUrlVars() {
     var vars = {};
@@ -19335,6 +19377,9 @@ var Page = React.createClass({displayName: 'Page',
         }else{
             allLinks = React.DOM.p(null, "Please login to view link history");
         }
+
+        var trackingStatus = (this.state.settings.tt === 'b') ? '( inactive )' : '';
+        var advancedTrackingPanel = (this.state.settings.tt === 'b') ? AdvancedPanelOff(null) : AdvancedPanel({currentViews: this.state.currentViews})
         return(
             React.DOM.div({className: "reactBody tracker"}, 
                 React.DOM.div({className: "container-fluid fullHeight"}, 
@@ -19358,11 +19403,18 @@ var Page = React.createClass({displayName: 'Page',
                             React.DOM.li({className: "active"}, "Statistics")
                         ), 
                         Numbers({totalViews: this.state.totalViews, socialViews: this.state.socialViews}), 
+
+                        React.DOM.div({className: "autoWrapper"}, 
                             React.DOM.div({className: "col-xs-12 col-sm-6 graph"}, 
                                 React.DOM.h2({className: "bannerTitleBar"}, "Views by date"), 
                                 ViewsChart({viewsData: this.state.viewsData})
-                            )
+                            ), 
 
+                            React.DOM.div({className: "col-xs-12 col-sm-6 graph2"}, 
+                                React.DOM.h2({className: "bannerTitleBar"}, "Advanced Tracking ", trackingStatus), 
+                                advancedTrackingPanel
+                            )
+                        )
                     ), 
                     React.DOM.div({id: "mapHolder", className: "col-md-10"}, 
                         React.DOM.div({className: "row"}, 
@@ -19429,4 +19481,4 @@ React.renderComponent(
 );
 /*jshint ignore:end*/
 
-},{"./components/allLinks.jsx":146,"./components/map.jsx":147,"./components/numbers.jsx":148,"./components/settings.jsx":149,"./components/sidebar.jsx":150,"./components/viewsChart.jsx":151,"./global/adblock.jsx":152,"./global/adblock2.jsx":153,"react":145}]},{},[146,147,148,149,150,151,152,153,154,155,156,157,158,159]);
+},{"./components/advancedPanel.jsx":146,"./components/advancedPanelOff.jsx":147,"./components/allLinks.jsx":148,"./components/map.jsx":149,"./components/numbers.jsx":150,"./components/settings.jsx":151,"./components/sidebar.jsx":152,"./components/viewsChart.jsx":153,"./global/adblock.jsx":154,"./global/adblock2.jsx":155,"react":145}]},{},[146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161]);

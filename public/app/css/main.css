@@ -254,19 +254,49 @@ body, html {
   height: 100%;
 }
 
+.autoWrapper {
+  height: auto;
+}
+
+.trackingPanel {
+  background: #fff;
+  height: 100%;
+}
+
 .noLeft {
   margin-left: 0;
   padding-left: 0;
 }
 
 .bannerTitleBar {
-  width: calc(100% + 1.3em);
+  width: 100%;
   background: #f76f5f;
-  margin: 0 -.6em;
+  margin: 0;
   border-radius: 2px 2px 0 0;
   padding: .5em;
   font-size: 18pt;
   color: #fff;
+}
+
+.graph {
+  padding: 0;
+  width: calc(50% - 12px);
+  margin-right: 12px;
+  height: auto;
+}
+
+.graph2 {
+  padding: 0;
+  width: calc(50% - 12px);
+  margin-left: 12px;
+  background: #fff;
+  height: 100%;
+  text-align: center;
+  border-radius: 2px;
+  overflow: hidden;
+}
+.graph2 .bannerTitleBar {
+  background: #8e44ad;
 }
 
 .shareLink {
@@ -397,6 +427,25 @@ body, html {
 }
 
 @media screen and (max-width: 400px) {
+  .graph {
+    width: 50%;
+    margin-right: 0;
+  }
+
+  .graph2 {
+    width: 50%;
+    margin-left: 0;
+  }
+
+  .bannerTitleBar {
+    width: 100%;
+    margin: 0;
+  }
+
+  .shareLink {
+    display: none;
+  }
+
   .adContainer {
     height: 13em;
   }
