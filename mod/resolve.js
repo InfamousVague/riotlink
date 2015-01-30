@@ -9,17 +9,11 @@ app.get('/r/:r', function(req,res){
     if(typeof(req.headers.referer) != 'undefined'){
         switch(req.headers.referer.split('/')[2]){
             case 't.co':
-                referer_clean = "Twitter";
-                break;
-
             case 'twitter.com':
                 referer_clean = "Twitter";
                 break;
 
             case 'lm.facebook.com':
-                referer_clean = "Facebook";
-                break;
-
             case 'www.facebook.com':
                 referer_clean = "Facebook";
                 break;
