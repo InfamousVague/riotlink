@@ -20,7 +20,7 @@ Run our first build
 > grunt
 
 After grunt starts waiting exit and run
-> forever start riotlink.js
+> cd dist && forever start riotlink.js
 
 Riotlink will start on localhost:5560
 
