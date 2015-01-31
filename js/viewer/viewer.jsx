@@ -1,21 +1,17 @@
 /** @jsx React.DOM */
 
-var React       = require('react');
-var ViewToolbar = require('./requires/viewToolbar.jsx'),
-    socket      = io();
+var React           = require('react');
+var ViewToolbar     = require('./requires/viewToolbar.jsx'),
+    globalActions   = require('./actions/globalActions.jsx'),
+    socket          = io();
 
-function getUrlVars() {
-    var vars = {};
-    var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
-        vars[key] = value;
-    });
-    return vars;
-}
 
-var rid     = getUrlVars()['rid'],
-    tid     = getUrlVars()['tid'],
-    link    = getUrlVars()['link'],
-    tt      = getUrlVars()['tt'];
+globalActions.testAction();
+
+var rid     = globalActions.getUrlVars()['rid'],
+    tid     = globalActions.getUrlVars()['tid'],
+    link    = globalActions.getUrlVars()['link'],
+    tt      = globalActions.getUrlVars()['tt'];
 
 socket.emit('connected', {
     rid : rid

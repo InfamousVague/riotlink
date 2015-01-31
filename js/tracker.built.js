@@ -1,5 +1,5 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
-module.exports={
+gmodule.exports={
     testAction : function(){
         console.log('success');
     },
@@ -398,17 +398,12 @@ var React               = require('react'),
     AdvancedPanelOff    = require('./requires/advancedPanelOff.jsx'),
     AllLinks            = require('./requires/allLinks.jsx'),
     Settings            = require('./requires/settings.jsx'),
+    globalActions       = require('./actions/globalActions.jsx'),
     socket              = io();
 
-function getUrlVars() {
-    var vars = {};
-    var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
-        vars[key] = value;
-    });
-    return vars;
-}
-var tid = getUrlVars()['tid'];
-var uid = getUrlVars()['uid'];
+globalActions.testAction();
+var tid = globalActions.getUrlVars()['tid'];
+var uid = globalActions.getUrlVars()['uid'];
 
 /*jshint ignore:start*/
 var Page = React.createClass({displayName: 'Page',
@@ -693,7 +688,7 @@ React.renderComponent(
 );
 /*jshint ignore:end*/
 
-},{"./requires/advancedPanel.jsx":2,"./requires/advancedPanelOff.jsx":3,"./requires/allLinks.jsx":4,"./requires/map.jsx":5,"./requires/numbers.jsx":6,"./requires/settings.jsx":7,"./requires/sidebar.jsx":8,"./requires/viewsChart.jsx":9,"react":155}],11:[function(require,module,exports){
+},{"./actions/globalActions.jsx":1,"./requires/advancedPanel.jsx":2,"./requires/advancedPanelOff.jsx":3,"./requires/allLinks.jsx":4,"./requires/map.jsx":5,"./requires/numbers.jsx":6,"./requires/settings.jsx":7,"./requires/sidebar.jsx":8,"./requires/viewsChart.jsx":9,"react":155}],11:[function(require,module,exports){
 // shim for using process in browser
 
 var process = module.exports = {};

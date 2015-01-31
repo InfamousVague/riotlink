@@ -9,17 +9,12 @@ var React               = require('react'),
     AdvancedPanelOff    = require('./requires/advancedPanelOff.jsx'),
     AllLinks            = require('./requires/allLinks.jsx'),
     Settings            = require('./requires/settings.jsx'),
+    globalActions       = require('./actions/globalActions.jsx'),
     socket              = io();
 
-function getUrlVars() {
-    var vars = {};
-    var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
-        vars[key] = value;
-    });
-    return vars;
-}
-var tid = getUrlVars()['tid'];
-var uid = getUrlVars()['uid'];
+globalActions.testAction();
+var tid = globalActions.getUrlVars()['tid'];
+var uid = globalActions.getUrlVars()['uid'];
 
 /*jshint ignore:start*/
 var Page = React.createClass({

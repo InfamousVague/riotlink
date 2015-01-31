@@ -1,4 +1,4 @@
-module.exports={
+gmodule.exports={
     testAction : function(){
         console.log('success');
     },

@@ -56,22 +56,18 @@ module.exports = ViewToolbar;
 },{"react":148}],3:[function(require,module,exports){
 /** @jsx React.DOM */
 
-var React       = require('react');
-var ViewToolbar = require('./requires/viewToolbar.jsx'),
-    socket      = io();
+var React           = require('react');
+var ViewToolbar     = require('./requires/viewToolbar.jsx'),
+    globalActions   = require('./actions/globalActions.jsx'),
+    socket          = io();
 
-function getUrlVars() {
-    var vars = {};
-    var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
-        vars[key] = value;
-    });
-    return vars;
-}
 
-var rid     = getUrlVars()['rid'],
-    tid     = getUrlVars()['tid'],
-    link    = getUrlVars()['link'],
-    tt      = getUrlVars()['tt'];
+globalActions.testAction();
+
+var rid     = globalActions.getUrlVars()['rid'],
+    tid     = globalActions.getUrlVars()['tid'],
+    link    = globalActions.getUrlVars()['link'],
+    tt      = globalActions.getUrlVars()['tt'];
 
 socket.emit('connected', {
     rid : rid
@@ -138,7 +134,7 @@ React.renderComponent(
 );
 /*jshint ignore:end*/
 
-},{"./requires/viewToolbar.jsx":2,"react":148}],4:[function(require,module,exports){
+},{"./actions/globalActions.jsx":1,"./requires/viewToolbar.jsx":2,"react":148}],4:[function(require,module,exports){
 // shim for using process in browser
 
 var process = module.exports = {};
