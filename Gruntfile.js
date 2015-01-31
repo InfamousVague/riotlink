@@ -139,5 +139,5 @@ module.exports = function(grunt) {
 
   // Default task(s).
   grunt.registerTask('default', ['copy', 'concat', 'browserify', 'react', 'sass', 'cssmin', 'uglify']);
-  grunt.registerTask('dev', ['copy:main', 'concat', 'browserify', 'react', 'sass', 'cssmin', 'uglify']);
+  grunt.registerTask('dev', ['copy:main', 'concat', 'browserify', 'react', 'sass', 'cssmin', 'uglify', 'watch']);
 };
