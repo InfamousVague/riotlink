@@ -1,6 +1,7 @@
 /** @jsx React.DOM */
 
 var React               = require('react'),
+    TrackerActions      = require('./actions/Actions.jsx'),
     Sidebar             = require('./requires/sidebar.jsx'),
     Numbers             = require('./requires/numbers.jsx'),
     Map                 = require('./requires/map.jsx'),
@@ -11,15 +12,8 @@ var React               = require('react'),
     Settings            = require('./requires/settings.jsx'),
     socket              = io();
 
-function getUrlVars() {
-    var vars = {};
-    var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
-        vars[key] = value;
-    });
-    return vars;
-}
-var tid = getUrlVars()['tid'];
-var uid = getUrlVars()['uid'];
+var tid = TrackerActions.getUrlVars(window.location.href)['tid'];
+var uid = TrackerActions.getUrlVars(window.location.href)['uid'];
 
 /*jshint ignore:start*/
 var Page = React.createClass({
@@ -49,59 +43,17 @@ var Page = React.createClass({
         };
     },
     componentDidMount: function(){
-        $('#mapHolder').hide();
-        $('#settings').hide();
-        $('#allLinksHolder').hide();
-        $('#statsButton').click(function(){
-            $('#sidebar ul li').removeClass('active');
-            $(this).addClass('active');
-            $('#mapHolder').hide();
-            $('#stats').show();
-            $('#allLinksHolder').hide();
-            $('#settings').hide();
-        });
-        $('#geoButton').click(function(){
-            $('#sidebar ul li').removeClass('active');
-            $(this).addClass('active');
-            $('#mapHolder').show();
+        var doc     = $(document),
+            that    = this;
+
+        TrackerActions.init(doc);
+        TrackerActions.statsButton(doc);
+        TrackerActions.geoButton(doc, function(){
             map.invalidateSize(false);
-            $('#stats').hide();
-            $('#allLinksHolder').hide();
-            $('#settings').hide();
-
         });
-        $('#linksButton').click(function(){
-            $('#sidebar ul li').removeClass('active');
-            $(this).addClass('active');
-            $('#allLinksHolder').show();
-            $('#stats').hide();
-            $('#settings').hide();
-            $('#mapHolder').hide();
-        });
-        $('#settingsButton').click(function(){
-            $('#sidebar ul li').removeClass('active');
-            $(this).addClass('active');
-            $('#settings').show();
-            $('#stats').hide();
-            $('#mapHolder').hide();
-            $('#allLinksHolder').hide();
-
-        });
-        var that = this;
-        /*==================
-        =     SocketIO     =
-        ==================*/
-        socket.emit('setVals', {
-            tid : tid
-        });
-
-        var pollData = setInterval(function(){
-            socket.emit('requestData', tid);
-
-            if(uid)
-                socket.emit('requestUserData', uid);
-
-        }, 1000);
+        TrackerActions.linkButton(doc);
+        TrackerActions.settingsButton(doc);
+        TrackerActions.pollData(tid, uid, 1000);
 
         window.history.replaceState('Object', 'Title', 't/' + tid);
 
@@ -113,19 +65,7 @@ var Page = React.createClass({
             attribution: 'Riotlink Views',
             maxZoom: 18
         }).addTo(map);
-
-        function timeConverter(UNIX_timestamp){
-            var a = new Date(UNIX_timestamp);
-            var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-            var year = a.getFullYear();
-            var month = months[a.getMonth()];
-            var date = a.getDate();
-            var hour = a.getHours();
-            var min = a.getMinutes();
-            var sec = a.getSeconds();
-            var time = date + '-' + month + '-' + year;
-            return time;
-        }
+        var markerGroup = L.layerGroup();
 
         /*==================
         =    User Page     =
@@ -138,7 +78,6 @@ var Page = React.createClass({
         /*==================
         =    Views/Map     =
         ==================*/
-        var markerGroup = L.layerGroup();
 
         socket.on('newData', function(data){
             var twitterViews = 0,
@@ -150,10 +89,10 @@ var Page = React.createClass({
 
             markerGroup.clearLayers();
             data.views.map(function(view){
-                if ( typeof( tempViewsData[ timeConverter( view.timestamp ) ] ) === 'undefined' )
-                    tempViewsData[ timeConverter( view.timestamp ) ] = 0;
+                if ( typeof( tempViewsData[ TrackerActions.timeConverter( view.timestamp ) ] ) === 'undefined' )
+                    tempViewsData[ TrackerActions.timeConverter( view.timestamp ) ] = 0;
 
-                tempViewsData[ timeConverter( view.timestamp ) ]++;
+                tempViewsData[ TrackerActions.timeConverter( view.timestamp ) ]++;
 
                 if(!!view.geo)
                     L.marker(view.geo.ll).addTo(markerGroup);

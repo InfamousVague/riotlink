@@ -58,8 +58,9 @@ module.exports = function(grunt) {
         js:{
             src: [
                 'dist/public/components/jquery/dist/jquery.min.js',
-                'dist/public/components/bootstrap/dist/js/bootstrap.min.js'
-            ],
+                'dist/public/components/bootstrap/dist/js/bootstrap.min.js',
+                'dist/public/components/react/react.js'
+                ],
             dest: 'dist/public/js/build.js'
         },
         css:{
@@ -139,5 +140,5 @@ module.exports = function(grunt) {
 
   // Default task(s).
   grunt.registerTask('default', ['copy', 'concat', 'browserify', 'react', 'sass', 'cssmin', 'uglify']);
-  grunt.registerTask('dev', ['copy:main', 'concat', 'browserify', 'react', 'sass', 'cssmin', 'uglify']);
+  grunt.registerTask('dev', ['copy:main', 'concat', 'browserify', 'react', 'sass', 'cssmin', 'uglify', 'watch']);
 };

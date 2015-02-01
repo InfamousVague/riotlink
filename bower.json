@@ -1,23 +1,23 @@
 {
-    "name": "Riotlink",
-    "version": "2.0.0",
-    "authors": [
-        "wski <contact.mattdylan@gmail.com>"
-    ],
-    "description": "Riotlink - Simple link influence analytics.",
-    "license": "CLOSED",
-    "ignore": [
-        "**/.*",
-        "node_modules",
-        "bower_components",
-        "test",
-        "tests"
-    ],
-    "dependencies": {
-        "bootstrap": "~3.2.0",
-        "react": "https://github.com/reactjs/react-bower.git",
-        "jquery": "~2.1.1",
-        "jqueryui": "~1.11.1",
-        "zeroclipboard": "https://github.com/zeroclipboard/zeroclipboard.git"
-    }
+  "name": "Riotlink",
+  "version": "2.0.0",
+  "authors": [
+    "wski <contact.mattdylan@gmail.com>"
+  ],
+  "description": "Riotlink - Simple link influence analytics.",
+  "license": "CLOSED",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.2.0",
+    "react": "https://github.com/reactjs/react-bower.git",
+    "jquery": "~2.1.1",
+    "jqueryui": "~1.11.1",
+    "zeroclipboard": "https://github.com/zeroclipboard/zeroclipboard.git"
+  }
 }
